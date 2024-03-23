@@ -43,7 +43,7 @@ public class Repair {
     private Payment payment;
 
     @OneToOne(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
-    @JoinColumn(name = "repair_id")
+    @JoinColumn(name = "service_id")
     private Repair repair;
 
     public Repair() {

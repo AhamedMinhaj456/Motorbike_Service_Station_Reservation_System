@@ -20,7 +20,7 @@ public class PaymentMethod {
     private Payment payment;
 
     @OneToOne(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
-    @JoinColumn(name = "payment_method")
+    @JoinColumn(name = "payment_method_id")
     private PaymentMethod paymentMethod;
 
     public PaymentMethod() {

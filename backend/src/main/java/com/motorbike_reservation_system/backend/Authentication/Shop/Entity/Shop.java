@@ -16,19 +16,19 @@ public class Shop {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "shopId", length = 255)
-    private int ShopId;
+    private String shopId;
 //    //@Column(name = "employeeName", length = 255)
     private String shopName;
     private String shopPassword;
 //   // @Column(name = "email", length = 255)
-    private String ShopAddress;
+    private String shopAddress;
 //    ;
 //    //@Column(name = "password", length = 255)
 //
-    private String ContactNumber;
-    private String TaxId;
-    private String Email;
-    private String SubscriptionPlan;
+    private String contactNumber;
+    private String taxId;
+    private String email;
+    private String subscriptionPlan;
 
     @OneToMany(mappedBy = "shop", cascade = CascadeType.ALL)
     private List<Reservation> reservations;
@@ -43,15 +43,15 @@ public class Shop {
     public Shop() {
     }
 
-    public Shop(int shopId, String shopName, String shopPassword, String shopAddress, String contactNumber, String taxId, String email, String subscriptionPlan, List<Reservation> reservations, List<Feedback> feedbacks, List<Repair> repairs) {
-        ShopId = shopId;
+    public Shop(String  shopId, String shopName, String shopPassword, String shopAddress, String contactNumber, String taxId, String email, String subscriptionPlan, List<Reservation> reservations, List<Feedback> feedbacks, List<Repair> repairs) {
+        shopId = shopId;
         this.shopName = shopName;
         this.shopPassword = shopPassword;
-        ShopAddress = shopAddress;
-        ContactNumber = contactNumber;
-        TaxId = taxId;
-        Email = email;
-        SubscriptionPlan = subscriptionPlan;
+        shopAddress = shopAddress;
+        contactNumber = contactNumber;
+        taxId = taxId;
+        email = email;
+        subscriptionPlan = subscriptionPlan;
         this.reservations = reservations;
         this.feedbacks = feedbacks;
         this.repairs = repairs;
@@ -61,22 +61,22 @@ public class Shop {
     public Shop(String shopName, String shopPassword, String shopAddress, String contactNumber, String taxId, String email, String subscriptionPlan, List<Reservation> reservations, List<Feedback> feedbacks, List<Repair> repairs) {
         this.shopName = shopName;
         this.shopPassword = shopPassword;
-        ShopAddress = shopAddress;
-        ContactNumber = contactNumber;
-        TaxId = taxId;
-        Email = email;
-        SubscriptionPlan = subscriptionPlan;
+        shopAddress = shopAddress;
+        contactNumber = contactNumber;
+        taxId = taxId;
+        email = email;
+        subscriptionPlan = subscriptionPlan;
         this.reservations = reservations;
         this.feedbacks = feedbacks;
         this.repairs = repairs;
     }
 
-    public int getShopId() {
-        return ShopId;
+    public String getShopId() {
+        return shopId;
     }
 
-    public void setShopId(int shopId) {
-        ShopId = shopId;
+    public void setShopId(String shopId) {
+        shopId = shopId;
     }
 
     public String getShopName() {
@@ -96,43 +96,43 @@ public class Shop {
     }
 
     public String getShopAddress() {
-        return ShopAddress;
+        return shopAddress;
     }
 
     public void setShopAddress(String shopAddress) {
-        ShopAddress = shopAddress;
+        shopAddress = shopAddress;
     }
 
     public String getContactNumber() {
-        return ContactNumber;
+        return contactNumber;
     }
 
     public void setContactNumber(String contactNumber) {
-        ContactNumber = contactNumber;
+        contactNumber = contactNumber;
     }
 
     public String getTaxId() {
-        return TaxId;
+        return taxId;
     }
 
     public void setTaxId(String taxId) {
-        TaxId = taxId;
+        taxId = taxId;
     }
 
     public String getEmail() {
-        return Email;
+        return email;
     }
 
     public void setEmail(String email) {
-        Email = email;
+        email = email;
     }
 
     public String getSubscriptionPlan() {
-        return SubscriptionPlan;
+        return subscriptionPlan;
     }
 
     public void setSubscriptionPlan(String subscriptionPlan) {
-        SubscriptionPlan = subscriptionPlan;
+        subscriptionPlan = subscriptionPlan;
     }
 
     public List<Reservation> getReservations() {
@@ -162,14 +162,14 @@ public class Shop {
     @Override
     public String toString() {
         return "Shop{" +
-                "ShopId=" + ShopId +
+                "ShopId=" + shopId +
                 ", ShopName='" + shopName + '\'' +
                 ", ShopPassword='" + shopPassword + '\'' +
-                ", ShopAddress='" + ShopAddress + '\'' +
-                ", ContactNumber='" + ContactNumber + '\'' +
-                ", TaxId='" + TaxId + '\'' +
-                ", Email='" + Email + '\'' +
-                ", SubscriptionPlan='" + SubscriptionPlan + '\'' +
+                ", ShopAddress='" + shopAddress + '\'' +
+                ", ContactNumber='" + contactNumber + '\'' +
+                ", TaxId='" + taxId + '\'' +
+                ", Email='" + email + '\'' +
+                ", SubscriptionPlan='" + subscriptionPlan + '\'' +
                 ", Reservations=" + reservations +
                 ", Feedbacks=" + feedbacks +
                 ", Repairs=" + repairs +

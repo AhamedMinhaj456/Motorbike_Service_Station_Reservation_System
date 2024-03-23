@@ -10,7 +10,7 @@ import java.util.List;
 public class CustomerDTO {
 
 
-    private int customerId;
+    private String customerId;
     private String customerName;
     private String customerEmail;
     private String customerUsername;
@@ -29,7 +29,7 @@ public class CustomerDTO {
     public CustomerDTO() {
     }
 
-    public CustomerDTO(int customerId, String customerName, String customerEmail, String customerUsername, String customerPassword, String phoneNumber, List<Motorbike> motorbikes, List<Reservation> reservations, List<Repair> repairs) {
+    public CustomerDTO(String customerId, String customerName, String customerEmail, String customerUsername, String customerPassword, String phoneNumber, List<Motorbike> motorbikes, List<Reservation> reservations, List<Repair> repairs) {
         this.customerId = customerId;
         this.customerName = customerName;
         this.customerEmail = customerEmail;
@@ -52,11 +52,11 @@ public class CustomerDTO {
         this.repairs = repairs;
     }
 
-    public int getCustomerId() {
+    public String getCustomerId() {
         return customerId;
     }
 
-    public void setCustomerId(int customerId) {
+    public void setCustomerId(String customerId) {
         this.customerId = customerId;
     }
 

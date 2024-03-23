@@ -2,7 +2,7 @@ package com.motorbike_reservation_system.backend.Authentication.Admin.Dto;
 
 public class AdminDTO {
 
-    private int adminId;
+    private String  adminId;
     private String adminName;
     private String adminPassword;
     private String adminRole;
@@ -10,7 +10,7 @@ public class AdminDTO {
     public AdminDTO() {
     }
 
-    public AdminDTO(int adminId, String adminName, String password, String adminRole) {
+    public AdminDTO(String adminId, String adminName, String password, String adminRole) {
         adminId = adminId;
         this.adminName = adminName;
         this.adminPassword = adminPassword;
@@ -33,11 +33,11 @@ public class AdminDTO {
                 '}';
     }
 
-    public int getAdminId() {
+    public String  getAdminId() {
         return adminId;
     }
 
-    public void setAdminId(int adminId) {
+    public void setAdminId(String  adminId) {
         adminId = adminId;
     }
 

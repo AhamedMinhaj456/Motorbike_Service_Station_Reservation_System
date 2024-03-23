@@ -9,7 +9,7 @@ import java.util.List;
 
 public class ShopDTO {
 
-    private int ShopId;
+    private String  ShopId;
 
     private String shopName;
     private String shopPassword;
@@ -35,7 +35,7 @@ public class ShopDTO {
     public ShopDTO() {
     }
 
-    public ShopDTO(int shopId, String shopName, String shopPassword, String shopAddress, String contactNumber, String taxId, String email, String subscriptionPlan, List<Reservation> reservations, List<Feedback> feedbacks, List<Repair> repairs) {
+    public ShopDTO(String  shopId, String shopName, String shopPassword, String shopAddress, String contactNumber, String taxId, String email, String subscriptionPlan, List<Reservation> reservations, List<Feedback> feedbacks, List<Repair> repairs) {
         ShopId = shopId;
         this.shopName = shopName;
         this.shopPassword = shopPassword;
@@ -63,11 +63,11 @@ public class ShopDTO {
         this.repairs = repairs;
     }
 
-    public int getShopId() {
+    public String  getShopId() {
         return ShopId;
     }
 
-    public void setShopId(int shopId) {
+    public void setShopId(String  shopId) {
         ShopId = shopId;
     }
 
