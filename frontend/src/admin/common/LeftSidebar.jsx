@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { FaBars } from 'react-icons/fa'; // Import the hamburger icon
+import { FaBars } from 'react-icons/fa'; 
 import './LeftSidebar.css';
 import bikePulseLogo from '../../assets/logo.png';
 import ShopManagementIcon from '../../assets/Shop.svg';

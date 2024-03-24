@@ -34,29 +34,29 @@ const ShopManagementWindow = () => {
       <LeftSidebar />
 
       <div className="shop-management-content">
-  <h2 className="shop-management-heading">Shop Management</h2>
+        <h2 className="shop-management-heading">Shop Management</h2>
 
-  {shops.length === 0 ? (
-    <p className="shop-management-no-shops">No shops found.</p>
-  ) : (
-    <div className="shop-list">
-      {shops.map((shop) => (
-        <div key={shop.id} className="shop-item">
-          <p>
-            <strong>Shop Name:</strong> {shop.shopName}
-          </p>
-          <p>
-            <strong>Location:</strong> {shop.location}
-          </p>
-          <p>
-            <strong>View Details:</strong>
-            <Link to={`/shop/${shop.id}`}>View Details</Link>
-          </p>
-        </div>
-      ))}
-    </div>
-  )}
-</div>
+        {shops.length === 0 ? (
+          <p className="shop-management-no-shops">No shops found.</p>
+        ) : (
+          <div className="shop-list">
+            {shops.map((shop) => (
+              <div key={shop.id} className="shop-item">
+                <p>
+                  <strong>Shop Name:</strong> {shop.shopName}
+                </p>
+                <p>
+                  <strong>Location:</strong> {shop.location}
+                </p>
+                <p>
+                  <strong>View Details:</strong>
+                  <Link to={`/shop/${shop.id}`}>View Details</Link>
+                </p>
+              </div>
+            ))}
+          </div>
+        )}
+      </div>
 
       <RightSidebar />
     </div>

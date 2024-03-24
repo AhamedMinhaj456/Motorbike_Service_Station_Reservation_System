@@ -1,31 +1,16 @@
-
-.subscription-plans-management {
-    display: flex;
-    height: 100%;
-  }
-  
-  /* .left-sidebar {
-    width: 350px;
-    background-color: #CAF0F8;
-    color: #fff;
-    padding: 10px;
-    height: 100vh;
-  } */
-  
-  .subscription-plans-management-content {
+.subscription-plans-management-content {
     flex: 1;
-    display: flex;
     flex-direction: column;
     margin-left: 350px;
     margin-right: 100px;
     padding: 20px;
-  }
+}
   
-  .subscription-plans-management-content h2 {
+.subscription-plans-management-content h2 {
     margin-top: 10px;
     margin-bottom: 50px;
-    align-items: center;
-  }
+    text-align: center;
+}
   
   /* .plan-list {
     overflow-y: auto;
@@ -33,38 +18,44 @@
     margin-top: 10px;
   } */
   
-  .plan-item {
+.plan-item {
     background-color: #F1F4F7;
     margin-bottom: 20px;
-
+    width: 100%;
     border: 1px solid #ccc;
     border-radius: 8px;
     padding: 20px;
-    display: flex;
     flex-direction: column;
-  }
+    transition: transform 0.3s, background-color 0.3s; 
+}
+
+.plan-item:hover {
+  transform: translateY(-5px); 
+  background: linear-gradient(to bottom, #eaeede, #9baab7);
+}
   
-  .plan-item p {
-    margin-bottom: 15px;  
-  }
+.plan-item p {
+    margin-bottom: 15px; 
+    transition: color 0.3s;  
+}
   
-  .plan-form input {
+/* .plan-form input {
     margin-bottom: 20px;  
     padding: 8px;  
     background-color: #F5FBFF;
     border: 1px solid #ccc;
     border-radius: 4px;
-  }
+} */
   
-  .subscription-plans-management-buttons {
+.subscription-plans-management-buttons {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-top: 20px;
-  }
+}
   
-  .save-button,
-  .edit-button {
+.save-button,
+.edit-button {
     background-color: #4caf50;
     color: #fff;
     padding: 10px 20px;  
@@ -72,10 +63,33 @@
     border-radius: 15px;
     cursor: pointer;
     margin-bottom: 20px;
-  }
+}
   
-  .save-button:hover,
-  .edit-button:hover {
+.save-button:hover,
+.edit-button:hover {
     background-color: #9dc8ec;
+}
+
+@media screen and (max-width: 768px) {
+  .subscription-plans-management-content {
+    margin-left: 0; 
+    margin-right: 50; 
   }
+
+  .plan-list {
+    width: 100%; 
+  }
+
+  .sidebar-icons {
+    display: flex;
+    justify-content: flex-end;
+    padding: 10px;
+  }
+
+  .sidebar-icon {
+    margin-left: 10px;
+    cursor: pointer;
+    font-size: 20px;
+  }
+}
   
