@@ -1,0 +1,213 @@
+.parts-Category-main {
+    display: flex;
+    height: 100vh;
+}
+
+.parts-category-management {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-left: 300px; 
+        margin-right: 10px; 
+        padding: 20px;
+      }
+      
+
+  .parts-category-management-content {
+    height: 2130px;
+    width: 798px;
+    border-radius: 15px;
+    background-color: #f1f4f6;
+    margin-top: 15px;
+  }
+
+ .category-1 {
+    border-radius: 15px;
+    height: 198px;
+    width: 684px;
+    background-color: #d6eefc;
+    margin-top: 20px;
+    margin-left:50px ;
+  }
+ 
+  .text-1 {
+    text-align: left;
+    vertical-align: top;
+    font-size: 20px;
+    font-family: Poppins;
+    line-height: auto;
+    color: #000000;
+    margin-left: 30px;
+   
+  }
+  .text-2 {
+    text-align: left;
+    vertical-align: top;
+    font-size: 20px;
+    font-family: Poppins;
+    line-height: auto;
+    color: #000000;
+    margin-right: 100px;
+  }
+
+
+  .title-1 {
+    display: flex;
+    align-items: stretch;
+    justify-content: space-between;
+
+  }
+
+  .group-1 {
+    margin-left: 20px;
+    margin-right: 20px;
+    height: 49px;
+    border-radius: 15px;
+    background-color: #d9e5f2;
+    display: flex;
+    align-items: stretch;
+    justify-content: space-between;
+  }
+  
+  .text-3 {
+    margin-left: 20px;
+    text-align: left;
+    margin-top: auto;
+    font-size: 16px;
+    font-family: Poppins;
+    line-height: auto;
+   
+  }
+  .text-4 {
+    margin-top: auto;
+    margin-right: 20px;
+    font-size: 16px;
+    font-family: Poppins;
+    line-height: auto;
+    
+  }
+  .group-2{
+    margin-left: 20px;
+    margin-right: 20px;
+    border-radius: 15px;
+    height: 49px;
+    background-color: #d9e5f2;
+    margin-top: 10px;
+    display: flex;
+    align-items: stretch;
+    justify-content: space-between;
+  }
+
+  .text-5 {
+    margin-left: 20px;
+    margin-top: auto;
+    font-size: 16px;
+    font-family: Poppins;
+    line-height: auto;
+    
+  }
+  .text-6 {
+    margin-right: 20px;
+    margin-top: auto;
+    font-size: 16px;
+    font-family: Poppins;
+    line-height: auto;
+    
+  }
+  
+ 
+  .insert-button {
+    margin: auto; /* Add this line to center the button horizontally */
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #44c00f;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    align-items: center;
+  }
+  
+
+
+  .insert-button:hover {
+    background-color: #0056b3 ;
+  }
+
+  /* Adjustments for the popover content */
+
+  .popover-content {
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    border-color: #000000;
+  }
+  
+  .popover-header-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 15px;
+   
+  }
+  
+  .popover-header {
+    font-size: 18px;
+    font-weight: bold;
+    
+
+  }
+  
+  .popover-close-button {
+    background: none;
+    border: none;
+    font-size: 20px;
+    color: #000000;
+    font-weight: bold;
+  }
+  
+  .popover-body {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .dropdownpop{
+    margin-bottom: 10px;
+    height: 30px;
+    border-radius: 5px;
+    
+    }
+
+
+  .input-wrapper,
+  .upload-wrapper {
+  margin-bottom: 10px;
+  }
+  
+  .upload-wrapper input[type="file"] {
+    display: none;
+  }
+  
+  .upload-wrapper img {
+    max-width: 100%;
+    height: auto;
+  }
+  
+  .popover-button {
+    margin-top: 10px;
+    padding: 10px;
+    background-color: #44c00f;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .popover-button:hover {
+    background-color: #0056b3;
+  }
+  
