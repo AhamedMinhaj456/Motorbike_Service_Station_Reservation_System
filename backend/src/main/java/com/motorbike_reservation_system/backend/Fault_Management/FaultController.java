@@ -34,7 +34,7 @@ public class FaultController {
     }
 
     @DeleteMapping("/deletefault/{id}")
-    public String deleteFault(@PathVariable int id) {
-        return faultService.deleteFault(id);
+    public String deleteFault(@PathVariable String faultId) {
+        return faultService.deleteFault(faultId);
     }
 }

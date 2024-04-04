@@ -3,13 +3,14 @@ package com.motorbike_reservation_system.backend.Motorbike;
 import com.motorbike_reservation_system.backend.Authentication.Customer.Entity.Customer;
 import jakarta.persistence.*;
 
+import java.util.Random;
+
 @Entity
 @Table(name = "motorbike")
 public class Motorbike {
 
     @Id
-    @GeneratedValue
-    private int motorbikeId;
+    private String motorbikeId;
     private String motorbikeName;
     private String motorbikeType;
     private String motorbikeNumber;
@@ -22,7 +23,7 @@ public class Motorbike {
     public Motorbike() {
     }
 
-    public Motorbike(int motorbikeId, String motorbikeName, String motorbikeType, String motorbikeNumber, Customer customer) {
+    public Motorbike(String  motorbikeId, String motorbikeName, String motorbikeType, String motorbikeNumber, Customer customer) {
         this.motorbikeId = motorbikeId;
         this.motorbikeName = motorbikeName;
         this.motorbikeType = motorbikeType;
@@ -37,11 +38,11 @@ public class Motorbike {
         this.customer = customer;
     }
 
-    public int getMotorbikeId() {
+    public String  getMotorbikeId() {
         return motorbikeId;
     }
 
-    public void setMotorbikeId(int motorbikeId) {
+    public void setMotorbikeId(String  motorbikeId) {
         this.motorbikeId = motorbikeId;
     }
 
@@ -86,6 +87,29 @@ public class Motorbike {
                 ", motorbikeNumber='" + motorbikeNumber + '\'' +
                 ", customer=" + customer +
                 '}';
+    }
+
+
+    /////// Custom logic to generate the next available ID //////////////////////////////////////
+
+    @PrePersist
+    public void generateId() {
+        if (motorbikeId == null) {
+            // Generate a random 6-digit number
+            String randomDigits = generateRandomDigits(6);
+
+            // Assign the ID as "FM" followed by the random digits
+            this.motorbikeId = "MB" + randomDigits;
+        }
+    }
+
+    private String generateRandomDigits(int length) {
+        Random random = new Random();
+        StringBuilder sb = new StringBuilder(length);
+        for (int i = 0; i < length; i++) {
+            sb.append(random.nextInt(10));
+        }
+        return sb.toString();
     }
 
 

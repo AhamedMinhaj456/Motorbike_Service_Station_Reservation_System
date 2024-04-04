@@ -9,7 +9,7 @@ import jakarta.persistence.*;
 public class Feedback {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int feedbackId;
 
     private String rating;
@@ -30,7 +30,7 @@ public class Feedback {
     public Feedback() {
     }
 
-    public Feedback(int feedbackId, String rating, String feedback, Shop shop) {
+    public Feedback(int  feedbackId, String rating, String feedback, Shop shop) {
         this.feedbackId = feedbackId;
         this.rating = rating;
         this.comment = feedback;
@@ -43,11 +43,11 @@ public class Feedback {
         this.shop = shop;
     }
 
-    public int getFeedbackId() {
+    public Integer getFeedbackId() {
         return feedbackId;
     }
 
-    public void setFeedbackId(int feedbackId) {
+    public void setFeedbackId(int  feedbackId) {
         this.feedbackId = feedbackId;
     }
 

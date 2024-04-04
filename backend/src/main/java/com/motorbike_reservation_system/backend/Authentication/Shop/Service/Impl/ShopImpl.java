@@ -31,10 +31,7 @@ public class ShopImpl implements ShopService {
                 shopDTO.getContactNumber(),
                 shopDTO.getTaxId(),
                 shopDTO.getEmail(),
-                shopDTO.getSubscriptionPlan(),
-                shopDTO.getReservations(),
-                shopDTO.getFeedbacks(),
-                shopDTO.getRepairs()
+                shopDTO.getSubscriptionPlan()
 
         );
         shopRepo.save(shop);

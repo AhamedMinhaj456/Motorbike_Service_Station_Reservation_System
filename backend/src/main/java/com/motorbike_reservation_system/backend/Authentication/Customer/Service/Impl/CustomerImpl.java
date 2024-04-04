@@ -29,10 +29,7 @@ public class CustomerImpl implements CustomerService {
                 customerDTO.getCustomerEmail(),
                 customerDTO.getCustomerUsername(),
                 this.passwordEncoder.encode(customerDTO.getCustomerPassword()),
-                customerDTO.getPhoneNumber(),
-                customerDTO.getMotorbikes(),
-                customerDTO.getReservations(),
-                customerDTO.getRepairs()
+                customerDTO.getPhoneNumber()
 
 
 

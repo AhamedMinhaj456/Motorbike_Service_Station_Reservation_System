@@ -16,7 +16,7 @@ public class Shop {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "shopId", length = 255)
-    private String shopId;
+    private int shopId;
 //    //@Column(name = "employeeName", length = 255)
     private String shopName;
     private String shopPassword;
@@ -43,40 +43,33 @@ public class Shop {
     public Shop() {
     }
 
-    public Shop(String  shopId, String shopName, String shopPassword, String shopAddress, String contactNumber, String taxId, String email, String subscriptionPlan, List<Reservation> reservations, List<Feedback> feedbacks, List<Repair> repairs) {
-        shopId = shopId;
+    public Shop(int shopId, String shopName, String shopPassword, String shopAddress, String contactNumber, String taxId, String email, String subscriptionPlan) {
+        this.shopId = shopId;
         this.shopName = shopName;
         this.shopPassword = shopPassword;
-        shopAddress = shopAddress;
-        contactNumber = contactNumber;
-        taxId = taxId;
-        email = email;
-        subscriptionPlan = subscriptionPlan;
-        this.reservations = reservations;
-        this.feedbacks = feedbacks;
-        this.repairs = repairs;
-
+        this.shopAddress = shopAddress;
+        this.contactNumber = contactNumber;
+        this.taxId = taxId;
+        this.email = email;
+        this.subscriptionPlan = subscriptionPlan;
     }
 
-    public Shop(String shopName, String shopPassword, String shopAddress, String contactNumber, String taxId, String email, String subscriptionPlan, List<Reservation> reservations, List<Feedback> feedbacks, List<Repair> repairs) {
+    public Shop(String shopName, String shopPassword, String shopAddress, String contactNumber, String taxId, String email, String subscriptionPlan) {
         this.shopName = shopName;
         this.shopPassword = shopPassword;
-        shopAddress = shopAddress;
-        contactNumber = contactNumber;
-        taxId = taxId;
-        email = email;
-        subscriptionPlan = subscriptionPlan;
-        this.reservations = reservations;
-        this.feedbacks = feedbacks;
-        this.repairs = repairs;
+        this.shopAddress = shopAddress;
+        this.contactNumber = contactNumber;
+        this.taxId = taxId;
+        this.email = email;
+        this.subscriptionPlan = subscriptionPlan;
     }
 
-    public String getShopId() {
+    public int getShopId() {
         return shopId;
     }
 
-    public void setShopId(String shopId) {
-        shopId = shopId;
+    public void setShopId(int shopId) {
+        this.shopId = shopId;
     }
 
     public String getShopName() {
@@ -84,7 +77,7 @@ public class Shop {
     }
 
     public void setShopName(String shopName) {
-        shopName = shopName;
+        this.shopName = shopName;
     }
 
     public String getShopPassword() {
@@ -92,7 +85,7 @@ public class Shop {
     }
 
     public void setShopPassword(String shopPassword) {
-        shopPassword = shopPassword;
+        this.shopPassword = shopPassword;
     }
 
     public String getShopAddress() {
@@ -100,7 +93,7 @@ public class Shop {
     }
 
     public void setShopAddress(String shopAddress) {
-        shopAddress = shopAddress;
+        this.shopAddress = shopAddress;
     }
 
     public String getContactNumber() {
@@ -108,7 +101,7 @@ public class Shop {
     }
 
     public void setContactNumber(String contactNumber) {
-        contactNumber = contactNumber;
+        this.contactNumber = contactNumber;
     }
 
     public String getTaxId() {
@@ -116,7 +109,7 @@ public class Shop {
     }
 
     public void setTaxId(String taxId) {
-        taxId = taxId;
+        this.taxId = taxId;
     }
 
     public String getEmail() {
@@ -124,7 +117,7 @@ public class Shop {
     }
 
     public void setEmail(String email) {
-        email = email;
+        this.email = email;
     }
 
     public String getSubscriptionPlan() {
@@ -132,7 +125,7 @@ public class Shop {
     }
 
     public void setSubscriptionPlan(String subscriptionPlan) {
-        subscriptionPlan = subscriptionPlan;
+        this.subscriptionPlan = subscriptionPlan;
     }
 
     public List<Reservation> getReservations() {
@@ -162,17 +155,17 @@ public class Shop {
     @Override
     public String toString() {
         return "Shop{" +
-                "ShopId=" + shopId +
-                ", ShopName='" + shopName + '\'' +
-                ", ShopPassword='" + shopPassword + '\'' +
-                ", ShopAddress='" + shopAddress + '\'' +
-                ", ContactNumber='" + contactNumber + '\'' +
-                ", TaxId='" + taxId + '\'' +
-                ", Email='" + email + '\'' +
-                ", SubscriptionPlan='" + subscriptionPlan + '\'' +
-                ", Reservations=" + reservations +
-                ", Feedbacks=" + feedbacks +
-                ", Repairs=" + repairs +
+                "shopId=" + shopId +
+                ", shopName='" + shopName + '\'' +
+                ", shopPassword='" + shopPassword + '\'' +
+                ", shopAddress='" + shopAddress + '\'' +
+                ", contactNumber='" + contactNumber + '\'' +
+                ", taxId='" + taxId + '\'' +
+                ", email='" + email + '\'' +
+                ", subscriptionPlan='" + subscriptionPlan + '\'' +
+                ", reservations=" + reservations +
+                ", feedbacks=" + feedbacks +
+                ", repairs=" + repairs +
                 '}';
     }
 }

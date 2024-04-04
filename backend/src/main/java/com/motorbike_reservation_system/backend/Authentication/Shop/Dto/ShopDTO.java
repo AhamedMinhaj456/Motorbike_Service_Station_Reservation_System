@@ -9,7 +9,7 @@ import java.util.List;
 
 public class ShopDTO {
 
-    private String  ShopId;
+    private int  ShopId;
 
     private String shopName;
     private String shopPassword;
@@ -35,40 +35,33 @@ public class ShopDTO {
     public ShopDTO() {
     }
 
-    public ShopDTO(String  shopId, String shopName, String shopPassword, String shopAddress, String contactNumber, String taxId, String email, String subscriptionPlan, List<Reservation> reservations, List<Feedback> feedbacks, List<Repair> repairs) {
-        ShopId = shopId;
+    public ShopDTO(int ShopId, String shopName, String shopPassword, String ShopAddress, String ContactNumber, String TaxId, String Email, String SubscriptionPlan) {
+        this.ShopId = ShopId;
         this.shopName = shopName;
         this.shopPassword = shopPassword;
-        ShopAddress = shopAddress;
-        ContactNumber = contactNumber;
-        TaxId = taxId;
-        Email = email;
-        SubscriptionPlan = subscriptionPlan;
-        this.reservations = reservations;
-        this.feedbacks = feedbacks;
-        this.repairs = repairs;
-
+        this.ShopAddress = ShopAddress;
+        this.ContactNumber = ContactNumber;
+        this.TaxId = TaxId;
+        this.Email = Email;
+        this.SubscriptionPlan = SubscriptionPlan;
     }
 
-    public ShopDTO(String shopName, String shopPassword, String shopAddress, String contactNumber, String taxId, String email, String subscriptionPlan, List<Reservation> reservations, List<Feedback> feedbacks, List<Repair> repairs) {
+    public ShopDTO(String shopName, String shopPassword, String ShopAddress, String ContactNumber, String TaxId, String Email, String SubscriptionPlan) {
         this.shopName = shopName;
         this.shopPassword = shopPassword;
-        ShopAddress = shopAddress;
-        ContactNumber = contactNumber;
-        TaxId = taxId;
-        Email = email;
-        SubscriptionPlan = subscriptionPlan;
-        this.reservations = reservations;
-        this.feedbacks = feedbacks;
-        this.repairs = repairs;
+        this.ShopAddress = ShopAddress;
+        this.ContactNumber = ContactNumber;
+        this.TaxId = TaxId;
+        this.Email = Email;
+        this.SubscriptionPlan = SubscriptionPlan;
     }
 
-    public String  getShopId() {
+    public int getShopId() {
         return ShopId;
     }
 
-    public void setShopId(String  shopId) {
-        ShopId = shopId;
+    public void setShopId(int ShopId) {
+        this.ShopId = ShopId;
     }
 
     public String getShopName() {
@@ -76,7 +69,7 @@ public class ShopDTO {
     }
 
     public void setShopName(String shopName) {
-        shopName = shopName;
+        this.shopName = shopName;
     }
 
     public String getShopPassword() {
@@ -84,47 +77,47 @@ public class ShopDTO {
     }
 
     public void setShopPassword(String shopPassword) {
-        shopPassword = shopPassword;
+        this.shopPassword = shopPassword;
     }
 
     public String getShopAddress() {
         return ShopAddress;
     }
 
-    public void setShopAddress(String shopAddress) {
-        ShopAddress = shopAddress;
+    public void setShopAddress(String ShopAddress) {
+        this.ShopAddress = ShopAddress;
     }
 
     public String getContactNumber() {
         return ContactNumber;
     }
 
-    public void setContactNumber(String contactNumber) {
-        ContactNumber = contactNumber;
+    public void setContactNumber(String ContactNumber) {
+        this.ContactNumber = ContactNumber;
     }
 
     public String getTaxId() {
         return TaxId;
     }
 
-    public void setTaxId(String taxId) {
-        TaxId = taxId;
+    public void setTaxId(String TaxId) {
+        this.TaxId = TaxId;
     }
 
     public String getEmail() {
         return Email;
     }
 
-    public void setEmail(String email) {
-        Email = email;
+    public void setEmail(String Email) {
+        this.Email = Email;
     }
 
     public String getSubscriptionPlan() {
         return SubscriptionPlan;
     }
 
-    public void setSubscriptionPlan(String subscriptionPlan) {
-        SubscriptionPlan = subscriptionPlan;
+    public void setSubscriptionPlan(String SubscriptionPlan) {
+        this.SubscriptionPlan = SubscriptionPlan;
     }
 
     public List<Reservation> getReservations() {
@@ -153,130 +146,18 @@ public class ShopDTO {
 
     @Override
     public String toString() {
-        return "Shop{" +
+        return "ShopDTO{" +
                 "ShopId=" + ShopId +
-                ", ShopName='" + shopName + '\'' +
-                ", ShopPassword='" + shopPassword + '\'' +
+                ", shopName='" + shopName + '\'' +
+                ", shopPassword='" + shopPassword + '\'' +
                 ", ShopAddress='" + ShopAddress + '\'' +
                 ", ContactNumber='" + ContactNumber + '\'' +
                 ", TaxId='" + TaxId + '\'' +
                 ", Email='" + Email + '\'' +
                 ", SubscriptionPlan='" + SubscriptionPlan + '\'' +
-                ", Reservations=" + reservations +
-                ", Feedbacks=" + feedbacks +
-                ", Repairs=" + repairs +
+                ", reservations=" + reservations +
+                ", feedbacks=" + feedbacks +
+                ", repairs=" + repairs +
                 '}';
     }
-
-//    private int ShopId;
-//    private String shopName;
-//    private String shopPassword;
-//    private String ShopAddress;
-//    private String ContactNumber;
-//    private String TaxId;
-//    private String Email;
-//    private String SubscriptionPlan;
-//
-//    public ShopDTO() {
-//    }
-//
-//    public ShopDTO(int shopId, String shopName, String shopPassword, String shopAddress, String contactNumber, String taxId, String email, String subscriptionPlan) {
-//        ShopId = shopId;
-//        shopName = shopName;
-//        shopPassword = shopPassword;
-//        ShopAddress = shopAddress;
-//        ContactNumber = contactNumber;
-//        TaxId = taxId;
-//        Email = email;
-//        SubscriptionPlan = subscriptionPlan;
-//    }
-//
-//    public ShopDTO(String shopName, String shopPassword, String shopAddress, String contactNumber, String taxId, String email, String subscriptionPlan) {
-//        shopName = shopName;
-//        shopPassword = shopPassword;
-//        ShopAddress = shopAddress;
-//        ContactNumber = contactNumber;
-//        TaxId = taxId;
-//        Email = email;
-//        SubscriptionPlan = subscriptionPlan;
-//    }
-//
-//    @Override
-//    public String toString() {
-//        return "ShopDTO{" +
-//                "ShopId=" + ShopId +
-//                ", ShopName='" + shopName + '\'' +
-//                ", ShopPassword='" + shopPassword + '\'' +
-//                ", ShopAddress='" + ShopAddress + '\'' +
-//                ", ContactNumber='" + ContactNumber + '\'' +
-//                ", TaxId='" + TaxId + '\'' +
-//                ", Email='" + Email + '\'' +
-//                ", SubscriptionPlan='" + SubscriptionPlan + '\'' +
-//                '}';
-//    }
-//
-//    public int getShopId() {
-//        return ShopId;
-//    }
-//
-//    public void setShopId(int shopId) {
-//        ShopId = shopId;
-//    }
-//
-//    public String getShopName() {
-//        return shopName;
-//    }
-//
-//    public void setShopName(String shopName) {
-//        shopName = shopName;
-//    }
-//
-//    public String getShopPassword() {
-//        return shopPassword;
-//    }
-//
-//    public void setShopPassword(String shopPassword) {
-//        shopPassword = shopPassword;
-//    }
-//
-//    public String getShopAddress() {
-//        return ShopAddress;
-//    }
-//
-//    public void setShopAddress(String shopAddress) {
-//        ShopAddress = shopAddress;
-//    }
-//
-//    public String getContactNumber() {
-//        return ContactNumber;
-//    }
-//
-//    public void setContactNumber(String contactNumber) {
-//        ContactNumber = contactNumber;
-//    }
-//
-//    public String getTaxId() {
-//        return TaxId;
-//    }
-//
-//    public void setTaxId(String taxId) {
-//        TaxId = taxId;
-//    }
-//
-//    public String getEmail() {
-//        return Email;
-//    }
-//
-//    public void setEmail(String email) {
-//        Email = email;
-//    }
-//
-//    public String getSubscriptionPlan() {
-//        return SubscriptionPlan;
-//    }
-//
-//    public void setSubscriptionPlan(String subscriptionPlan) {
-//        SubscriptionPlan = subscriptionPlan;
-//    }
-
 }

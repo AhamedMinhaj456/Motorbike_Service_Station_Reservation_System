@@ -3,16 +3,20 @@ package com.motorbike_reservation_system.backend.Payment_Method;
 import com.motorbike_reservation_system.backend.payment.Payment;
 import jakarta.persistence.*;
 
+import java.util.Random;
+
 @Entity
 @Table(name = "Payment_Method")
 public class PaymentMethod {
 
     @Id
-    @GeneratedValue
     private String paymentMethodId;
     private String paymentType;
     private String cardNumber;
     private String cardHolderName;
+
+    private String cardExpiryDate;
+    private String cvv;
     private double totalPayment;
 
     @OneToOne(mappedBy = "paymentMethod",
@@ -26,41 +30,33 @@ public class PaymentMethod {
     public PaymentMethod() {
     }
 
-    public PaymentMethod(String paymentId, String paymentType, String cardNumber, String cardHolderName, double totalPayment, Payment payment) {
-        this.paymentMethodId = paymentId;
+    public PaymentMethod(String paymentMethodId, String paymentType, String cardNumber, String cardHolderName, String cardExpiryDate, String cvv, double totalPayment, Payment payment) {
+        this.paymentMethodId = paymentMethodId;
         this.paymentType = paymentType;
         this.cardNumber = cardNumber;
         this.cardHolderName = cardHolderName;
+        this.cardExpiryDate = cardExpiryDate;
+        this.cvv = cvv;
         this.totalPayment = totalPayment;
         this.payment = payment;
     }
 
-    public PaymentMethod(String paymentType, String cardNumber, String cardHolderName, double totalPayment, Payment payment) {
+    public PaymentMethod(String paymentType, String cardNumber, String cardHolderName, String cardExpiryDate, String cvv, double totalPayment, Payment payment) {
         this.paymentType = paymentType;
         this.cardNumber = cardNumber;
         this.cardHolderName = cardHolderName;
+        this.cardExpiryDate = cardExpiryDate;
+        this.cvv = cvv;
         this.totalPayment = totalPayment;
         this.payment = payment;
     }
 
-    @Override
-    public String toString() {
-        return "PaymentMethod{" +
-                "paymentId='" + paymentMethodId + '\'' +
-                ", paymentType='" + paymentType + '\'' +
-                ", cardNumber='" + cardNumber + '\'' +
-                ", cardHolderName='" + cardHolderName + '\'' +
-                ", totalPayment=" + totalPayment +
-                ", payment=" + payment +
-                '}';
-    }
-
-    public String getPaymentId() {
+    public String getPaymentMethodId() {
         return paymentMethodId;
     }
 
-    public void setPaymentId(String paymentId) {
-        this.paymentMethodId = paymentId;
+    public void setPaymentMethodId(String paymentMethodId) {
+        this.paymentMethodId = paymentMethodId;
     }
 
     public String getPaymentType() {
@@ -87,6 +83,22 @@ public class PaymentMethod {
         this.cardHolderName = cardHolderName;
     }
 
+    public String getCardExpiryDate() {
+        return cardExpiryDate;
+    }
+
+    public void setCardExpiryDate(String cardExpiryDate) {
+        this.cardExpiryDate = cardExpiryDate;
+    }
+
+    public String getCvv() {
+        return cvv;
+    }
+
+    public void setCvv(String cvv) {
+        this.cvv = cvv;
+    }
+
     public double getTotalPayment() {
         return totalPayment;
     }
@@ -101,5 +113,37 @@ public class PaymentMethod {
 
     public void setPayment(Payment payment) {
         this.payment = payment;
+    }
+
+    public PaymentMethod getPaymentMethod() {
+        return paymentMethod;
+    }
+
+    public void setPaymentMethod(PaymentMethod paymentMethod) {
+        this.paymentMethod = paymentMethod;
+    }
+
+
+
+    /////// Custom logic to generate the next available ID //////////////////////////////////////
+
+    @PrePersist
+    public void generateId() {
+        if (paymentMethodId == null) {
+            // Generate a random 6-digit number
+            String randomDigits = generateRandomDigits(6);
+
+            // Assign the ID as "FM" followed by the random digits
+            this.paymentMethodId = "PM" + randomDigits;
+        }
+    }
+
+    private String generateRandomDigits(int length) {
+        Random random = new Random();
+        StringBuilder sb = new StringBuilder(length);
+        for (int i = 0; i < length; i++) {
+            sb.append(random.nextInt(10));
+        }
+        return sb.toString();
     }
 }

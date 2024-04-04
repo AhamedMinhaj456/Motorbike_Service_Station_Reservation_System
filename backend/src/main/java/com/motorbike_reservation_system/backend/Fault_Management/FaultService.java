@@ -27,16 +27,16 @@ public class FaultService {
         return faultRepository.findByFaultName(faultName);
     }
 
-    public String deleteFault(int id) {
-        faultRepository.deleteById(id);
-        return "product removed !! " + id;
+    public String deleteFault(String faultId){
+        faultRepository.deleteById(faultId);
+        return "product removed !! " + faultId;
     }
 
-    public Fault updateFault(Fault product) {
-        Fault existingProduct = faultRepository.findById(product.getId()).orElse(null);
-        existingProduct.setFaultName(product.getFaultName());
+    public Fault updateFault(Fault fault) {
+        Fault existingFault = faultRepository.findByFaultName(fault.getFaultName());
+        existingFault.setFaultName(fault.getFaultName());
 //        existingProduct.setQuantity(product.getQuantity());
 //        existingProduct.setPrice(product.getPrice());
-        return faultRepository.save(existingProduct);
+        return faultRepository.save(existingFault);
     }
 }

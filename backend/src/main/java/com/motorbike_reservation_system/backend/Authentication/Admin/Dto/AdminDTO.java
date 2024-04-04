@@ -2,7 +2,7 @@ package com.motorbike_reservation_system.backend.Authentication.Admin.Dto;
 
 public class AdminDTO {
 
-    private String  adminId;
+    private int  adminId;
     private String adminName;
     private String adminPassword;
     private String adminRole;
@@ -10,35 +10,25 @@ public class AdminDTO {
     public AdminDTO() {
     }
 
-    public AdminDTO(String adminId, String adminName, String password, String adminRole) {
-        adminId = adminId;
+    public AdminDTO(int adminId, String adminName, String adminPassword, String adminRole) {
+        this.adminId = adminId;
         this.adminName = adminName;
         this.adminPassword = adminPassword;
-        adminRole = adminRole;
+        this.adminRole = adminRole;
     }
 
-    public AdminDTO(String adminName, String password, String adminRole) {
+    public AdminDTO(String adminName, String adminPassword, String adminRole) {
         this.adminName = adminName;
         this.adminPassword = adminPassword;
-        adminRole = adminRole;
+        this.adminRole = adminRole;
     }
 
-    @Override
-    public String toString() {
-        return "AdminDTO{" +
-                "AdminId=" + adminId +
-                ", adminName='" + adminName + '\'' +
-                ", adminPassword='" + adminPassword + '\'' +
-                ", AdminRole='" + adminRole + '\'' +
-                '}';
-    }
-
-    public String  getAdminId() {
+    public int getAdminId() {
         return adminId;
     }
 
-    public void setAdminId(String  adminId) {
-        adminId = adminId;
+    public void setAdminId(int adminId) {
+        this.adminId = adminId;
     }
 
     public String getAdminName() {
@@ -53,8 +43,8 @@ public class AdminDTO {
         return adminPassword;
     }
 
-    public void setAdminPassword(String password) {
-        this.adminPassword = password;
+    public void setAdminPassword(String adminPassword) {
+        this.adminPassword = adminPassword;
     }
 
     public String getAdminRole() {
@@ -62,6 +52,17 @@ public class AdminDTO {
     }
 
     public void setAdminRole(String adminRole) {
-        adminRole = adminRole;
+        this.adminRole = adminRole;
+    }
+
+    @Override
+    public String toString() {
+        return "AdminDTO{" +
+                "adminId=" + adminId +
+                ", adminName='" + adminName + '\'' +
+                ", adminPassword='" + adminPassword + '\'' +
+                ", adminRole='" + adminRole + '\'' +
+                '}';
     }
 }
+

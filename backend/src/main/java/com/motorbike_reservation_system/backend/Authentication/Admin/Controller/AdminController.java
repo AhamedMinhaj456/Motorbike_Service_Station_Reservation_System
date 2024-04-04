@@ -16,8 +16,7 @@ public class AdminController {
     private AdminService adminService;
     @PostMapping(path= "/save")
     public String saveAdmin(@RequestBody AdminDTO adminDTO){
-        String id = adminService.addAdmin(adminDTO);
-        return id;
+        return adminService.addAdmin(adminDTO);
     }
 
     @GetMapping(path = "/login")

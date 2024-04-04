@@ -9,12 +9,12 @@ import jakarta.persistence.*;
 
 import java.sql.Time;
 import java.util.Date;
+import java.util.Random;
 
 @Entity
 @Table(name = "Repair Service")
 public class Repair {
     @Id
-    @GeneratedValue
     private String serviceId;
     private Time serviceTime;
     private Date serviceDate;
@@ -179,6 +179,28 @@ public class Repair {
 
     public void setShop(Shop shop) {
         this.shop = shop;
+    }
+
+    /////// Custom logic to generate the next available ID //////////////////////////////////////
+
+    @PrePersist
+    public void generateId() {
+        if (serviceId == null) {
+            // Generate a random 6-digit number
+            String randomDigits = generateRandomDigits(6);
+
+            // Assign the ID as "FM" followed by the random digits
+            this.serviceId = "SER" + randomDigits;
+        }
+    }
+
+    private String generateRandomDigits(int length) {
+        Random random = new Random();
+        StringBuilder sb = new StringBuilder(length);
+        for (int i = 0; i < length; i++) {
+            sb.append(random.nextInt(10));
+        }
+        return sb.toString();
     }
 
 

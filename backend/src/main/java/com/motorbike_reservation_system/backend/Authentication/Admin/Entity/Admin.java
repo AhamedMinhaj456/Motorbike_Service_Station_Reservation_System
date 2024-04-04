@@ -8,8 +8,7 @@ public class Admin {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    //@Column(name="AdminId",length = 55)
-    private String adminId;
+    private int adminId;
     //@Column(name="adminName",length = 55)
     private String adminName;
     //@Column(name="password",length = 55)
@@ -20,25 +19,25 @@ public class Admin {
     public Admin() {
     }
 
-    public Admin(String adminId, String adminName, String password, String adminRole) {
-        adminId = adminId;
+    public Admin(int adminId, String adminName, String adminPassword, String adminRole) {
+        this.adminId = adminId;
         this.adminName = adminName;
         this.adminPassword = adminPassword;
-        adminRole = adminRole;
+        this.adminRole = adminRole;
     }
 
-    public Admin(String adminName, String password, String adminRole) {
+    public Admin(String adminName, String adminPassword, String adminRole) {
         this.adminName = adminName;
         this.adminPassword = adminPassword;
-        adminRole = adminRole;
+        this.adminRole = adminRole;
     }
 
-    public String getAdminId() {
+    public int getAdminId() {
         return adminId;
     }
 
-    public void setAdminId(String adminId) {
-        adminId = adminId;
+    public void setAdminId(int adminId) {
+        this.adminId = adminId;
     }
 
     public String getAdminName() {
@@ -49,11 +48,11 @@ public class Admin {
         this.adminName = adminName;
     }
 
-    public String getPassword() {
+    public String getAdminPassword() {
         return adminPassword;
     }
 
-    public void setPassword(String password) {
+    public void setAdminPassword(String adminPassword) {
         this.adminPassword = adminPassword;
     }
 
@@ -62,6 +61,16 @@ public class Admin {
     }
 
     public void setAdminRole(String adminRole) {
-        adminRole = adminRole;
+        this.adminRole = adminRole;
+    }
+
+    @Override
+    public String toString() {
+        return "Admin{" +
+                "adminId=" + adminId +
+                ", adminName='" + adminName + '\'' +
+                ", adminPassword='" + adminPassword + '\'' +
+                ", adminRole='" + adminRole + '\'' +
+                '}';
     }
 }

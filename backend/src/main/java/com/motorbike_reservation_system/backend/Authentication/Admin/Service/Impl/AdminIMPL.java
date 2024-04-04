@@ -41,8 +41,8 @@ public class AdminIMPL implements AdminService {
         Admin admin1 = adminRepo.findByAdminName(adminLoginDTO.getAdminName());
         if(admin1!= null){
             String password = adminLoginDTO.getAdminPassword();
-            String encodePassword = admin1.getPassword();
-            Boolean isPasswordRight = passwordEncoder.matches(password, encodePassword);
+            String encodePassword = admin1.getAdminPassword();
+            boolean isPasswordRight = passwordEncoder.matches(password, encodePassword);
             if (isPasswordRight){
                 Optional<Admin> admin = adminRepo.findOneByAdminNameAndAdminPassword(adminLoginDTO.getAdminName(), encodePassword);
                 if (admin.isPresent()){

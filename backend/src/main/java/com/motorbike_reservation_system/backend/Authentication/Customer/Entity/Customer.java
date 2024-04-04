@@ -13,7 +13,7 @@ public class Customer {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private String customerId;
+    private int customerId;
     private String customerName;
     private String customerEmail;
     private String customerUsername;
@@ -32,34 +32,28 @@ public class Customer {
     public Customer() {
     }
 
-    public Customer(String customerId, String customerName, String customerEmail, String customerUsername, String customerPassword, String phoneNumber, List<Motorbike> motorbikes, List<Reservation> reservations, List<Repair> repairs) {
+    public Customer(int customerId, String customerName, String customerEmail, String customerUsername, String customerPassword, String customerPhoneNumber) {
         this.customerId = customerId;
         this.customerName = customerName;
         this.customerEmail = customerEmail;
-        this.customerName = customerUsername;
+        this.customerUsername = customerUsername;
         this.customerPassword = customerPassword;
-        this.customerPhoneNumber = phoneNumber;
-        this.motorbikes = motorbikes;
-        this.reservations = reservations;
-        this.repairs = repairs;
+        this.customerPhoneNumber = customerPhoneNumber;
     }
 
-    public Customer(String customerName, String customerEmail, String customerPassword, String phoneNumber, List<Motorbike> motorbikes, List<Reservation> reservations, List<Repair> repairs) {
+    public Customer(String customerName, String customerEmail, String customerUsername, String customerPassword, String customerPhoneNumber) {
         this.customerName = customerName;
         this.customerEmail = customerEmail;
-        this.customerName = customerUsername;
+        this.customerUsername = customerUsername;
         this.customerPassword = customerPassword;
-        this.customerPhoneNumber = phoneNumber;
-        this.motorbikes = motorbikes;
-        this.reservations = reservations;
-        this.repairs = repairs;
+        this.customerPhoneNumber = customerPhoneNumber;
     }
 
-    public String getCustomerId() {
+    public int getCustomerId() {
         return customerId;
     }
 
-    public void setCustomerId(String customerId) {
+    public void setCustomerId(int customerId) {
         this.customerId = customerId;
     }
 
@@ -95,12 +89,12 @@ public class Customer {
         this.customerPassword = customerPassword;
     }
 
-    public String getPhoneNumber() {
+    public String getCustomerPhoneNumber() {
         return customerPhoneNumber;
     }
 
-    public void setPhoneNumber(String phoneNumber) {
-        this.customerPhoneNumber = phoneNumber;
+    public void setCustomerPhoneNumber(String customerPhoneNumber) {
+        this.customerPhoneNumber = customerPhoneNumber;
     }
 
     public List<Motorbike> getMotorbikes() {
@@ -135,13 +129,11 @@ public class Customer {
                 ", customerEmail='" + customerEmail + '\'' +
                 ", customerUsername='" + customerUsername + '\'' +
                 ", customerPassword='" + customerPassword + '\'' +
-                ", phoneNumber='" + customerPhoneNumber + '\'' +
+                ", customerPhoneNumber='" + customerPhoneNumber + '\'' +
                 ", motorbikes=" + motorbikes +
                 ", reservations=" + reservations +
                 ", repairs=" + repairs +
                 '}';
     }
-
-
 
 }
