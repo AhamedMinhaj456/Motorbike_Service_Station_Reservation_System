@@ -2,14 +2,6 @@
   display: flex;
 }
 
-/* .left-sidebar {
-  width: 350px;
-  background-color: #CAF0F8;
-  color: #fff;
-  padding: 10px;
-  height: 100vh;
-} */
-
 .admin-content {
   display: flex;
   flex-direction: column;
@@ -46,14 +38,6 @@
   flex: 1;
 }
 
-/* .right-sidebar {
-  width: 80px;
-  background-color: #ADE8F4;
-  color: #fff;
-  padding: 10px;
-  height: 100vh;
-} */
-
 .icon {
   width: 46px;
   height: 46px;
@@ -64,3 +48,15 @@
   justify-content: center;
   cursor: pointer;
 }
+
+@media screen and (max-width: 768px) {
+  .admin-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 0; 
+    margin-right: 100; 
+  }
+
+
+} 
