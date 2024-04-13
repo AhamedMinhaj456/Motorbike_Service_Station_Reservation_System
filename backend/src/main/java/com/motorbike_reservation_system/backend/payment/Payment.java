@@ -103,7 +103,7 @@ public class Payment {
             String randomDigits = generateRandomDigits(6);
 
             // Assign the ID as "FM" followed by the random digits
-            this.paymentId = "PAY" + randomDigits;
+            this.paymentId = "PAYD" + randomDigits;
         }
     }
 
