@@ -1,31 +1,31 @@
 package com.motorbike_reservation_system.backend.Authentication.Shop.Dto;
 
 public class ShopLoginDTO {
-    private String shopName;
+    private String email;
     private String shopPassword;
 
     public ShopLoginDTO() {
     }
 
-    public ShopLoginDTO(String shopName, String shopPassword) {
-        shopName = shopName;
-        shopPassword = shopPassword;
+    public ShopLoginDTO(String Email, String shopPassword) {
+        this.email = Email;
+        this.shopPassword = shopPassword;
     }
 
     @Override
     public String toString() {
         return "ShopLoginDTO{" +
-                "ShopName='" + shopName + '\'' +
-                ", ShopPassword='" + shopPassword + '\'' +
+                "Email='" + email + '\'' +
+                ", shopPassword='" + shopPassword + '\'' +
                 '}';
     }
 
-    public String getShopName() {
-        return shopName;
+    public String getEmail() {
+        return email;
     }
 
-    public void setShopName(String shopName) {
-        shopName = shopName;
+    public void setEmail(String Email) {
+        this.email = Email;
     }
 
     public String getShopPassword() {
@@ -33,6 +33,8 @@ public class ShopLoginDTO {
     }
 
     public void setShopPassword(String shopPassword) {
-        shopPassword = shopPassword;
+        this.shopPassword = shopPassword;
     }
+
+
 }

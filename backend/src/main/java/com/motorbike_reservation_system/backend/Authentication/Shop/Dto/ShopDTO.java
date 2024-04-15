@@ -19,7 +19,7 @@ public class ShopDTO {
 
     private String ContactNumber;
     private String TaxId;
-    private String Email;
+    private String email;
     private String SubscriptionPlan;
 
     @OneToMany(mappedBy = "shop", cascade = CascadeType.ALL)
@@ -42,7 +42,7 @@ public class ShopDTO {
         this.ShopAddress = ShopAddress;
         this.ContactNumber = ContactNumber;
         this.TaxId = TaxId;
-        this.Email = Email;
+        this.email = Email;
         this.SubscriptionPlan = SubscriptionPlan;
     }
 
@@ -52,7 +52,7 @@ public class ShopDTO {
         this.ShopAddress = ShopAddress;
         this.ContactNumber = ContactNumber;
         this.TaxId = TaxId;
-        this.Email = Email;
+        this.email = Email;
         this.SubscriptionPlan = SubscriptionPlan;
     }
 
@@ -105,11 +105,11 @@ public class ShopDTO {
     }
 
     public String getEmail() {
-        return Email;
+        return email;
     }
 
     public void setEmail(String Email) {
-        this.Email = Email;
+        this.email = Email;
     }
 
     public String getSubscriptionPlan() {
@@ -153,7 +153,7 @@ public class ShopDTO {
                 ", ShopAddress='" + ShopAddress + '\'' +
                 ", ContactNumber='" + ContactNumber + '\'' +
                 ", TaxId='" + TaxId + '\'' +
-                ", Email='" + Email + '\'' +
+                ", Email='" + email + '\'' +
                 ", SubscriptionPlan='" + SubscriptionPlan + '\'' +
                 ", reservations=" + reservations +
                 ", feedbacks=" + feedbacks +

@@ -4,21 +4,24 @@ public class AdminDTO {
 
     private int  adminId;
     private String adminName;
+    private String adminEmail;
     private String adminPassword;
     private String adminRole;
 
     public AdminDTO() {
     }
 
-    public AdminDTO(int adminId, String adminName, String adminPassword, String adminRole) {
+    public AdminDTO(int adminId, String adminName, String adminEmail, String adminPassword, String adminRole) {
         this.adminId = adminId;
         this.adminName = adminName;
+        this.adminEmail = adminEmail;
         this.adminPassword = adminPassword;
         this.adminRole = adminRole;
     }
 
-    public AdminDTO(String adminName, String adminPassword, String adminRole) {
+    public AdminDTO(String adminName, String adminEmail, String adminPassword, String adminRole) {
         this.adminName = adminName;
+        this.adminEmail = adminEmail;
         this.adminPassword = adminPassword;
         this.adminRole = adminRole;
     }
@@ -39,6 +42,14 @@ public class AdminDTO {
         this.adminName = adminName;
     }
 
+    public String getAdminEmail() {
+        return adminEmail;
+    }
+
+    public void setAdminEmail(String adminEmail) {
+        this.adminEmail = adminEmail;
+    }
+
     public String getAdminPassword() {
         return adminPassword;
     }
@@ -55,14 +66,6 @@ public class AdminDTO {
         this.adminRole = adminRole;
     }
 
-    @Override
-    public String toString() {
-        return "AdminDTO{" +
-                "adminId=" + adminId +
-                ", adminName='" + adminName + '\'' +
-                ", adminPassword='" + adminPassword + '\'' +
-                ", adminRole='" + adminRole + '\'' +
-                '}';
-    }
+
 }
 

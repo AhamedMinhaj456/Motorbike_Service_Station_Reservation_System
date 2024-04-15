@@ -6,10 +6,14 @@ import com.motorbike_reservation_system.backend.Authentication.Admin.Entity.Admi
 import com.motorbike_reservation_system.backend.Authentication.Admin.Repo.AdminRepo;
 import com.motorbike_reservation_system.backend.Authentication.Admin.Response.AdminLoginResponse;
 import com.motorbike_reservation_system.backend.Authentication.Admin.Service.AdminService;
+import com.motorbike_reservation_system.backend.Authentication.Customer.Dto.CustomerLoginDTO;
+import com.motorbike_reservation_system.backend.Authentication.Customer.Entity.Customer;
+import com.motorbike_reservation_system.backend.Authentication.Customer.Response.CustomerLoginResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -26,6 +30,7 @@ public class AdminIMPL implements AdminService {
         Admin admin =new Admin(
                 adminDTO.getAdminId(),
                 adminDTO.getAdminName(),
+                adminDTO.getAdminEmail(),
                 this.passwordEncoder.encode(adminDTO.getAdminPassword()),
                 adminDTO.getAdminRole()
 
@@ -35,16 +40,20 @@ public class AdminIMPL implements AdminService {
         //       return "saved Successfully";
     }
 
+
+    public List<Admin> getAdmin() {
+        return adminRepo.findAll();
+    }
     @Override
     public AdminLoginResponse loginAdmin(AdminLoginDTO adminLoginDTO) {
         String msg="";
-        Admin admin1 = adminRepo.findByAdminName(adminLoginDTO.getAdminName());
+        Admin admin1 = adminRepo.findByAdminEmail(adminLoginDTO.getAdminEmail());
         if(admin1!= null){
             String password = adminLoginDTO.getAdminPassword();
             String encodePassword = admin1.getAdminPassword();
-            boolean isPasswordRight = passwordEncoder.matches(password, encodePassword);
+            Boolean isPasswordRight = passwordEncoder.matches(password, encodePassword);
             if (isPasswordRight){
-                Optional<Admin> admin = adminRepo.findOneByAdminNameAndAdminPassword(adminLoginDTO.getAdminName(), encodePassword);
+                Optional<Admin> admin = adminRepo.findOneByAdminEmailAndAdminPassword(adminLoginDTO.getAdminEmail(), encodePassword);
                 if (admin.isPresent()){
                     return new AdminLoginResponse("Login Successfully",true );
                 }

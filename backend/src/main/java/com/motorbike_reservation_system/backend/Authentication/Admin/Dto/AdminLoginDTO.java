@@ -2,38 +2,39 @@ package com.motorbike_reservation_system.backend.Authentication.Admin.Dto;
 
 public class AdminLoginDTO {
 
-    private String adminName;
+    private String adminEmail;
     private String adminPassword;
 
     public AdminLoginDTO() {
     }
 
-    public AdminLoginDTO(String adminName, String password) {
-        this.adminName = adminName;
+    public AdminLoginDTO(String adminEmail, String adminPassword) {
+        this.adminEmail = adminEmail;
         this.adminPassword = adminPassword;
     }
 
     @Override
     public String toString() {
         return "AdminLoginDTO{" +
-                "adminName='" + adminName + '\'' +
+                "adminEmail='" + adminEmail + '\'' +
                 ", adminPassword='" + adminPassword + '\'' +
                 '}';
     }
 
-    public String getAdminName() {
-        return adminName;
+    public String getAdminEmail() {
+        return adminEmail;
     }
 
-    public void setAdminName(String adminName) {
-        this.adminName = adminName;
+    public void setAdminEmail(String adminEmail) {
+        this.adminEmail = adminEmail;
     }
 
     public String getAdminPassword() {
         return adminPassword;
     }
 
-    public void setAdminPassword(String password) {
+    public void setAdminPassword(String adminPassword) {
         this.adminPassword = adminPassword;
     }
+
 }

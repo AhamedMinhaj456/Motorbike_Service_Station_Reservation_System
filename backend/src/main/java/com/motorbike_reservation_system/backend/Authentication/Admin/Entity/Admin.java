@@ -3,31 +3,31 @@ package com.motorbike_reservation_system.backend.Authentication.Admin.Entity;
 import jakarta.persistence.*;
 
 @Entity
-@Table//(name="admin")
+@Table(name="admin")
 public class Admin {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int adminId;
-    //@Column(name="adminName",length = 55)
     private String adminName;
-    //@Column(name="password",length = 55)
+    private String adminEmail;
     private String adminPassword;
-    //@Column(name="AdminRole",length = 55)
     private String adminRole;
 
     public Admin() {
     }
 
-    public Admin(int adminId, String adminName, String adminPassword, String adminRole) {
+    public Admin(int adminId, String adminName, String adminEmail, String adminPassword, String adminRole) {
         this.adminId = adminId;
         this.adminName = adminName;
+        this.adminEmail = adminEmail;
         this.adminPassword = adminPassword;
         this.adminRole = adminRole;
     }
 
-    public Admin(String adminName, String adminPassword, String adminRole) {
+    public Admin(String adminName, String adminEmail, String adminPassword, String adminRole) {
         this.adminName = adminName;
+        this.adminEmail = adminEmail;
         this.adminPassword = adminPassword;
         this.adminRole = adminRole;
     }
@@ -46,6 +46,14 @@ public class Admin {
 
     public void setAdminName(String adminName) {
         this.adminName = adminName;
+    }
+
+    public String getAdminEmail() {
+        return adminEmail;
+    }
+
+    public void setAdminEmail(String adminEmail) {
+        this.adminEmail = adminEmail;
     }
 
     public String getAdminPassword() {
@@ -69,6 +77,7 @@ public class Admin {
         return "Admin{" +
                 "adminId=" + adminId +
                 ", adminName='" + adminName + '\'' +
+                ", adminEmail='" + adminEmail + '\'' +
                 ", adminPassword='" + adminPassword + '\'' +
                 ", adminRole='" + adminRole + '\'' +
                 '}';

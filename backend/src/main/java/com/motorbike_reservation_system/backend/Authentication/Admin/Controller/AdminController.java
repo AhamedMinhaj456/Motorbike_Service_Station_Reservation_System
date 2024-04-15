@@ -19,7 +19,7 @@ public class AdminController {
         return adminService.addAdmin(adminDTO);
     }
 
-    @GetMapping(path = "/login")
+    @PostMapping(path = "/login")
     public ResponseEntity<?> loginAdmin(@RequestBody AdminLoginDTO adminLoginDTO){
         AdminLoginResponse adminLoginResponse = adminService.loginAdmin(adminLoginDTO);
         return ResponseEntity.ok(adminLoginResponse);

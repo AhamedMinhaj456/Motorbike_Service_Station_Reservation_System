@@ -9,8 +9,8 @@ import java.util.Optional;
 
 @EnableJpaRepositories
 @Repository
-public interface ShopRepo extends JpaRepository<Shop,String> {
+public interface ShopRepo extends JpaRepository<Shop,Integer> {
 
-    Optional<Shop> findOneByShopNameAndShopPassword(String shopName, String ShopPassword);
-    Shop findByShopName(String shopName);
+    Optional<Shop> findOneByEmailAndShopPassword(String Email, String ShopPassword);
+    Shop findByEmail(String Email);
 }
