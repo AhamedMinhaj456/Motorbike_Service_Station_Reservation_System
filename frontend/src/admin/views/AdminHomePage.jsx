@@ -8,14 +8,18 @@ const AdminHomePage = () => {
   const navigate = useNavigate();
 
   const [adminName, setAdminName] = useState("");
+  const [adminEmail, setAdminEmail] = useState("");
   const [adminPassword, setAdminPassword] = useState("");
+  const [adminRole, setAdminRole] = useState("");
 
   async function saveAdmin(event) {
     event.preventDefault();
     try {
       await axios.post("http://localhost:8095/admin/save", {
         adminName: adminName,
+        adminEmail: adminEmail,
         adminPassword: adminPassword,
+        adminRole: adminRole,
       });
       alert("Admin Registration Successful");
       navigate('/admin/dashboard'); 
@@ -28,7 +32,7 @@ const AdminHomePage = () => {
     event.preventDefault();
     try {
       await axios.post("http://localhost:8095/admin/login", {
-        adminName: adminName,
+        adminEmail: adminEmail,
         adminPassword: adminPassword,
       });
       alert("Admin Login Successful");
@@ -49,9 +53,10 @@ const AdminHomePage = () => {
             <label>Email:</label>
             <input
               type="text"
-              value={adminName}
-              onChange={(e) => setAdminName(e.target.value)}
+              value={adminEmail}
+              onChange={(e) => setAdminEmail(e.target.value)}
             />
+            
             <label>Password:</label>
             <input
               type="password"
@@ -63,17 +68,29 @@ const AdminHomePage = () => {
 
           <form className="signup-form" onSubmit={saveAdmin}>
             <h2>Sign Up</h2>
-            <label>Email:</label>
+            <label>Admin Name:</label>
             <input
               type="text"
               value={adminName}
               onChange={(e) => setAdminName(e.target.value)}
             />
-            <label>Password:</label>
+            <label>Email:</label>
+            <input
+              type="email"
+              value={adminEmail}
+              onChange={(e) => setAdminEmail(e.target.value)}
+            />
+           <label>Password:</label>
             <input
               type="password"
               value={adminPassword}
               onChange={(e) => setAdminPassword(e.target.value)}
+            />
+             <label>Admin Role</label>
+            <input
+              type="text"
+              value={adminRole}
+              onChange={(e) => setAdminRole(e.target.value)}
             />
             <button type="submit" className="home-button">Sign Up</button>
           </form>
