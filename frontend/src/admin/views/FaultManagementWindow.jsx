@@ -134,7 +134,7 @@ const FaultManagementWindow = () => {
     // This might involve making an API call to update the database.
   };
 
- // upto here want to check
+  // upto here want to check
   const handleNextStep = () => {
     if (step === 1) {
       if (bikeModels.length === 0) {
@@ -238,7 +238,7 @@ const FaultManagementWindow = () => {
                     <td>{selectedFaultId === model.id ? <input type="text" value={model.name} onChange={(e) => handleInputChange(model.id, 'name', e.target.value, 'model')} /> : model.name}</td>
                     <td>{model.enteredBy}</td>
                     <td>{model.enteredDate}</td>
-                    <td>{selectedFaultId === model.id ? ( <input type="text" value={editedByInput} onChange={(e) => setEditedBy(e.target.value)} /> ) : (model.editedBy)}</td>
+                    <td>{selectedFaultId === model.id ? (<input type="text" value={editedByInput} onChange={(e) => setEditedBy(e.target.value)} />) : (model.editedBy)}</td>
                     <td>{model.editedDate}</td>
                     <td>
                       {selectedFaultId === model.id ? (
@@ -355,7 +355,7 @@ const FaultManagementWindow = () => {
         )}
 
         {step === 4 && (
-          <div>
+          <div className='editing-main'>
             <h2>Fault Category Management</h2>
             {faults.map((fault) => (
               <div key={fault.id} className="fault-item">

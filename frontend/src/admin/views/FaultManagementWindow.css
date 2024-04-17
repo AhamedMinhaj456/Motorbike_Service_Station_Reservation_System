@@ -180,15 +180,16 @@ tbody tr:hover td {
 @media screen and (max-width: 768px) {
   .fault-management-content {
       margin-left: 0; 
-      margin-right: 100px; 
-      width: 100%;
   }
 
   .part {
     align-items: center;
-    margin-right: 10px; /* Adjust margin-right for better spacing */
     overflow-x: auto;
   }
+/* 
+  .fault-item {
+    width: 100%;
+  } */
 
   .table {
     display: block; 
