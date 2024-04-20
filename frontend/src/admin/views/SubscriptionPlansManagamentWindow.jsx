@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import './SubscriptionPlansmanagementWindow.css'; 
 import LeftSidebar from '../common/LeftSidebar';
 import RightSidebar from '../common/RightSidebar';
+import axios from 'axios';
 
 const SubscriptionPlansManagementWindow = () => {
   const [plans, setPlans] = useState([
@@ -18,9 +19,19 @@ const SubscriptionPlansManagementWindow = () => {
     );
   };
 
+  // Backend connection: Function to save plans to the backend
   const handleSave = () => {
     setEditMode(false);
-    alert('Plans saved!');
+    // Backend developer: Add code here to send plans to the backend and save them
+    // Example:
+    // axios.post('http://localhost:8095/savePlans', plans)
+    //   .then(response => {
+    //     alert('Plans saved!');
+    //   })
+    //   .catch(error => {
+    //     console.error('Error saving plans:', error);
+    //     alert('Failed to save plans. Please try again.');
+    //   });
   };
 
   return (

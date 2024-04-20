@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './UserManagementWindow.css';
 import LeftSidebar from '../common/LeftSidebar';
 import RightSidebar from '../common/RightSidebar';
+import axios from 'axios'; // Import axios for making HTTP requests
 
 const UserManagementWindow = () => {
   const [users, setUsers] = useState([
@@ -13,15 +14,21 @@ const UserManagementWindow = () => {
   ]);
 
   useEffect(() => {
-    // Simulating fetching user data (replace with actual API call)
-    const fetchData = async () => {
-      // Replace the following line with your actual API call or data fetching logic
-      // const data = await fetch('https://api.example.com/users').then((response) => response.json());
-      // setUsers(data);
-    };
-
-    fetchData();
+    // Backend developer: Fetch user data from the backend and update state
+    // Example:
+    // fetchData();
   }, []);
+
+  // Backend connection: Function to fetch user data from the backend
+  // const fetchData = async () => {
+  //   try {
+  //     // Example using axios:
+  //     // const response = await axios.get('http://localhost:8095/users');
+  //     // setUsers(response.data);
+  //   } catch (error) {
+  //     console.error('Error fetching users:', error);
+  //   }
+  // };
 
   return (
     <div className="user-management">

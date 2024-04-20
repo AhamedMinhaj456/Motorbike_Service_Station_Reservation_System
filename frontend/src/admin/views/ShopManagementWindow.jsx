@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import './ShopManagementWindow.css';
 import LeftSidebar from '../common/LeftSidebar';
 import RightSidebar from '../common/RightSidebar';
+import axios from 'axios'; 
 
 const ShopManagementWindow = () => {
   const [shops, setShops] = useState([
@@ -19,15 +20,21 @@ const ShopManagementWindow = () => {
   ]);
 
   useEffect(() => {
-    // Simulating fetching shop data (replace with actual API call)
-    const fetchData = async () => {
-      // Replace the following line with your actual API call or data fetching logic
-      // const data = await fetch('https://api.example.com/shops').then((response) => response.json());
-      // setShops(data);
-    };
-
-    fetchData();
+    // Backend developer: Fetch shop data from the backend and update state
+    // Example:
+    // fetchData();
   }, []);
+
+  // Backend connection: Function to fetch shop data from the backend
+  // const fetchData = async () => {
+  //   try {
+  //     // Example using axios:
+  //     // const response = await axios.get('http://localhost:8095/shops');
+  //     // setShops(response.data);
+  //   } catch (error) {
+  //     console.error('Error fetching shops:', error);
+  //   }
+  // };
 
   return (
     <div className="shop-management">

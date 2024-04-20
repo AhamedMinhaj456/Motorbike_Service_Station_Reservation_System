@@ -4,17 +4,24 @@ import LeftSidebar from '../common/LeftSidebar';
 import RightSidebar from '../common/RightSidebar';
 
 const AccountSettingWindow = () => {
-  // State to manage account settings
   const [accountSettings, setAccountSettings] = useState({
-    // Add your account settings fields here
     notification: true,
     darkMode: false,
-    // ...
+    textFontSize: 'medium',
+    fontPreference: 'sans-serif',
+    highContrastMode: false,
+    keyboardShortcuts: true,
+    dataExport: true,
+    dataDeletionRequests: true,
+    connectedDevices: [],
+    appPreferences: {
+      darkMode: false,
+      theme: 'default',
+    },
   });
 
   const handleAccountSettingsUpdate = (e) => {
     e.preventDefault();
-    // Implement logic to update account settings
     console.log('Account settings updated:', accountSettings);
   };
 
@@ -26,28 +33,93 @@ const AccountSettingWindow = () => {
         <h2>Account Settings</h2>
 
         <form className="account-setting-form" onSubmit={handleAccountSettingsUpdate}>
-          <label>
-            <input
-              type="checkbox"
-              checked={accountSettings.notification}
-              onChange={(e) =>
-                setAccountSettings({ ...accountSettings, notification: e.target.checked })
-              }
-            />
-            Receive Notifications
-          </label>
 
-          <label>
-            <input
-              type="checkbox"
-              checked={accountSettings.darkMode}
-              onChange={(e) => setAccountSettings({ ...accountSettings, darkMode: e.target.checked })}
-            />
-            Dark Mode
-          </label>
+          <div className="setting-box">
+            <h3>Accessibility Settings</h3>
+            <label>
+              <input
+                type="checkbox"
+                checked={accountSettings.notification}
+                onChange={(e) =>
+                  setAccountSettings({ ...accountSettings, notification: e.target.checked })
+                }
+              />
+              Receive Notifications
+            </label>
 
-          {/* Add more fields for account settings */}
-          
+            <label>
+              <input
+                type="checkbox"
+                checked={accountSettings.darkMode}
+                onChange={(e) => setAccountSettings({ ...accountSettings, darkMode: e.target.checked })}
+              />
+              Dark Mode
+            </label>
+
+            <label>
+              <select
+                value={accountSettings.textFontSize}
+                onChange={(e) => setAccountSettings({ ...accountSettings, textFontSize: e.target.value })}
+              >
+                <option value="small">Small</option>
+                <option value="medium">Medium</option>
+                <option value="large">Large</option>
+              </select>
+              Text Size
+            </label>
+
+            <label>
+              <select
+                value={accountSettings.fontPreference}
+                onChange={(e) => setAccountSettings({ ...accountSettings, fontPreference: e.target.value })}
+              >
+                <option value="sans-serif">Sans-serif</option>
+                <option value="serif">Serif</option>
+                <option value="monospace">Monospace</option>
+              </select>
+              Font Preference
+            </label>
+
+            <label>
+              <input
+                type="checkbox"
+                checked={accountSettings.highContrastMode}
+                onChange={(e) => setAccountSettings({ ...accountSettings, highContrastMode: e.target.checked })}
+              />
+              High Contrast Mode
+            </label>
+
+            <label>
+              <input
+                type="checkbox"
+                checked={accountSettings.keyboardShortcuts}
+                onChange={(e) => setAccountSettings({ ...accountSettings, keyboardShortcuts: e.target.checked })}
+              />
+              Keyboard Shortcuts
+            </label>
+          </div>
+
+          <div className="setting-box">
+            <h3>Data Management Settings</h3>
+            <label>
+              <input
+                type="checkbox"
+                checked={accountSettings.dataExport}
+                onChange={(e) => setAccountSettings({ ...accountSettings, dataExport: e.target.checked })}
+              />
+              Data Export
+            </label>
+
+            <label>
+              <input
+                type="checkbox"
+                checked={accountSettings.dataDeletionRequests}
+                onChange={(e) => setAccountSettings({ ...accountSettings, dataDeletionRequests: e.target.checked })}
+              />
+              Data Deletion Requests
+            </label>
+          </div>
+
           <button type="submit" className='setting-button'>Save Settings</button>
         </form>
       </div>

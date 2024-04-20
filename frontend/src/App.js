@@ -10,6 +10,7 @@ import AdminHomePage from "./admin/views/AdminHomePage";
 import AdminProfileWindow from "./admin/views/AdminprofileWindow";
 import AccountSettingWindow from "./admin/views/AccountSettingWindow";
 import ChatSettingWindow from "./admin/views/ChatSettingWindow";
+import ShopViewDetailsWindow from "./admin/views/ShopViewDetailsWindow";
 
 
 const App = () =>{
@@ -26,6 +27,7 @@ const App = () =>{
         <Route path="/profile" element={<AdminProfileWindow />} />
         <Route path="/account-setting" element={<AccountSettingWindow />} />
         <Route path="/chat-setting" element={<ChatSettingWindow />} />
+        <Route path="/shop-1" element={<ShopViewDetailsWindow />} />
       </Routes>
     </Router>
 

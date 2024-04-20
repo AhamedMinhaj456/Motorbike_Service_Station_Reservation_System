@@ -23,7 +23,6 @@ const LeftSidebar = () => {
         <FaBars />
       </div>
 
-      {/* Sidebar Content */}
       <div className="logo-container">
         <img src={bikePulseLogo} alt="BikePulse Logo" className="logo" />
       </div>
