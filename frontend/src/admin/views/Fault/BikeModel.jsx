@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import './AddFault.css';
+import './BikeModel.css';
 import { Form } from 'react-router-dom';
 
-const AddFault = () => {
+const BikeModel = () => {
   const [bikeModel, setBikeModel] = useState('');
     const [bikeModels, setBikeModels] = useState([]);
     
@@ -36,7 +36,17 @@ const AddFault = () => {
  
 
   return (
+    
     <div className="container">
+
+<div className="bike-models-container" >
+        {bikeModels.map((model, index) => (
+          <div key={index} className="bike-model">
+            {model.bikeModel}
+          </div>
+        ))}
+      </div>
+
   
        <form className="add-bike-Model" onSubmit={saveBikeModel} >
             
@@ -53,14 +63,7 @@ const AddFault = () => {
             
           </form>
    
-      <div className="bike-models-container">
-        {bikeModels.map((model, index) => (
-          <div key={index} className="bike-model">
-            {model.bikeModel}
-          </div>
-        ))}
-      </div>
-
+      
       
 
 
@@ -75,4 +78,4 @@ const AddFault = () => {
   );
 };
 
-export default AddFault;
+export default BikeModel;
