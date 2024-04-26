@@ -1,12 +1,8 @@
-.admin-dashboard {
-  display: flex;
-}
-
 .admin-content {
-  display: flex;
-  flex-direction: column;
   flex: 1;
+  flex-direction: column;
   margin-left: 350px;
+  margin-right: 100px;
   padding: 20px;
 }
 
@@ -51,11 +47,7 @@
 
 @media screen and (max-width: 768px) {
   .admin-content {
-    display: flex;
-    align-items: center;
-    justify-content: center;
     margin-left: 0; 
-    margin-right: 100; 
   }
 
 

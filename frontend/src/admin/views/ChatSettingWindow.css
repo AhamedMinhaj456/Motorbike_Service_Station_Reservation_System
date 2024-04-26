@@ -1,55 +1,60 @@
-/* ChatSettingWindow.css */
-
-.chat-setting-window {
-    display: flex;
-    height: 100vh;
-}
-
 .chat-setting-content {
     flex: 1;
-    display: flex;
     flex-direction: column;
-    align-items: center;
+    margin-left: 350px;
+    margin-right: 100px;
     padding: 20px;
 }
 
 .chat-setting-content h2 {
-    margin-bottom: 20px;
+    margin-top: 10px;
+    margin-bottom: 50px;
+    text-align: center;
 }
 
-.chat-setting-form {
-    width: 300px;
-    max-width: 100%;
-}
-
-label {
+.chat-setting-sections-container {
     display: flex;
-    align-items: center;
-    margin-bottom: 16px;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
 }
 
-.checkbox-container {
+.chat-setting-section {
+    width: calc(50% - 20px);
+    max-width: 400px;
     display: flex;
-    align-items: center;
+    flex-direction: column;
 }
 
-.checkbox-label {
-    margin-left: 8px;
+.chat-box {
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 10px;
+    background-color: #f9f9f9;
+    overflow-y: auto;
+    max-height: 300px;
 }
 
-input[type="checkbox"] {
-    margin-right: 8px;
+.chat-message {
+    margin-bottom: 10px;
+    cursor: pointer; 
 }
 
-.chat-btn {
-    background-color: #2467c5;
-    color: #fff;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 15px;
-    cursor: pointer;
+.chat-message p {
+    margin: 5px 0;
 }
 
-.chat-btn:hover {
-    background-color: #45a049;
+.expanded-details {
+    margin-top: 10px; 
+}
+
+@media screen and (max-width: 768px) {
+    .chat-setting-content {
+        margin-left: 0;
+    }
+
+    .chat-setting-section {
+        width: 100%;
+        max-width: none;
+    }
 }
