@@ -6,16 +6,16 @@ import axios from 'axios';
 
 const SubscriptionPlansManagementWindow = () => {
   const [plans, setPlans] = useState([
-    { id: 1, name: 'Plan 1', description: '', price: '', selected: false },
-    { id: 2, name: 'Plan 2', description: '', price: '', selected: false },
-    { id: 3, name: 'Plan 3', description: '', price: '', selected: false },
+    { subscriptionPlanId: 1, subscriptionPlanName: 'Plan 1', subscriptionPlanDescription: '', subscriptionPlanPrice: '', selected: false },
+    { subscriptionPlanId: 2, subscriptionPlanName: 'Plan 2', subscriptionPlanDescription: '', subscriptionPlanPrice: '', selected: false },
+    { subscriptionPlanId: 3, subscriptionPlanName: 'Plan 3', subscriptionPlanDescription: '', subscriptionPlanPrice: '', selected: false },
   ]);
 
   const [editMode, setEditMode] = useState(false);
 
   const handleInputChange = (id, field, value) => {
     setPlans((prevPlans) =>
-      prevPlans.map((plan) => (plan.id === id ? { ...plan, [field]: value } : plan))
+      prevPlans.map((plan) => (plan.subscriptionPlanId === id ? { ...plan, [field]: value } : plan))
     );
   };
 
@@ -24,14 +24,14 @@ const SubscriptionPlansManagementWindow = () => {
     setEditMode(false);
     // Backend developer: Add code here to send plans to the backend and save them
     // Example:
-    // axios.post('http://localhost:8095/savePlans', plans)
-    //   .then(response => {
-    //     alert('Plans saved!');
-    //   })
-    //   .catch(error => {
-    //     console.error('Error saving plans:', error);
-    //     alert('Failed to save plans. Please try again.');
-    //   });
+    axios.post('http://localhost:8096/subscriptionPlan/addSubscriptionPlan', plans)
+      .then(response => {
+        alert('Plans saved!');
+      })
+      .catch(error => {
+        console.error('Error saving plans:', error);
+        alert('Failed to save plans. Please try again.');
+      });
   };
 
   return (
@@ -43,42 +43,42 @@ const SubscriptionPlansManagementWindow = () => {
 
         {/* Render the plans' forms */}
         {plans.map((plan) => (
-          <div key={plan.id} className="plan-item">
+          <div key={plan.subscriptionPlanId} className="plan-item">
             <label>
               <input
                 type="checkbox"
                 checked={plan.selected}
                 onChange={() =>
                   setPlans((prevPlans) =>
-                    prevPlans.map((p) => (p.id === plan.id ? { ...p, selected: !p.selected } : p))
+                    prevPlans.map((p) => (p.subscriptionPlanId === plan.subscriptionPlanId ? { ...p, selected: !p.selected } : p))
                   )
                 }
               />
-              {plan.name}
+              {plan.subscriptionPlanName}
             </label>
             {plan.selected && (
               <form className="plan-form">
-                <label>{`Plan ${plan.id} Name:`}</label>
+                <label>{`Plan ${plan.subscriptionPlanId} Name:`}</label>
                 <input
                   type="text"
-                  value={plan.name}
-                  onChange={(e) => handleInputChange(plan.id, 'name', e.target.value)}
+                  value={plan.subscriptionPlanName}
+                  onChange={(e) => handleInputChange(plan.subscriptionPlanId, 'subscriptionPlanName', e.target.value)}
                   readOnly={!editMode}
                 />
                 <br />
                 <label>Description:</label>
                 <input
                   type="text"
-                  value={plan.description}
-                  onChange={(e) => handleInputChange(plan.id, 'description', e.target.value)}
+                  value={plan.subscriptionPlanDescription}
+                  onChange={(e) => handleInputChange(plan.subscriptionPlanId, 'subscriptionPlanDescription', e.target.value)}
                   readOnly={!editMode}
                 />
                 <br />
                 <label>Price:</label>
                 <input
                   type="text"
-                  value={plan.price}
-                  onChange={(e) => handleInputChange(plan.id, 'price', e.target.value)}
+                  value={plan.subscriptionPlanPrice}
+                  onChange={(e) => handleInputChange(plan.subscriptionPlanId, 'subscriptionPlanPrice', e.target.value)}
                   readOnly={!editMode}
                 />
               </form>

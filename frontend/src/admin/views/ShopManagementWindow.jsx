@@ -7,34 +7,30 @@ import axios from 'axios';
 
 const ShopManagementWindow = () => {
   const [shops, setShops] = useState([
-    { id: 1, shopName: 'Shop 1', location: 'Location 1' },
-    { id: 2, shopName: 'Shop 2', location: 'Location 2' },
-    { id: 3, shopName: 'Shop 3', location: 'Location 3' },
-    { id: 4, shopName: 'Shop 4', location: 'Location 4' },
-    { id: 5, shopName: 'Shop 5', location: 'Location 5' },
-    { id: 6, shopName: 'Shop 6', location: 'Location 6' },
-    { id: 7, shopName: 'Shop 7', location: 'Location 7' },
-    { id: 8, shopName: 'Shop 8', location: 'Location 8' },
-    { id: 9, shopName: 'Shop 9', location: 'Location 9' },
-    { id: 10, shopName: 'Shop 10', location: 'Location 10' },
+    { shopId: 1, shopName: 'Shop 1', shopAddress: 'Location 1' },
+    { shopId: 2, shopName: 'Shop 2', shopAddress: 'Location 2' },
+    { shopId: 3, shopName: 'Shop 3', shopAddress: 'Location 3' },
+    { shopId: 4, shopName: 'Shop 4', shopAddress: 'Location 4' },
+    { shopId: 5, shopName: 'Shop 5', shopAddress: 'Location 5' },
+    { shopId: 6, shopName: 'Shop 6', shopAddress: 'Location 6' },
+    { shopId: 7, shopName: 'Shop 7', shopAddress: 'Location 7' },
+    { shopId: 8, shopName: 'Shop 8', shopAddress: 'Location 8' },
+    { shopId: 9, shopName: 'Shop 9', shopAddress: 'Location 9' },
+    { shopId: 10, shopName: 'Shop 10', shopAddress: 'Location 10' },
   ]);
 
   useEffect(() => {
-    // Backend developer: Fetch shop data from the backend and update state
-    // Example:
-    // fetchData();
+    fetchData();
   }, []);
 
-  // Backend connection: Function to fetch shop data from the backend
-  // const fetchData = async () => {
-  //   try {
-  //     // Example using axios:
-  //     // const response = await axios.get('http://localhost:8095/shops');
-  //     // setShops(response.data);
-  //   } catch (error) {
-  //     console.error('Error fetching shops:', error);
-  //   }
-  // };
+  const fetchData = async () => {
+    try {
+      const response = await axios.get('http://localhost:8095/shop/getShop');
+      setShops(response.data);
+    } catch (error) {
+      console.error('Error fetching shops:', error);
+    }
+  };
 
   return (
     <div className="shop-management">
@@ -48,16 +44,16 @@ const ShopManagementWindow = () => {
         ) : (
           <div className="shop-list">
             {shops.map((shop) => (
-              <div key={shop.id} className="shop-item">
+              <div key={shop.shopId} className="shop-item">
                 <p>
                   <strong>Shop Name:</strong> {shop.shopName}
                 </p>
                 <p>
-                  <strong>Location:</strong> {shop.location}
+                  <strong>Shop Address:</strong> {shop.shopAddress}
                 </p>
                 <p>
                   <strong>View Details:</strong>
-                  <Link to={`/shop/${shop.id}`}>View Details</Link>
+                  <Link to={`/shop/${shop.shopId}`}>View Details</Link>
                 </p>
               </div>
             ))}
