@@ -1,0 +1,16 @@
+package motorbike_reservation_system.admin_CRUD;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.ComponentScan;
+
+
+@SpringBootApplication
+@ComponentScan("motorbike_reservation_system.admin_CRUD")
+public class AdminCrudApplication {
+
+	public static void main(String[] args) {
+		SpringApplication.run(AdminCrudApplication.class, args);
+	}
+
+}
