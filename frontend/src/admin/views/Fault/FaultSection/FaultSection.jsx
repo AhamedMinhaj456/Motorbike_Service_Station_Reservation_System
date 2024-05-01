@@ -155,6 +155,31 @@ axios.get('http://localhost:8096/exhaustSystem/exhaustSystem')
   });
 }, []);
 
+// //Exhaust System
+// async function saveExhaustSystem(event) {
+//   event.preventDefault();
+//   try {
+//     await axios.post("http://localhost:8096/exhaustSystem/addExhaustSystem", {
+//       exhaustSystem,
+//     });
+//     alert("Exhaust System Added Successfully");
+    
+//   } catch (err) {
+//     alert(err);
+//   }
+// }
+
+// // Fetch data from Spring Boot REST API
+// useEffect(() => {
+// axios.get('http://localhost:8096/exhaustSystem/exhaustSystem')
+// .then(response => {
+//   setExhaustSystems(response.data);
+// })
+// .catch(error => {
+//   console.error('Error fetching data:', error);
+// });
+// }, []);
+
 //Fairing System
 async function saveFairings(event) {
     event.preventDefault();
