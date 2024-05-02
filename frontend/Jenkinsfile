@@ -4,14 +4,15 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git 'https://github.com/AhamedMinhaj456/Motorbike_Service_Station_Reservation_System'
+                // Checkout code from the repository
+                git branch: 'main', url: 'https://github.com/AhamedMinhaj456/Motorbike_Service_Station_Reservation_System'
             }
         }
         
         stage('Build Docker Image') {
             steps {
                 script {
-                    def dockerImage = docker.build('my-node-app')
+                    def dockerImage = docker.build('admin-flow/frontend-app', '-f path/to/Dockerfile .')
                     dockerImage.push() 
                 }
             }
@@ -20,7 +21,7 @@ pipeline {
         stage('Run Container') {
             steps {
                 script {
-                    docker.image('my-node-app').run('-p 3000:3000')
+                    docker.image('admin-flow/frontend-app').run('-p 8080:80') 
                 }
             }
         }
@@ -29,7 +30,7 @@ pipeline {
             steps {
                 kubernetesDeploy(
                     kubeconfigId: 'my-kube-config', 
-                    configs: 'deployment.yml', 
+                    configs: 'path/to/deployment.yml', 
                     enableConfigSubstitution: true
                 )
             }
@@ -39,8 +40,8 @@ pipeline {
     post {
         always {
             script {
-                docker.image('my-node-app').stop()
-                docker.image('my-node-app').remove()
+                docker.image('admin-flow/frontend-app').stop()
+                docker.image('admin-flow/frontend-app').remove()
             }
         }
     }
