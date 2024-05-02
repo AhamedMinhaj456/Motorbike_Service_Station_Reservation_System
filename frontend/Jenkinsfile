@@ -38,13 +38,14 @@ pipeline {
         }
     }
     
-    post {
-        always {
-            script {
-                // Stop and remove the Docker container
-                docker.image('admin-flow/frontend-app').stop()
-                docker.image('admin-flow/frontend-app').remove()
-            }
+post {
+    always {
+        script {
+        
+            sh 'docker stop frontend-container || true' 
+            sh 'docker rm frontend-container || true' 
         }
     }
+}
+
 }
