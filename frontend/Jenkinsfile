@@ -5,23 +5,24 @@ pipeline {
         stage('Checkout') {
             steps {
                 // Checkout code from the repository
-                git branch: 'main', url: 'https://github.com/AhamedMinhaj456/Motorbike_Service_Station_Reservation_System'
+                git branch: 'admin-flow', url: 'https://github.com/AhamedMinhaj456/Motorbike_Service_Station_Reservation_System'
             }
         }
         
         stage('Build Docker Image') {
             steps {
                 script {
-                    def dockerImage = docker.build('admin-flow/frontend-app', '-f path/to/Dockerfile .')
-                    dockerImage.push() 
+                  def dockerImage = docker.build('admin-flow/frontend-app', '--file path/to/Dockerfile .')
+                  dockerImage.push()
                 }
+
             }
         }
         
         stage('Run Container') {
             steps {
                 script {
-                    docker.image('admin-flow/frontend-app').run('-p 8080:80') 
+                    docker.image('admin-flow/frontend-app').run('-p 8080:80')
                 }
             }
         }
