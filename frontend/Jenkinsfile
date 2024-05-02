@@ -1,0 +1,47 @@
+pipeline {
+    agent any
+    
+    stages {
+        stage('Checkout') {
+            steps {
+                git 'https://github.com/AhamedMinhaj456/Motorbike_Service_Station_Reservation_System'
+            }
+        }
+        
+        stage('Build Docker Image') {
+            steps {
+                script {
+                    def dockerImage = docker.build('my-node-app')
+                    dockerImage.push() 
+                }
+            }
+        }
+        
+        stage('Run Container') {
+            steps {
+                script {
+                    docker.image('my-node-app').run('-p 3000:3000')
+                }
+            }
+        }
+        
+        stage('Deploy to Kubernetes') {
+            steps {
+                kubernetesDeploy(
+                    kubeconfigId: 'my-kube-config', 
+                    configs: 'deployment.yml', 
+                    enableConfigSubstitution: true
+                )
+            }
+        }
+    }
+    
+    post {
+        always {
+            script {
+                docker.image('my-node-app').stop()
+                docker.image('my-node-app').remove()
+            }
+        }
+    }
+}
