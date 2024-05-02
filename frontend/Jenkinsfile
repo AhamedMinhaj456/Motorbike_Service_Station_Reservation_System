@@ -12,16 +12,17 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 script {
-                  def dockerImage = docker.build('admin-flow/frontend-app', '--file path/to/Dockerfile .')
-                  dockerImage.push()
+                    // Build the Docker image using the specified Dockerfile
+                    def dockerImage = docker.build('admin-flow/frontend-app', "--file frontend/Dockerfile .")
+                    dockerImage.push()
                 }
-
             }
         }
         
         stage('Run Container') {
             steps {
                 script {
+                    // Run the Docker container from the built image
                     docker.image('admin-flow/frontend-app').run('-p 8080:80')
                 }
             }
@@ -29,11 +30,10 @@ pipeline {
         
         stage('Deploy to Kubernetes') {
             steps {
-                kubernetesDeploy(
-                    kubeconfigId: 'my-kube-config', 
-                    configs: 'path/to/deployment.yml', 
-                    enableConfigSubstitution: true
-                )
+                // Use kubectl to apply the deployment configuration
+                script {
+                    sh "kubectl apply -f path/to/deployment.yml"
+                }
             }
         }
     }
@@ -41,6 +41,7 @@ pipeline {
     post {
         always {
             script {
+                // Stop and remove the Docker container
                 docker.image('admin-flow/frontend-app').stop()
                 docker.image('admin-flow/frontend-app').remove()
             }

@@ -1,3 +1,6 @@
+# Use a base image with Node.js pre-installed
+FROM node:14-alpine as build
+
 # Set working directory
 WORKDIR /app
 
@@ -19,8 +22,8 @@ FROM nginx:alpine
 # Copy built files from the previous stage to nginx directory
 COPY --from=build /app/build /usr/share/nginx/html
 
-# Expose port 80 (this is optional as the EXPOSE directive is informational)
+# Expose port 80
 EXPOSE 80
 
-# Start nginx server (this command is the default CMD for the nginx image)
+# Start nginx server
 CMD ["nginx", "-g", "daemon off;"]
