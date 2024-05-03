@@ -21,12 +21,12 @@ pipeline {
         stage('Run Container') {
             steps {
                 script {
-                    docker.image('admin-flow-frontend').withRun('-p 3000:3000') {
-                        sh 'echo "Container is running"'
-                    }
+                    def dockerImage = docker.image('admin-flow-frontend')
+                    dockerImage.run('-p 3000:3000', '--name admin-flow-container')
                 }
             }
         }
+        
         
         stage('Deploy to Kubernetes') {
             steps {
