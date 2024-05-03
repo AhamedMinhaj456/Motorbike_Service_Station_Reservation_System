@@ -14,7 +14,7 @@ RUN npm install
 COPY . .
 
 # Build the application
-RUN npm run build  # This command executes the build script defined in package.json
+RUN npm run build  
 
 # Use nginx as the production server
 FROM nginx:alpine
