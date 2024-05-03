@@ -11,7 +11,8 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 script {
-                    docker.build('admin-flow-frontend')
+                    dir('frontend') {
+                        docker.build('admin-flow-frontend')
                 }
             }
         }
