@@ -4,7 +4,6 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                // Checkout code from the repository
                 git branch: 'admin-flow', url: 'https://github.com/AhamedMinhaj456/Motorbike_Service_Station_Reservation_System'
             }
         }
@@ -12,8 +11,7 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 script {
-                    // Build the Docker image using the specified Dockerfile
-                    def dockerImage = docker.build('admin-flow/frontend-app', "--file frontend/Dockerfile .")
+                    def dockerImage = docker.build('admin-flow-frontend', "-f frontend/Dockerfile .")
                     dockerImage.push()
                 }
             }
@@ -22,15 +20,14 @@ pipeline {
         stage('Run Container') {
             steps {
                 script {
-                    // Run the Docker container from the built image
-                    docker.image('admin-flow/frontend-app').run('-p 8080:80')
+                    docker.image('admin-flow-frontend').withRun('-p 3000:30') {
+                    }
                 }
             }
         }
         
         stage('Deploy to Kubernetes') {
             steps {
-                // Use kubectl to apply the deployment configuration
                 script {
                     sh "kubectl apply -f path/to/deployment.yml"
                 }
@@ -38,14 +35,12 @@ pipeline {
         }
     }
     
-post {
-    always {
-        script {
-        
-            sh 'docker stop frontend-container || true' 
-            sh 'docker rm frontend-container || true' 
+    post {
+        always {
+            script {
+                docker.image('admin-flow-frontend').stop()
+                docker.image('admin-flow-frontend').remove()
+            }
         }
     }
-}
-
 }
