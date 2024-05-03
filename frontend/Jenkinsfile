@@ -1,17 +1,5 @@
 pipeline {
     agent any
-
-    environment {
-        PATH = "$PATH:/usr/bin"
-    }
- 
-    stages {
-        stage('Build') {
-            steps {
-                sh 'nohup my-command &'
-            }
-        }
-    }
     
     stages {
         stage('Checkout') {
@@ -39,14 +27,6 @@ pipeline {
             }
         }
         
-        
-        stage('Deploy to Kubernetes') {
-            steps {
-                script {
-                    sh "kubectl apply -f deployment.yml"
-                }
-            }
-        }
     }
     
     post {
