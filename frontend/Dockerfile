@@ -14,7 +14,7 @@ RUN npm install
 COPY . .
 
 # Build the application
-RUN npm run build
+RUN npm run build  # This command executes the build script defined in package.json
 
 # Use nginx as the production server
 FROM nginx:alpine
@@ -23,7 +23,7 @@ FROM nginx:alpine
 COPY --from=build /app/build /usr/share/nginx/html
 
 # Expose port 80
-EXPOSE 3000
+EXPOSE 80
 
 # Start nginx server
 CMD ["nginx", "-g", "daemon off;"]
