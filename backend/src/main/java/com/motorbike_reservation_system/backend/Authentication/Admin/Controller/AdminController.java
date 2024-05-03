@@ -2,11 +2,16 @@ package com.motorbike_reservation_system.backend.Authentication.Admin.Controller
 
 import com.motorbike_reservation_system.backend.Authentication.Admin.Dto.AdminDTO;
 import com.motorbike_reservation_system.backend.Authentication.Admin.Dto.AdminLoginDTO;
+import com.motorbike_reservation_system.backend.Authentication.Admin.Entity.Admin;
 import com.motorbike_reservation_system.backend.Authentication.Admin.Response.AdminLoginResponse;
 import com.motorbike_reservation_system.backend.Authentication.Admin.Service.AdminService;
+import com.motorbike_reservation_system.backend.Authentication.Admin.Service.Impl.AdminIMPL;
+import com.motorbike_reservation_system.backend.Reservation.Reservation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @CrossOrigin
@@ -14,6 +19,11 @@ import org.springframework.web.bind.annotation.*;
 public class AdminController {
     @Autowired
     private AdminService adminService;
+
+    @Autowired
+    private AdminIMPL adminIMPL;
+
+
     @PostMapping(path= "/save")
     public String saveAdmin(@RequestBody AdminDTO adminDTO){
         return adminService.addAdmin(adminDTO);
@@ -23,5 +33,11 @@ public class AdminController {
     public ResponseEntity<?> loginAdmin(@RequestBody AdminLoginDTO adminLoginDTO){
         AdminLoginResponse adminLoginResponse = adminService.loginAdmin(adminLoginDTO);
         return ResponseEntity.ok(adminLoginResponse);
+    }
+
+
+    @GetMapping("/getAdmin")
+    public List<Admin> findAllAdmin() {
+        return adminIMPL.getAdmin();
     }
 }

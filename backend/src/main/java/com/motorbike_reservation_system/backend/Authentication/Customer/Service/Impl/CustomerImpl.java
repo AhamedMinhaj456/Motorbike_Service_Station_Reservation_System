@@ -6,10 +6,12 @@ import com.motorbike_reservation_system.backend.Authentication.Customer.Entity.C
 import com.motorbike_reservation_system.backend.Authentication.Customer.Repo.CustomerRepo;
 import com.motorbike_reservation_system.backend.Authentication.Customer.Response.CustomerLoginResponse;
 import com.motorbike_reservation_system.backend.Authentication.Customer.Service.CustomerService;
+import com.motorbike_reservation_system.backend.Authentication.Shop.Entity.Shop;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -23,22 +25,22 @@ public class CustomerImpl implements CustomerService {
     @Override
     public String addCustomer(CustomerDTO customerDTO) {
 
-        Customer customer =new Customer(
+        Customer customer = new Customer(
                 customerDTO.getCustomerId(),
                 customerDTO.getCustomerName(),
                 customerDTO.getCustomerEmail(),
+                customerDTO.getCustomerPhoneNumber(),
                 customerDTO.getCustomerUsername(),
-                this.passwordEncoder.encode(customerDTO.getCustomerPassword()),
-                customerDTO.getPhoneNumber()
-
-
-
+                this.passwordEncoder.encode(customerDTO.getCustomerPassword())
         );
-        customerRepo.save(customer);
-        return customer.getCustomerName();
-        //       return "saved Successfully";
-    }
 
+        customerRepo.save(customer);
+        //return customer.getCustomerName();
+        return "saved Successfully";
+    }
+    public List<Customer> getCustomer() {
+        return customerRepo.findAll();
+    }
     @Override
     public CustomerLoginResponse loginCustomer(CustomerLoginDTO customerLoginDTO) {
         String msg="";

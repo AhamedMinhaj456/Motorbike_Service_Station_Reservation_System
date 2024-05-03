@@ -7,8 +7,9 @@ public class CustomerLoginDTO {
     public CustomerLoginDTO() {
     }
 
-    public CustomerLoginDTO(String customerEmail) {
+    public CustomerLoginDTO(String customerEmail, String customerPassword) {
         this.customerEmail = customerEmail;
+        this.customerPassword = customerPassword;
     }
 
     @Override

@@ -13,9 +13,10 @@ public class CustomerDTO {
     private int customerId;
     private String customerName;
     private String customerEmail;
+    private String customerPhoneNumber;
     private String customerUsername;
     private String customerPassword;
-    private String phoneNumber;
+
 
     @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL)
     private List<Motorbike> motorbikes;
@@ -29,21 +30,23 @@ public class CustomerDTO {
     public CustomerDTO() {
     }
 
-    public CustomerDTO(int customerId, String customerName, String customerEmail, String customerUsername, String customerPassword, String phoneNumber) {
+    public CustomerDTO(int customerId, String customerName, String customerEmail , String customerPhoneNumber, String customerUsername, String customerPassword) {
         this.customerId = customerId;
         this.customerName = customerName;
         this.customerEmail = customerEmail;
+        this.customerPhoneNumber = customerPhoneNumber;
         this.customerUsername = customerUsername;
         this.customerPassword = customerPassword;
-        this.phoneNumber = phoneNumber;
+
     }
 
-    public CustomerDTO(String customerName, String customerEmail, String customerUsername, String customerPassword, String phoneNumber) {
+    public CustomerDTO(String customerName, String customerEmail , String customerPhoneNumber, String customerUsername, String customerPassword) {
         this.customerName = customerName;
         this.customerEmail = customerEmail;
+        this.customerPhoneNumber = customerPhoneNumber;
         this.customerUsername = customerUsername;
         this.customerPassword = customerPassword;
-        this.phoneNumber = phoneNumber;
+
     }
 
     public int getCustomerId() {
@@ -70,6 +73,14 @@ public class CustomerDTO {
         this.customerEmail = customerEmail;
     }
 
+    public String getCustomerPhoneNumber() {
+        return customerPhoneNumber;
+    }
+
+    public void setCustomerPhoneNumber(String customerPhoneNumber) {
+        this.customerPhoneNumber = customerPhoneNumber;
+    }
+
     public String getCustomerUsername() {
         return customerUsername;
     }
@@ -84,14 +95,6 @@ public class CustomerDTO {
 
     public void setCustomerPassword(String customerPassword) {
         this.customerPassword = customerPassword;
-    }
-
-    public String getPhoneNumber() {
-        return phoneNumber;
-    }
-
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
     }
 
     public List<Motorbike> getMotorbikes() {
@@ -116,6 +119,21 @@ public class CustomerDTO {
 
     public void setRepairs(List<Repair> repairs) {
         this.repairs = repairs;
+    }
+
+    @Override
+    public String toString() {
+        return "CustomerDTO{" +
+                "customerId=" + customerId +
+                ", customerName='" + customerName + '\'' +
+                ", customerEmail='" + customerEmail + '\'' +
+                ", customerPhoneNumber='" + customerPhoneNumber + '\'' +
+                ", customerUsername='" + customerUsername + '\'' +
+                ", customerPassword='" + customerPassword + '\'' +
+                ", motorbikes=" + motorbikes +
+                ", reservations=" + reservations +
+                ", repairs=" + repairs +
+                '}';
     }
 
 }
