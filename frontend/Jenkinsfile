@@ -1,5 +1,17 @@
 pipeline {
     agent any
+
+    environment {
+        PATH = "$PATH:/usr/bin"
+    }
+ 
+    stages {
+        stage('Build') {
+            steps {
+                sh 'nohup my-command &'
+            }
+        }
+    }
     
     stages {
         stage('Checkout') {
