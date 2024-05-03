@@ -30,16 +30,4 @@ pipeline {
         }
     }
     
-    post {
-        always {
-            script {
-                if (env.CONTAINER_ID) {
-                    docker.container(env.CONTAINER_ID).stop()
-                    docker.container(env.CONTAINER_ID).remove(force: true)
-                }
-                
-                docker.image('admin-flow-frontend').remove()
-            }
-        }
-    }
 }
