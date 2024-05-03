@@ -20,7 +20,7 @@ pipeline {
         stage('Run Container') {
             steps {
                 script {
-                    docker.image('admin-flow-frontend').withRun('-p 8080:80') {
+                    docker.image('admin-flow-frontend').withRun('-p 3000:3000') {
                     }
                 }
             }
