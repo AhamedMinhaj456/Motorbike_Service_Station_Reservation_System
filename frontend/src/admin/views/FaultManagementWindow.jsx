@@ -97,9 +97,9 @@ const FaultManagementWindow = () => {
     const newShopName = e.target.elements.newShopName.value;
     const enteredBy = e.target.elements.enteredBy.value || 'Logged In User'; // Default to 'Logged In User' if no name provided
     const enteredDate = new Date().toLocaleDateString(); // Get current date
-
+  
     if (newShopName.trim() !== '') {
-      setBikeParts([...shops, {
+      setShops([...shops, {
         id: shops.length + 1,
         name: newShopName,
         enteredBy: enteredBy,
@@ -109,8 +109,7 @@ const FaultManagementWindow = () => {
       e.target.elements.enteredBy.value = '';
     }
   };
-
-
+  
   // check this part for action editing
   const [editedByInput, setEditedByInput] = useState('');
 
