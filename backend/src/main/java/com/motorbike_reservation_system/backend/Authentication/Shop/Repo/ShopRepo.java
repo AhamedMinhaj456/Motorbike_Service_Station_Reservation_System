@@ -13,4 +13,6 @@ public interface ShopRepo extends JpaRepository<Shop,Integer> {
 
     Optional<Shop> findOneByEmailAndShopPassword(String Email, String ShopPassword);
     Shop findByEmail(String Email);
+
+    Shop findByShopId(int shopId);
 }

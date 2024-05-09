@@ -1,10 +1,15 @@
 package com.motorbike_reservation_system.backend.Spare_Parts;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
+import lombok.*;
 
+import java.util.Random;
+
+@NoArgsConstructor
+@AllArgsConstructor
+@Getter
+@Setter
+@Builder
 @Entity
 @Table(name = "Spare Parts")
 public class Parts {
@@ -16,72 +21,26 @@ public class Parts {
     private String partsPrice;
     private String partsNumber;
 
-    public Parts() {
+    /////// Custom logic to generate the next available ID //////////////////////////////////////
+
+    @PrePersist
+    public void generateId() {
+        if (partsId == null) {
+            // Generate a random 6-digit number
+            java.lang.String randomDigits = generateRandomDigits(6);
+
+            // Assign the ID as "FM" followed by the random digits
+            this.partsId = "P" + randomDigits;
+        }
     }
 
-    public Parts(String partsId, String partsName, String partsType, String partsPrice, String partsNumber) {
-        this.partsId = partsId;
-        this.partsName = partsName;
-        this.partsType = partsType;
-        this.partsPrice = partsPrice;
-        this.partsNumber = partsNumber;
+    private java.lang.String generateRandomDigits(int length) {
+        Random random = new Random();
+        StringBuilder sb = new StringBuilder(length);
+        for (int i = 0; i < length; i++) {
+            sb.append(random.nextInt(10));
+        }
+        return sb.toString();
     }
 
-    public Parts(String partsName, String partsType, String partsPrice, String partsNumber) {
-        this.partsName = partsName;
-        this.partsType = partsType;
-        this.partsPrice = partsPrice;
-        this.partsNumber = partsNumber;
-    }
-
-    @Override
-    public String toString() {
-        return "Parts{" +
-                "partsId='" + partsId + '\'' +
-                ", partsName='" + partsName + '\'' +
-                ", partsType='" + partsType + '\'' +
-                ", partsPrice='" + partsPrice + '\'' +
-                ", partsNumber='" + partsNumber + '\'' +
-                '}';
-    }
-
-    public String getPartsId() {
-        return partsId;
-    }
-
-    public void setPartsId(String partsId) {
-        this.partsId = partsId;
-    }
-
-    public String getPartsName() {
-        return partsName;
-    }
-
-    public void setPartsName(String partsName) {
-        this.partsName = partsName;
-    }
-
-    public String getPartsType() {
-        return partsType;
-    }
-
-    public void setPartsType(String partsType) {
-        this.partsType = partsType;
-    }
-
-    public String getPartsPrice() {
-        return partsPrice;
-    }
-
-    public void setPartsPrice(String partsPrice) {
-        this.partsPrice = partsPrice;
-    }
-
-    public String getPartsNumber() {
-        return partsNumber;
-    }
-
-    public void setPartsNumber(String partsNumber) {
-        this.partsNumber = partsNumber;
-    }
 }

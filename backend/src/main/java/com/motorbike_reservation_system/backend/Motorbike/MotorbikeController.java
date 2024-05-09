@@ -17,8 +17,8 @@ public class MotorbikeController {
 
 
     @PostMapping("/addMotorbike")
-    public Motorbike addMotorbike(@RequestBody Motorbike motorbike) {
-        return motorbikeService.saveMotorbike(motorbike);
+    public Motorbike addMotorbike(@RequestBody MotorbikeDTO motorbikeDTO) {
+        return motorbikeService.addMotorbike(motorbikeDTO);
     }
 
     @GetMapping("/motorbikes")

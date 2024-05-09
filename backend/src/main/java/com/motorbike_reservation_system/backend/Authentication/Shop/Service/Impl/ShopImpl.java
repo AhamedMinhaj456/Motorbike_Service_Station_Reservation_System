@@ -21,24 +21,22 @@ public class ShopImpl implements ShopService {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
-    @Override
-    public String addShop(ShopDTO shopDTO) {
 
-        Shop shop =new Shop(
-                shopDTO.getShopId(),
-                shopDTO.getShopName(),
-                this.passwordEncoder.encode(shopDTO.getShopPassword()),
-                shopDTO.getShopAddress(),
-                shopDTO.getContactNumber(),
-                shopDTO.getTaxId(),
-                shopDTO.getEmail(),
-                shopDTO.getSubscriptionPlan()
 
-        );
-        shopRepo.save(shop);
-        return shop.getShopName();
-       //        return "saved Successfully";
+    public Shop addShop(ShopDTO shopDTO) {
+       Shop shop = Shop.builder()
+                .shopId(shopDTO.getShopId())
+                .shopName(shopDTO.getShopName())
+                .shopPassword(this.passwordEncoder.encode(shopDTO.getShopPassword()))
+                .shopAddress(shopDTO.getShopAddress())
+                .contactNumber(shopDTO.getContactNumber())
+                .taxId(shopDTO.getTaxId())
+                .email(shopDTO.getEmail())
+                .subscriptionPlan(shopDTO.getSubscriptionPlan())
+                .build();
+        return shopRepo.save(shop);
     }
+
 
     public List<Shop> getShop() {
         return shopRepo.findAll();

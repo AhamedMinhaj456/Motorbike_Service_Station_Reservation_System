@@ -6,4 +6,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface PartsRepo extends JpaRepository<Parts,String> {
     Parts findByPartsName(String partsName);
+    Parts findByPartsId(String partsId);
 }

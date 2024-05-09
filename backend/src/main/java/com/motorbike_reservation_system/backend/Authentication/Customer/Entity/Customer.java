@@ -14,11 +14,11 @@ public class Customer {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int customerId;
-    private String customerName;
-    private String customerEmail;
-    private String customerPhoneNumber;
-    private String customerUsername;
-    private String customerPassword;
+    private java.lang.String customerName;
+    private java.lang.String customerEmail;
+    private java.lang.String customerPhoneNumber;
+    private java.lang.String customerUsername;
+    private java.lang.String customerPassword;
 
 
     @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL)
@@ -33,7 +33,7 @@ public class Customer {
     public Customer() {
     }
 
-    public Customer(int customerId, String customerName, String customerEmail , String customerPhoneNumber, String customerUsername, String customerPassword) {
+    public Customer(int customerId, java.lang.String customerName, java.lang.String customerEmail , java.lang.String customerPhoneNumber, java.lang.String customerUsername, java.lang.String customerPassword) {
         this.customerId = customerId;
         this.customerName = customerName;
         this.customerEmail = customerEmail;
@@ -43,7 +43,7 @@ public class Customer {
 
     }
 
-    public Customer(String customerName, String customerEmail , String customerPhoneNumber, String customerUsername, String customerPassword) {
+    public Customer(java.lang.String customerName, java.lang.String customerEmail , java.lang.String customerPhoneNumber, java.lang.String customerUsername, java.lang.String customerPassword) {
         this.customerName = customerName;
         this.customerEmail = customerEmail;
         this.customerPhoneNumber = customerPhoneNumber;
@@ -60,43 +60,43 @@ public class Customer {
         this.customerId = customerId;
     }
 
-    public String getCustomerName() {
+    public java.lang.String getCustomerName() {
         return customerName;
     }
 
-    public void setCustomerName(String customerName) {
+    public void setCustomerName(java.lang.String customerName) {
         this.customerName = customerName;
     }
 
-    public String getCustomerEmail() {
+    public java.lang.String getCustomerEmail() {
         return customerEmail;
     }
 
-    public void setCustomerEmail(String customerEmail) {
+    public void setCustomerEmail(java.lang.String customerEmail) {
         this.customerEmail = customerEmail;
     }
 
-    public String getCustomerPhoneNumber() {
+    public java.lang.String getCustomerPhoneNumber() {
         return customerPhoneNumber;
     }
 
-    public void setCustomerPhoneNumber(String customerPhoneNumber) {
+    public void setCustomerPhoneNumber(java.lang.String customerPhoneNumber) {
         this.customerPhoneNumber = customerPhoneNumber;
     }
 
-    public String getCustomerUsername() {
+    public java.lang.String getCustomerUsername() {
         return customerUsername;
     }
 
-    public void setCustomerUsername(String customerUsername) {
+    public void setCustomerUsername(java.lang.String customerUsername) {
         this.customerUsername = customerUsername;
     }
 
-    public String getCustomerPassword() {
+    public java.lang.String getCustomerPassword() {
         return customerPassword;
     }
 
-    public void setCustomerPassword(String customerPassword) {
+    public void setCustomerPassword(java.lang.String customerPassword) {
         this.customerPassword = customerPassword;
     }
 
@@ -125,7 +125,7 @@ public class Customer {
     }
 
     @Override
-    public String toString() {
+    public java.lang.String toString() {
         return "Customer{" +
                 "customerId=" + customerId +
                 ", customerName='" + customerName + '\'' +

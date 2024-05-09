@@ -33,7 +33,6 @@ public class CustomerImpl implements CustomerService {
                 customerDTO.getCustomerUsername(),
                 this.passwordEncoder.encode(customerDTO.getCustomerPassword())
         );
-
         customerRepo.save(customer);
         //return customer.getCustomerName();
         return "saved Successfully";

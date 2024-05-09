@@ -16,8 +16,8 @@ public class RepairController {
     private RepairService repairService;
 
     @PostMapping("/addService")
-    public Repair addService(@RequestBody Repair repair) {
-        return repairService.saveService(repair);
+    public Repair addService(@RequestBody RepairDTO repairDTO) {
+        return repairService.addService(repairDTO);
     }
 
     @GetMapping("/services")

@@ -1,6 +1,9 @@
 package com.motorbike_reservation_system.backend.payment;
 
 
+import com.motorbike_reservation_system.backend.Payment_Method.PaymentMethodRepo;
+import com.motorbike_reservation_system.backend.Repair_Service.Repair;
+import com.motorbike_reservation_system.backend.Repair_Service.RepairRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,6 +15,11 @@ public class PaymentService {
     @Autowired
     private PaymentRepository paymentRepository;
 
+    @Autowired
+    private RepairRepo repairRepo;
+
+    @Autowired
+    private PaymentMethodRepo paymentMethodRepo;
 
 
     public Payment savePayment(Payment payment) {
@@ -40,7 +48,15 @@ public class PaymentService {
         return paymentRepository.save(existingPayment);
     }
 
-
+    public Payment addPayment(PaymentDTO paymentDTO) {
+        Payment payment = Payment.builder()
+                .totalPayment(paymentDTO.getTotalPayment())
+                .paymentType(paymentDTO.getPaymentType())
+                .repair(repairRepo.findByServiceId(paymentDTO.getServiceId()))
+                .paymentMethod(paymentMethodRepo.findByPaymentMethodId(paymentDTO.getPaymentMethodId()))
+                .build();
+        return paymentRepository.save(payment);
+    }
 
 
 }

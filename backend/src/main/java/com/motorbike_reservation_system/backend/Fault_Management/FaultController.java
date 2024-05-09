@@ -14,8 +14,8 @@ public class FaultController {
     private FaultService faultService;
 
     @PostMapping("/addfault")
-    public Fault addFault(@RequestBody Fault fault) {
-        return faultService.saveFault(fault);
+    public Fault addFault(@RequestBody FaultDTO addFaultRequest) {
+        return faultService.addFault(addFaultRequest);
     }
 
     @GetMapping("/getfault")

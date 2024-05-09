@@ -1,12 +1,19 @@
 package com.motorbike_reservation_system.backend.payment;
 
+import com.motorbike_reservation_system.backend.Fault_Management.Fault;
 import com.motorbike_reservation_system.backend.Payment_Method.PaymentMethod;
 import com.motorbike_reservation_system.backend.Repair_Service.Repair;
+import com.motorbike_reservation_system.backend.Reservation.Reservation;
 import jakarta.persistence.*;
+import lombok.*;
 
 import java.util.Random;
 
-
+@NoArgsConstructor
+@AllArgsConstructor
+@Getter
+@Setter
+@Builder
 @Entity
 @Table(name="payment")
 public class Payment {
@@ -17,82 +24,28 @@ public class Payment {
     private String paymentType;
 
 
-    @OneToOne(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
-    @JoinColumn(name = "repair_id")
-    private Repair repair;
 
-    @OneToOne(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
-    @JoinColumn(name = "payment_method_id")
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "paymentMethod_id", referencedColumnName = "paymentMethodId")
     private PaymentMethod paymentMethod;
 
-    public Payment() {
-    }
+    @OneToOne(mappedBy = "payment")
+    private Repair repair;
 
-    public Payment(String paymentId, String totalPayment, String paymentType, Repair repair, PaymentMethod paymentMethod) {
-        this.paymentId = paymentId;
-        this.totalPayment = totalPayment;
-        this.paymentType = paymentType;
-        this.repair = repair;
-        this.paymentMethod = paymentMethod;
-    }
 
-    public Payment(String totalPayment, String paymentType, Repair repair, PaymentMethod paymentMethod) {
-        this.totalPayment = totalPayment;
-        this.paymentType = paymentType;
-        this.repair = repair;
-        this.paymentMethod = paymentMethod;
-    }
+//    @OneToOne(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+//    @JoinColumn(name = "repair_id")
+//    private Repair repair;
 
-    public String getPaymentId() {
-        return paymentId;
-    }
 
-    public void setPaymentId(String paymentId) {
-        this.paymentId = paymentId;
-    }
+//    @OneToOne(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+//    @JoinColumn(name = "payment_method_id")
+//    private PaymentMethod paymentMethod;
 
-    public String getTotalPayment() {
-        return totalPayment;
-    }
 
-    public void setTotalPayment(String totalPayment) {
-        this.totalPayment = totalPayment;
-    }
-
-    public String getPaymentType() {
-        return paymentType;
-    }
-
-    public void setPaymentType(String paymentType) {
-        this.paymentType = paymentType;
-    }
-
-    public Repair getRepair() {
-        return repair;
-    }
-
-    public void setRepair(Repair repair) {
-        this.repair = repair;
-    }
-
-    public PaymentMethod getPaymentMethod() {
-        return paymentMethod;
-    }
-
-    public void setPaymentMethod(PaymentMethod paymentMethod) {
-        this.paymentMethod = paymentMethod;
-    }
-
-    @Override
-    public String toString() {
-        return "Payment{" +
-                "paymentId='" + paymentId + '\'' +
-                ", totalPayment='" + totalPayment + '\'' +
-                ", paymentType='" + paymentType + '\'' +
-                ", repair=" + repair +
-                ", paymentMethod=" + paymentMethod +
-                '}';
-    }
+//    @OneToOne(mappedBy = "payment",
+//            cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
+//    private PaymentMethod paymentMethod;
 
     /////// Custom logic to generate the next available ID //////////////////////////////////////
 

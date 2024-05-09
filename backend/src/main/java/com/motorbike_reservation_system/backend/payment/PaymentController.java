@@ -16,8 +16,8 @@ public class PaymentController {
     private PaymentService paymentService;
 
     @PostMapping("/addPayment")
-    public Payment addPayment(@RequestBody Payment payment) {
-        return paymentService.savePayment(payment);
+    public Payment addPayment(@RequestBody PaymentDTO paymentDTO) {
+        return paymentService.addPayment(paymentDTO);
     }
 
     @GetMapping("/payments")

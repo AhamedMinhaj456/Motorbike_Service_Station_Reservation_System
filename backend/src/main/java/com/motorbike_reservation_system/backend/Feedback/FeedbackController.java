@@ -14,8 +14,8 @@ public class FeedbackController {
     private FeedbackService feedbackService;
 
     @PostMapping("/addfeedback")
-    public Feedback addFeedback(@RequestBody Feedback feedback) {
-        return feedbackService.saveFeedback(feedback);
+    public Feedback addFeedback(@RequestBody FeedbackDTO feedbackDTO) {
+        return feedbackService.addFeedback(feedbackDTO);
     }
 
     @GetMapping("/getfeedback")

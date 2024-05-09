@@ -8,5 +8,5 @@ import java.util.List;
 @Repository
 public interface FeedbackRepo extends JpaRepository<Feedback,Integer> {
     List<Feedback> findByComment(String comment);
-    Feedback findByFeedbackId(int faultId);
+    Feedback findByFeedbackId(int FeedbackId);
 }

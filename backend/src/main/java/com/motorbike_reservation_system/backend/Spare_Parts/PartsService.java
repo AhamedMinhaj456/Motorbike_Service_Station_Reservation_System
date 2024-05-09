@@ -37,6 +37,10 @@ public class PartsService {
         partsRepo.deleteById(partsId);
         return "Parts removed !! " + partsId;
     }
+        public Parts addParts(Parts parts) {
+            return partsRepo.save(parts);
+
+        }
 
 //    public Product updateProduct(Product product) {
 //        Product existingProduct = repository.findById(product.getId()).orElse(null);

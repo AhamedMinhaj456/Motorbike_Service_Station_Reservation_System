@@ -24,8 +24,8 @@ public class ShopController {
 
 
     @PostMapping(path= "/save")
-    public String saveShop(@RequestBody ShopDTO shopDTO){
-        String id = shopService.addShop(shopDTO);
+    public String addShop(@RequestBody ShopDTO shopDTO){
+        String id = String.valueOf(shopImpl.addShop(shopDTO));
         return id;
     }
 

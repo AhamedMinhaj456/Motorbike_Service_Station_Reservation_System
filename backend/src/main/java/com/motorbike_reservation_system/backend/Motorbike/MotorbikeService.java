@@ -1,6 +1,7 @@
 package com.motorbike_reservation_system.backend.Motorbike;
 
 
+import com.motorbike_reservation_system.backend.Authentication.Customer.Repo.CustomerRepo;
 import com.motorbike_reservation_system.backend.Motorbike.Motorbike;
 import com.motorbike_reservation_system.backend.Motorbike.MotorbikeRepo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +13,9 @@ import java.util.List;
 public class MotorbikeService {
     @Autowired
     private MotorbikeRepo motorbikeRepo;
+
+    @Autowired
+    private CustomerRepo customerRepo;
 
     public Motorbike saveMotorbike(Motorbike motorbike) {
         return motorbikeRepo.save(motorbike);
@@ -50,5 +54,14 @@ public class MotorbikeService {
         return motorbikeRepo.save(existingMotorbike);
     }
 
+    public Motorbike addMotorbike(MotorbikeDTO motorbikeDTO) {
+        Motorbike motorbike = Motorbike.builder()
+                .motorbikeName(motorbikeDTO.getMotorbikeName())
+                .motorbikeNumber(motorbikeDTO.getMotorbikeNumber())
+                .motorbikeType(motorbikeDTO.getMotorbikeType())
+                .customer(customerRepo.findByCustomerId(motorbikeDTO.getCustomerId()))
+                .build();
+        return motorbikeRepo.save(motorbike);
+    }
 
 }

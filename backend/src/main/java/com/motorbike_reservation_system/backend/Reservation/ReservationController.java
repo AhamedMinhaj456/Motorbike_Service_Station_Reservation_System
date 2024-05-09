@@ -19,8 +19,8 @@ public class ReservationController {
     }
 
     @PostMapping("/addReservation")
-    public Reservation addReservation(@RequestBody Reservation reservation) {
-        return reservationService.saveReservation(reservation);
+    public Reservation addReservation(@RequestBody ReservationDTO reservationDTO) {
+        return reservationService.addReservation(reservationDTO);
     }
 
 
@@ -42,7 +42,7 @@ public class ReservationController {
 //    }
 
     @DeleteMapping("/deleteReservation/{reservationId}")
-    public String deleteReservation(@PathVariable String reservationId) {
+    public java.lang.String deleteReservation(@PathVariable java.lang.String reservationId) {
         return reservationService.deleteReservation(reservationId);
     }
 
@@ -55,7 +55,7 @@ public class ReservationController {
 //    }
 
     @GetMapping("/dropdown")
-    public String add(Model model) {
+    public java.lang.String add(Model model) {
         List<Reservation> reservationList = reservationService.listAll();
         model.addAttribute("reservationList", reservationList);
         model.addAttribute("reservation", new Reservation());

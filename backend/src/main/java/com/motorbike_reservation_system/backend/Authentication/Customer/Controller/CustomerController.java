@@ -25,7 +25,7 @@ public class CustomerController {
 
 
     @PostMapping(path= "/save")
-    public String saveCustomer(@RequestBody CustomerDTO customerDTO){
+    public String addCustomer(@RequestBody CustomerDTO customerDTO){
         String id = customerService.addCustomer(customerDTO);
         return id;
     }

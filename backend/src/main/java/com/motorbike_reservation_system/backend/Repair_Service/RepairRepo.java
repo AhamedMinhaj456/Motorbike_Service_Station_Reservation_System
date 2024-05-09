@@ -6,7 +6,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface RepairRepo extends JpaRepository<Repair,String> {
-    Repair findByRepairServiceId(String repairServiceId);
+    Repair findByServiceId(String repairServiceId);
 
 
 }
