@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './SubscriptionPlansmanagementWindow.css'; 
 import LeftSidebar from '../common/LeftSidebar';
 import RightSidebar from '../common/RightSidebar';
@@ -11,7 +11,24 @@ const SubscriptionPlansManagementWindow = () => {
     { subscriptionPlanId: 3, subscriptionPlanName: 'Plan 3', subscriptionPlanDescription: '', subscriptionPlanPrice: '', selected: false },
   ]);
 
+  useEffect(() => {
+    // Backend developer: Fetch user data from the backend and update state
+    // Example:
+    fetchData();
+  }, []);
+
+  // Backend connection: Function to fetch user data from the backend
+  const fetchData = async () => {
+    try {
+      // Example using axios:
+      const response = await axios.get('http://localhost:8096/subscriptionPlan/subscriptionPlan');
+      setPlans(response.data);
+    } catch (error) {
+      console.error('Error fetching users:', error);
+    }
+  };
   const [editMode, setEditMode] = useState(false);
+
 
   const handleInputChange = (id, field, value) => {
     setPlans((prevPlans) =>
@@ -24,9 +41,9 @@ const SubscriptionPlansManagementWindow = () => {
     setEditMode(false);
     // Backend developer: Add code here to send plans to the backend and save them
     // Example:
-    axios.post('http://localhost:8096/subscriptionPlan/addSubscriptionPlan', plans)
+    axios.put('http://localhost:8096/subscriptionPlan/updateMultipleSubscriptionPlans', plans)
       .then(response => {
-        alert('Plans saved!');
+        alert('Plan Updated Successfullly!');
       })
       .catch(error => {
         console.error('Error saving plans:', error);
@@ -34,12 +51,76 @@ const SubscriptionPlansManagementWindow = () => {
       });
   };
 
+  
+    const [newPlan, setNewPlan] = useState({
+      subscriptionPlanName: '',
+      subscriptionPlanDescription: '',
+      subscriptionPlanPrice: '',
+    });
+  
+    const handleChange = (e) => {
+      const { name, value } = e.target;
+      setNewPlan((prevPlan) => ({
+        ...prevPlan,
+        [name]: value,
+      }));
+    };
+  
+    const handleFormSubmit = async (e) => {
+      e.preventDefault();
+      try {
+        await axios.post('http://localhost:8096/subscriptionPlan/addSubscriptionPlan', newPlan);
+        alert('Subscription Plan Successfully Added');
+        setNewPlan({
+          subscriptionPlanName: '',
+          subscriptionPlanDescription: '',
+          subscriptionPlanPrice: '',
+        });
+      } catch (err) {
+        alert(err);
+      }
+    };
+
   return (
     <div className="subscription-plans-management">
       <LeftSidebar />
 
       <div className="subscription-plans-management-content">
-        <h2 className='subscription-management-heading'>Subscription Plans Management</h2>
+        
+      <div className='add-plan-wrapper'>
+          <h2 className='subscription-management-heading'>Subscription Plans Management</h2>
+          <div className='add-plan'>
+            <form className="plan-form" onSubmit={handleFormSubmit}>
+              <h3 className='subscription-management-heading'>Add New Subscription Plan</h3>
+              <label>Name</label>
+              <input
+                type="text"
+                name="subscriptionPlanName"
+                value={newPlan.subscriptionPlanName}
+                onChange={handleChange}
+              />
+              <br />
+              <label>Description:</label>
+              <input
+                type="text"
+                name="subscriptionPlanDescription"
+                value={newPlan.subscriptionPlanDescription}
+                onChange={handleChange}
+              />
+              <br />
+              <label>Price:</label>
+              <input
+                type="text"
+                name="subscriptionPlanPrice"
+                value={newPlan.subscriptionPlanPrice}
+                onChange={handleChange}
+              />
+              <button className="save-button" type="submit">
+                Save
+              </button>
+            </form>
+          </div>
+        </div>
 
         {/* Render the plans' forms */}
         {plans.map((plan) => (
@@ -83,10 +164,7 @@ const SubscriptionPlansManagementWindow = () => {
                 />
               </form>
             )}
-          </div>
-        ))}
-
-        <div className="subscription-plans-management-buttons">
+            <div className="subscription-plans-management-buttons">
           <button
             className={`edit-button ${editMode ? 'active' : ''}`}
             onClick={() => setEditMode(!editMode)}
@@ -97,6 +175,20 @@ const SubscriptionPlansManagementWindow = () => {
             Save
           </button>
         </div>
+          </div>
+        ))}
+
+        {/* <div className="subscription-plans-management-buttons">
+          <button
+            className={`edit-button ${editMode ? 'active' : ''}`}
+            onClick={() => setEditMode(!editMode)}
+          >
+            Edit
+          </button>
+          <button className="save-button" onClick={handleSave} disabled={!editMode}>
+            Save
+          </button>
+        </div> */}
       </div>
 
       <RightSidebar />
