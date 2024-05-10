@@ -1,15 +1,14 @@
 package motorbike_reservation_system.admin_CRUD.Subscription.SubcriptionPlan;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 @Entity
 @Table(name="subscription_plan")
 public class SubscriptionPlan {
 
     @Id
-    private String subscriptionPlanId;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private int subscriptionPlanId;
 
     private String subscriptionPlanName;
 
@@ -19,7 +18,7 @@ public class SubscriptionPlan {
     public SubscriptionPlan() {
     }
 
-    public SubscriptionPlan(String subscriptionPlanId, String subscriptionPlanName, String subscriptionPlanDiscription, String subscriptionPlanPrice) {
+    public SubscriptionPlan(int subscriptionPlanId, String subscriptionPlanName, String subscriptionPlanDiscription, String subscriptionPlanPrice) {
         this.subscriptionPlanId = subscriptionPlanId;
         this.subscriptionPlanName = subscriptionPlanName;
         this.subscriptionPlanDescription = subscriptionPlanDiscription;
@@ -32,11 +31,11 @@ public class SubscriptionPlan {
         this.subscriptionPlanPrice = subscriptionPlanPrice;
     }
 
-    public String getSubscriptionPlanId() {
+    public int getSubscriptionPlanId() {
         return subscriptionPlanId;
     }
 
-    public void setSubscriptionPlanId(String subscriptionPlanId) {
+    public void setSubscriptionPlanId(int subscriptionPlanId) {
         this.subscriptionPlanId = subscriptionPlanId;
     }
 

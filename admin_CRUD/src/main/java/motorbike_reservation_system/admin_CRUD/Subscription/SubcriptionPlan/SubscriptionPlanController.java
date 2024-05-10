@@ -27,13 +27,17 @@ public class SubscriptionPlanController{
     }
 
     @GetMapping("/subscriptionPlanById/{subscriptionPlanId}")
-    public SubscriptionPlan findSubscriptionPlanBySubscriptionPlanId(@PathVariable String subscriptionPlanId) {
+    public SubscriptionPlan findSubscriptionPlanBySubscriptionPlanId(@PathVariable int subscriptionPlanId) {
         return subscriptionPlanService.getSubscriptionPlan(subscriptionPlanId);
     }
 
     @PutMapping("/updateSubscriptionPlan")
     public SubscriptionPlan updateSubscriptionPlan(@RequestBody SubscriptionPlan subscriptionPlan) {
         return subscriptionPlanService.updateSubscriptionPlan(subscriptionPlan);
+    }
+    @PutMapping("/updateMultipleSubscriptionPlans")
+    public List<SubscriptionPlan> updateSubscriptionPlanArray(@RequestBody List<SubscriptionPlan> subscriptionPlans) {
+        return subscriptionPlanService.updateSubscriptionPlanArray(subscriptionPlans);
     }
 
     @DeleteMapping("/deleteSubscriptionPlan/{subscriptionPlanId}")

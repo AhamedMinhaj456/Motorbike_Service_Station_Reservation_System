@@ -5,6 +5,7 @@ import motorbike_reservation_system.admin_CRUD.Fault.Parts.BreakingSystem.Brakin
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -21,7 +22,7 @@ public class SubscriptionPlanService {
         return subscriptionPlanRepo.findAll();
     }
 
-    public SubscriptionPlan getSubscriptionPlan(String subscriptionPlan) {
+    public SubscriptionPlan getSubscriptionPlan(int subscriptionPlan) {
         return subscriptionPlanRepo.findBySubscriptionPlanId(subscriptionPlan);
     }
 
@@ -36,7 +37,20 @@ public class SubscriptionPlanService {
         existingSubscriptionPlan.setSubscriptionPlanDescription(subscriptionPlan.getSubscriptionPlanDescription());
         existingSubscriptionPlan.setSubscriptionPlanPrice(subscriptionPlan.getSubscriptionPlanPrice());
         return subscriptionPlanRepo.save(existingSubscriptionPlan);
-
-
     }
+
+    public List<SubscriptionPlan> updateSubscriptionPlanArray(List<SubscriptionPlan> subscriptionPlans) {
+        List<SubscriptionPlan> updatedSubscriptionPlans = new ArrayList<>();
+        for (SubscriptionPlan subscriptionPlan : subscriptionPlans) {
+            SubscriptionPlan existingSubscriptionPlan = subscriptionPlanRepo.findBySubscriptionPlanId(subscriptionPlan.getSubscriptionPlanId());
+            if (existingSubscriptionPlan != null) {
+                existingSubscriptionPlan.setSubscriptionPlanName(subscriptionPlan.getSubscriptionPlanName());
+                existingSubscriptionPlan.setSubscriptionPlanDescription(subscriptionPlan.getSubscriptionPlanDescription());
+                existingSubscriptionPlan.setSubscriptionPlanPrice(subscriptionPlan.getSubscriptionPlanPrice());
+                updatedSubscriptionPlans.add(subscriptionPlanRepo.save(existingSubscriptionPlan));
+            }
+        }
+        return updatedSubscriptionPlans;
+    }
+
 }

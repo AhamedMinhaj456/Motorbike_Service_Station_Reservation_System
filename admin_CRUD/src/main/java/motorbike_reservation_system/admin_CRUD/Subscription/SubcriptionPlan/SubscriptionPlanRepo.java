@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 @EnableJpaRepositories
 public interface SubscriptionPlanRepo extends JpaRepository<SubscriptionPlan, String> {
-    SubscriptionPlan findBySubscriptionPlanId(String subscriptionPlanId);
+    SubscriptionPlan findBySubscriptionPlanId(int subscriptionPlanId);
 
 
 }
