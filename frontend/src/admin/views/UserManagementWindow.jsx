@@ -49,7 +49,7 @@ const UserManagementWindow = () => {
       <LeftSidebar />
 
       <div className="user-management-content">
-        <h2 className="user-management-heading">User Management</h2>
+        <h2 className="user-management-heading">Customer Management</h2>
 
         {selectedCustomerId ? (
           <div className="component-div">
