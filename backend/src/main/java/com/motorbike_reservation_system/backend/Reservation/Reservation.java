@@ -1,6 +1,7 @@
 package com.motorbike_reservation_system.backend.Reservation;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.motorbike_reservation_system.backend.Authentication.Customer.Entity.Customer;
 import com.motorbike_reservation_system.backend.Authentication.Shop.Entity.Shop;
 import com.motorbike_reservation_system.backend.Fault_Management.Fault;

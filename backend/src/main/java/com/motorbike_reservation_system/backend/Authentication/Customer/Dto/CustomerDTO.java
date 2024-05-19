@@ -4,13 +4,15 @@ import com.motorbike_reservation_system.backend.Motorbike.Motorbike;
 import com.motorbike_reservation_system.backend.Repair_Service.Repair;
 import com.motorbike_reservation_system.backend.Reservation.Reservation;
 import jakarta.persistence.*;
-import lombok.Builder;
-import lombok.Getter;
+import lombok.*;
 
 import java.util.List;
 
 @Builder
 @Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class CustomerDTO {
 
 

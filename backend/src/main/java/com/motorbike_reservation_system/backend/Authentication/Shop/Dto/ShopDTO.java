@@ -1,12 +1,15 @@
 package com.motorbike_reservation_system.backend.Authentication.Shop.Dto;
 
 
-import lombok.Builder;
-import lombok.Getter;
+import jakarta.persistence.Entity;
+import lombok.*;
 
 import java.util.List;
 @Builder
 @Getter
+@NoArgsConstructor
+@AllArgsConstructor
+@Setter
 public class ShopDTO {
 
     private int  shopId;

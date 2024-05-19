@@ -1,5 +1,6 @@
 package com.motorbike_reservation_system.backend.Authentication.Shop.Entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.motorbike_reservation_system.backend.Feedback.Feedback;
 import com.motorbike_reservation_system.backend.Repair_Service.Repair;
 import com.motorbike_reservation_system.backend.Reservation.Reservation;
@@ -34,12 +35,15 @@ public class Shop {
     private String email;
     private String subscriptionPlan;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "shop", cascade = CascadeType.ALL)
     private List<Reservation> reservations;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "shop", cascade = CascadeType.ALL)
     private List<Feedback> feedbacks;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "shop", cascade = CascadeType.ALL)
     private List<Repair> repairs;
 

@@ -1,5 +1,6 @@
 package com.motorbike_reservation_system.backend.Feedback;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.motorbike_reservation_system.backend.Authentication.Shop.Entity.Shop;
 import com.motorbike_reservation_system.backend.Repair_Service.Repair;
 import jakarta.persistence.*;
@@ -21,6 +22,7 @@ public class Feedback {
     private String rating;
     private String comment;
 
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "shop_id")
     private Shop shop;
@@ -29,6 +31,7 @@ public class Feedback {
 //            cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
 //    private Repair repair;
 
+    @JsonIgnore
     @OneToOne(mappedBy = "feedback")
     private Repair repair;
 

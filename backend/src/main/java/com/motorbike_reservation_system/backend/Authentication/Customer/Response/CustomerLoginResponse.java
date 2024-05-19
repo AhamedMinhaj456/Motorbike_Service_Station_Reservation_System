@@ -1,13 +1,15 @@
 package com.motorbike_reservation_system.backend.Authentication.Customer.Response;
 
 public class CustomerLoginResponse {
+    int customerId;
     String message;
     Boolean status;
 
     public CustomerLoginResponse() {
     }
 
-    public CustomerLoginResponse(String message, Boolean status) {
+    public CustomerLoginResponse(int customerId, String message, Boolean status) {
+        this.customerId = customerId;
         this.message = message;
         this.status = status;
     }
@@ -15,9 +17,17 @@ public class CustomerLoginResponse {
     @Override
     public String toString() {
         return "CustomerLoginResponse{" +
+                "customerId" + customerId +
                 "message='" + message + '\'' +
                 ", status=" + status +
                 '}';
+    }
+    public int getCustomerId() {
+        return customerId;
+    }
+
+    public void setCustomerId(int customerId) {
+        this.customerId = customerId;
     }
 
     public String getMessage() {

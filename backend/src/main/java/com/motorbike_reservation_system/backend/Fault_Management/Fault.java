@@ -1,5 +1,6 @@
 package com.motorbike_reservation_system.backend.Fault_Management;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.motorbike_reservation_system.backend.Reservation.Reservation;
 import jakarta.persistence.*;
 import lombok.*;
@@ -27,7 +28,7 @@ public class Fault {
 //    @OneToOne(cascade = CascadeType.ALL)
 //    @JoinColumn(name = "reservationId", referencedColumnName = "reservationId")
 //    private Reservation reservation;
-
+    @JsonIgnore
     @OneToOne(mappedBy = "fault")
     private Reservation reservation;
 

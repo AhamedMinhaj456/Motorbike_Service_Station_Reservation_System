@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 @Service
 public interface CustomerService {
 
-    String addCustomer(CustomerDTO customerDTO);
+    int addCustomer(CustomerDTO customerDTO);
 
     CustomerLoginResponse loginCustomer(CustomerLoginDTO customerLoginDTO);
 }

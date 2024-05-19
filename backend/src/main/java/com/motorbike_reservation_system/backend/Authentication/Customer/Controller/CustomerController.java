@@ -25,9 +25,9 @@ public class CustomerController {
 
 
     @PostMapping(path= "/save")
-    public String addCustomer(@RequestBody CustomerDTO customerDTO){
-        String id = customerService.addCustomer(customerDTO);
-        return id;
+    public int addCustomer(@RequestBody CustomerDTO customerDTO){
+        int customerId = customerService.addCustomer(customerDTO);
+        return customerId;
     }
 
     @PostMapping(path = "/login")

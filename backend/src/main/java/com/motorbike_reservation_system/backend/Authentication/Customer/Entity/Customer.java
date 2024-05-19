@@ -1,5 +1,6 @@
 package com.motorbike_reservation_system.backend.Authentication.Customer.Entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.motorbike_reservation_system.backend.Motorbike.Motorbike;
 import com.motorbike_reservation_system.backend.Repair_Service.Repair;
 import com.motorbike_reservation_system.backend.Reservation.Reservation;
@@ -21,12 +22,15 @@ public class Customer {
     private java.lang.String customerPassword;
 
 
+    @JsonIgnore
     @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL)
     private List<Motorbike> motorbikes;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL)
     private List<Reservation> reservations;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL)
     private List<Repair> repairs;
 

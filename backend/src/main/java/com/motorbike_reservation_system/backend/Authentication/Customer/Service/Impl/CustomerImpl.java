@@ -6,7 +6,6 @@ import com.motorbike_reservation_system.backend.Authentication.Customer.Entity.C
 import com.motorbike_reservation_system.backend.Authentication.Customer.Repo.CustomerRepo;
 import com.motorbike_reservation_system.backend.Authentication.Customer.Response.CustomerLoginResponse;
 import com.motorbike_reservation_system.backend.Authentication.Customer.Service.CustomerService;
-import com.motorbike_reservation_system.backend.Authentication.Shop.Entity.Shop;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -23,7 +22,7 @@ public class CustomerImpl implements CustomerService {
     private PasswordEncoder passwordEncoder;
 
     @Override
-    public String addCustomer(CustomerDTO customerDTO) {
+    public int addCustomer(CustomerDTO customerDTO) {
 
         Customer customer = new Customer(
                 customerDTO.getCustomerId(),
@@ -34,8 +33,8 @@ public class CustomerImpl implements CustomerService {
                 this.passwordEncoder.encode(customerDTO.getCustomerPassword())
         );
         customerRepo.save(customer);
-        //return customer.getCustomerName();
-        return "saved Successfully";
+        return customer.getCustomerId();
+        //return "saved Successfully";
     }
     public List<Customer> getCustomer() {
         return customerRepo.findAll();
@@ -51,12 +50,12 @@ public class CustomerImpl implements CustomerService {
             if (isPasswordRight){
                 Optional<Customer> employee = customerRepo.findOneByCustomerEmailAndCustomerPassword(customerLoginDTO.getCustomerEmail(), encodePassword);
                 if (employee.isPresent()){
-                    return new CustomerLoginResponse("Login Successfully",true );
+                    return new CustomerLoginResponse(customer1.getCustomerId(), "Login Successfully",true );
                 }
-                else return new CustomerLoginResponse("Login Failed",false);
+                else return new CustomerLoginResponse(0,"Login Failed",false);
             }
-            else return new CustomerLoginResponse("Password not Match", false);
+            else return new CustomerLoginResponse(0,"Password not Match", false);
         }
-        else return new CustomerLoginResponse("Email not Exists",false);
+        else return new CustomerLoginResponse(0,"Email not Exists",false);
     }
 }

@@ -1,5 +1,6 @@
 package com.motorbike_reservation_system.backend.Repair_Service;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.motorbike_reservation_system.backend.Authentication.Customer.Entity.Customer;
 import com.motorbike_reservation_system.backend.Authentication.Shop.Entity.Shop;
 import com.motorbike_reservation_system.backend.Fault_Management.Fault;
@@ -53,14 +54,17 @@ public class Repair {
 //    @JoinColumn(name = "reservation_id")
 //    private Reservation reservation;
 
+    @JsonIgnore
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "reservation_id", referencedColumnName = "reservationId")
     private Reservation reservation;
 
+    @JsonIgnore
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "payment_id", referencedColumnName = "paymentId")
     private Payment payment;
 
+    @JsonIgnore
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "feedback_id", referencedColumnName = "feedbackId")
     private Feedback feedback;

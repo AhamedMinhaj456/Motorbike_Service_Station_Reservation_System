@@ -1,5 +1,6 @@
 package com.motorbike_reservation_system.backend.payment;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.motorbike_reservation_system.backend.Fault_Management.Fault;
 import com.motorbike_reservation_system.backend.Payment_Method.PaymentMethod;
 import com.motorbike_reservation_system.backend.Repair_Service.Repair;
@@ -25,10 +26,12 @@ public class Payment {
 
 
 
+    @JsonIgnore
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "paymentMethod_id", referencedColumnName = "paymentMethodId")
     private PaymentMethod paymentMethod;
 
+    @JsonIgnore
     @OneToOne(mappedBy = "payment")
     private Repair repair;
 

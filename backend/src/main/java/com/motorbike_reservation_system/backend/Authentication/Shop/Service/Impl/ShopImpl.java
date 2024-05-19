@@ -2,6 +2,7 @@ package com.motorbike_reservation_system.backend.Authentication.Shop.Service.Imp
 
 import com.motorbike_reservation_system.backend.Authentication.Shop.Dto.ShopDTO;
 import com.motorbike_reservation_system.backend.Authentication.Shop.Dto.ShopLoginDTO;
+import com.motorbike_reservation_system.backend.Authentication.Shop.Dto.ShopPasswordDTO;
 import com.motorbike_reservation_system.backend.Authentication.Shop.Entity.Shop;
 import com.motorbike_reservation_system.backend.Authentication.Shop.Response.ShopLoginResponse;
 import com.motorbike_reservation_system.backend.Authentication.Shop.Repo.ShopRepo;
@@ -23,7 +24,7 @@ public class ShopImpl implements ShopService {
 
 
 
-    public Shop addShop(ShopDTO shopDTO) {
+    public int addShop(ShopDTO shopDTO) {
        Shop shop = Shop.builder()
                 .shopId(shopDTO.getShopId())
                 .shopName(shopDTO.getShopName())
@@ -34,12 +35,22 @@ public class ShopImpl implements ShopService {
                 .email(shopDTO.getEmail())
                 .subscriptionPlan(shopDTO.getSubscriptionPlan())
                 .build();
-        return shopRepo.save(shop);
+        shopRepo.save(shop);
+        return shop.getShopId();
+    }
+
+    public Shop savePassword(ShopPasswordDTO shopPasswordDTO) {
+        Shop existingShop = shopRepo.findByShopId(shopPasswordDTO.getShopId());
+        existingShop.setShopPassword(this.passwordEncoder.encode(shopPasswordDTO.getShopPassword()));
+        return shopRepo.save(existingShop);
     }
 
 
     public List<Shop> getShop() {
         return shopRepo.findAll();
+    }
+    public List<Object[]> getShopDetails() {
+        return shopRepo.findShopDetails();
     }
     @Override
     public ShopLoginResponse loginShop(ShopLoginDTO shopLoginDTO) {
@@ -59,5 +70,13 @@ public class ShopImpl implements ShopService {
             else return new ShopLoginResponse("Password not Match", false);
         }
         else return new ShopLoginResponse("Email not Exists",false);
+    }
+
+    public List<Shop> searchUsers(String shopName, String shopAddress, String email) {
+        return shopRepo.findByNameAddressEmail(shopName, shopAddress, email);
+    }
+
+    public List<Shop> searchUsers(String searchTerm) {
+        return shopRepo.findByShopNameOrShopAddressOrEmail(searchTerm);
     }
 }

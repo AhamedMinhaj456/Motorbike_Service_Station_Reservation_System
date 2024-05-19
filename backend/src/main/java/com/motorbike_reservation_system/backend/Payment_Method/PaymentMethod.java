@@ -1,5 +1,6 @@
 package com.motorbike_reservation_system.backend.Payment_Method;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.motorbike_reservation_system.backend.Reservation.Reservation;
 import com.motorbike_reservation_system.backend.payment.Payment;
 import jakarta.persistence.*;
@@ -31,6 +32,7 @@ public class PaymentMethod {
 //            cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
 //    private Payment payment;
 
+    @JsonIgnore
     @OneToOne(mappedBy = "paymentMethod")
     private Payment payment;
 
