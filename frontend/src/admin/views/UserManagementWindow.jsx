@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import './UserManagementWindow.css';
+import { Link } from 'react-router-dom';
 import LeftSidebar from '../common/LeftSidebar';
 import RightSidebar from '../common/RightSidebar';
+import CustomerDetailsWindow from "./CustomerDetailsWindow";
 import axios from 'axios'; // Import axios for making HTTP requests
 
 const UserManagementWindow = () => {
@@ -30,6 +32,18 @@ const UserManagementWindow = () => {
     }
   };
 
+
+  const [selectedCustomerId, setSelectedCustomerId] = useState(null);
+
+  const handleSelectedShopClick = (customerId) => {
+    setSelectedCustomerId(customerId);
+    localStorage.setItem(
+      "customers",
+      JSON.stringify(customers)
+    );
+    <Link to={"/ShopDetails"}></Link>;
+  };
+
   return (
     <div className="user-management">
       <LeftSidebar />
@@ -37,7 +51,13 @@ const UserManagementWindow = () => {
       <div className="user-management-content">
         <h2 className="user-management-heading">User Management</h2>
 
-        {customers.length === 0 ? (
+        {selectedCustomerId ? (
+          <div className="component-div">
+            <CustomerDetailsWindow customerId={selectedCustomerId} />
+          </div>
+        ) : (
+
+        customers.length === 0 ? (
           <p className='user-management-no-users'>No users found.</p>
         ) : (
           <div className="user-list">
@@ -49,10 +69,19 @@ const UserManagementWindow = () => {
                 <p>
                   <strong>Customer Username:</strong> {customer.customerUsername}
                 </p>
+                <div>
+                <button
+                    onClick={() => handleSelectedShopClick(customer.customerId)}
+                  >
+                    Show Details
+                  </button>
+                </div>
               </div>
+
             ))}
+            
           </div>
-        )}
+        ))}
       </div>
 
       <RightSidebar />

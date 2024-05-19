@@ -15,6 +15,8 @@ import AddFault from "./admin/views/Fault/BikeModel";
 import BikeCompany from "./admin/views/Fault/BikeCompany";
 import FaultSection from "./admin/views/Fault/FaultSection/FaultSection";
 import BikeModel from "./admin/views/Fault/BikeModel";
+import ShopDetailsWindow from "./admin/views/ShopDetailsWindow";
+import CustomerDetailsWindow from "./admin/views/CustomerDetailsWindow";
 
 
 const App = () =>{
@@ -35,6 +37,9 @@ const App = () =>{
         <Route path="/bikemodel" element={<BikeModel />} />
         <Route path="/bikecompany" element={<BikeCompany />} />
         <Route path="/faultsection" element={<FaultSection />} />
+
+        <Route path="/ShopDetails" element={<ShopDetailsWindow/>}/>
+        <Route path="/CustomerDetails" element={<CustomerDetailsWindow/>}/>
        
       </Routes>
     </Router>

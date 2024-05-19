@@ -4,6 +4,7 @@ import './ShopManagementWindow.css';
 import LeftSidebar from '../common/LeftSidebar';
 import RightSidebar from '../common/RightSidebar';
 import axios from 'axios'; 
+import ShopDetailsWindow from "./ShopDetailsWindow";
 
 const ShopManagementWindow = () => {
   const [shops, setShops] = useState([
@@ -32,6 +33,67 @@ const ShopManagementWindow = () => {
     }
   };
 
+  
+
+  // const [acceptedReservations, setAcceptedReservations] = useState([]);
+
+  // // useEffect to upreservationDate local storage when acceptedReservations changes
+  // useEffect(() => {
+  //   localStorage.setItem(
+  //     "acceptedReservations",
+  //     JSON.stringify(acceptedReservations)
+  //   );
+  //   localStorage.setItem(
+  //     "shops",
+  //     JSON.stringify(shops)
+  //   );
+  // }, [acceptedReservations]);
+
+  
+  
+  
+
+  // const handleAccept = (shopId) => {
+  //   const confirmed = window.confirm(
+  //     "Are you sure you want to accept this reservation?"
+  //   );
+  //   if (confirmed) {
+  //     const acceptedReservation = reservationRequests.find(
+  //       (reservation) => reservation.id === shopId
+  //     );
+  //     setAcceptedReservations((prevAcceptedReservations) => [
+  //       ...prevAcceptedReservations,
+  //       acceptedReservation,
+  //     ]);
+  //     setReservationRequests(
+  //       reservationRequests.filter((reservation) => reservation.id !== shopId)
+  //     );
+  //     console.log(acceptedReservation);
+  //   }
+  // };
+
+  // const handleDelete = (shopId) => {
+  //   const confirmed = window.confirm(
+  //     "Are you sure you want to delete this reservation?"
+  //   );
+  //   if (confirmed) {
+  //     setReservationRequests(
+  //       reservationRequests.filter((reservation) => reservation.id !== shopId)
+  //     );
+  //   }
+  // };
+
+  const [selectedShopId, setSelectedShopId] = useState(null);
+
+  const handleSelectedShopClick = (shopId) => {
+    setSelectedShopId(shopId);
+    localStorage.setItem(
+      "shops",
+      JSON.stringify(shops)
+    );
+    <Link to={"/ShopDetails"}></Link>;
+  };
+
   return (
     <div className="shop-management">
       <LeftSidebar />
@@ -39,7 +101,13 @@ const ShopManagementWindow = () => {
       <div className="shop-management-content">
         <h2 className="shop-management-heading">Shop Management</h2>
 
-        {shops.length === 0 ? (
+        {selectedShopId ? (
+          <div className="component-div">
+            <ShopDetailsWindow shopId={selectedShopId} />
+          </div>
+        ) : (
+    
+        shops.length === 0 ? (
           <p className="shop-management-no-shops">No shops found.</p>
         ) : (
           <div className="shop-list">
@@ -51,15 +119,26 @@ const ShopManagementWindow = () => {
                 <p>
                   <strong>Shop Address:</strong> {shop.shopAddress}
                 </p>
-                <p>
+                {/* <p>
                   <strong>View Details:</strong>
                   <Link to={`/shop/${shop.shopId}`}>View Details</Link>
-                </p>
+                </p> */}
+                <div>
+                <button
+                    onClick={() => handleSelectedShopClick(shop.shopId)}
+                  >
+                    View Shop
+                  </button>
+                </div>
               </div>
             ))}
           </div>
-        )}
+        ))}
+
+             
       </div>
+
+     
 
       <RightSidebar />
     </div>

@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react';
 import './AdminDashboard.css';
 import LeftSidebar from '../common/LeftSidebar';
 import RightSidebar from '../common/RightSidebar';
-import { Bar } from 'react-chartjs-2'; 
-import 'chart.js/auto'; 
+// import { Bar } from 'react-chartjs-2'; 
+//import 'chart.js/auto'; 
 
 const AdminDashboard = () => {
   const [selectedOption, setSelectedOption] = useState('option1');
@@ -85,21 +85,21 @@ const AdminDashboard = () => {
           {selectedOption === 'option1' && (
             <>
               <h2>Shop Registration History</h2>
-              <Bar data={graphData || defaultGraphData} />
+              {/* <Bar data={graphData || defaultGraphData} /> */}
               <p>{graphData ? 'This graph displays the shop registration history.' : 'Loading shop registration history...'}</p>
             </>
           )}
           {selectedOption === 'option2' && (
             <>
               <h2>Customer Registration History</h2>
-              <Bar data={graphData || defaultGraphData} />
+              {/* <Bar data={graphData || defaultGraphData} /> */}
               <p>{graphData ? 'This graph displays the customer registration history.' : 'Loading customer registration history...'}</p>
             </>
           )}
           {selectedOption === 'option3' && (
             <>
               <h2>POS History</h2>
-              <Bar data={graphData || defaultGraphData} />
+              {/* <Bar data={graphData || defaultGraphData} /> */}
               <p>{graphData ? 'This graph displays the point of sale (POS) history.' : 'Loading point of sale (POS) history...'}</p>
             </>
           )}
