@@ -4,7 +4,6 @@ import './AdminHomePage.css';
 import axios from "axios";
 
 const AdminHomePage = () => {
-
   const navigate = useNavigate();
 
   const [adminName, setAdminName] = useState("");
@@ -37,18 +36,13 @@ const AdminHomePage = () => {
       });
     
       if (response.data.status === true) {
-      
-      navigate('/admin/dashboard');
-   
-       }
-       else if(response.data.status === false){
-         alert(response.data.message);
+        navigate('/admin/dashboard');
+      } else if (response.data.status === false) {
+        alert(response.data.message);
       }
-     
-  } catch (error) {
-     alert(error);
-      
-  }
+    } catch (error) {
+      alert(error);
+    }
   }
 
   return (
@@ -57,8 +51,7 @@ const AdminHomePage = () => {
       <div className="content">
         <h1 className="admin-title">Admin Portal</h1>
         <div className="forms-container">
-          
-          <form className="login-form" onSubmit={loginAdmin}>
+          <form className="form login-form" onSubmit={loginAdmin}>
             <h2>Login</h2>
             <label>Email:</label>
             <input
@@ -67,7 +60,6 @@ const AdminHomePage = () => {
               value={adminEmail}
               onChange={(e) => setAdminEmail(e.target.value)}
             />
-            
             <label>Password:</label>
             <input
               type="password"
@@ -75,10 +67,11 @@ const AdminHomePage = () => {
               value={adminPassword}
               onChange={(e) => setAdminPassword(e.target.value)}
             />
+            <div className="empty-space"></div> {/* Add an empty div to align buttons */}
             <button type="submit" className="home-button">Login</button>
           </form>
 
-          <form className="signup-form" onSubmit={saveAdmin} >
+          <form className="form signup-form" onSubmit={saveAdmin}>
             <h2>Sign Up</h2>
             <label>Admin Name:</label>
             <input
@@ -94,14 +87,14 @@ const AdminHomePage = () => {
               value={adminEmail}
               onChange={(e) => setAdminEmail(e.target.value)}
             />
-           <label>Password:</label>
+            <label>Password:</label>
             <input
               type="password"
               required
               value={adminPassword}
               onChange={(e) => setAdminPassword(e.target.value)}
             />
-             <label>Admin Role</label>
+            <label>Admin Role:</label>
             <input
               type="text"
               required
