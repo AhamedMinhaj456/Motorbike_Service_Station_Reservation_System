@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import './ShopManagementWindow.css';
 import LeftSidebar from '../common/LeftSidebar';
 import RightSidebar from '../common/RightSidebar';
-import axios from 'axios'; 
+import axios from 'axios';
 import ShopDetailsWindow from "./ShopDetailsWindow";
 
 const ShopManagementWindow = () => {
@@ -33,7 +33,7 @@ const ShopManagementWindow = () => {
     }
   };
 
-  
+
 
   // const [acceptedReservations, setAcceptedReservations] = useState([]);
 
@@ -49,9 +49,9 @@ const ShopManagementWindow = () => {
   //   );
   // }, [acceptedReservations]);
 
-  
-  
-  
+
+
+
 
   // const handleAccept = (shopId) => {
   //   const confirmed = window.confirm(
@@ -98,47 +98,47 @@ const ShopManagementWindow = () => {
     <div className="shop-management">
       <LeftSidebar />
 
-      <div className="shop-management-content">
-        <h2 className="shop-management-heading">Shop Management</h2>
+      <div className="shop-management-content-1">
+        <h2 className="shop-management-heading-1">Shop Management</h2>
 
         {selectedShopId ? (
           <div className="component-div">
             <ShopDetailsWindow shopId={selectedShopId} />
           </div>
         ) : (
-    
-        shops.length === 0 ? (
-          <p className="shop-management-no-shops">No shops found.</p>
-        ) : (
-          <div className="shop-list">
-            {shops.map((shop) => (
-              <div key={shop.shopId} className="shop-item">
-                <p>
-                  <strong>Shop Name:</strong> {shop.shopName}
-                </p>
-                <p>
-                  <strong>Shop Address:</strong> {shop.shopAddress}
-                </p>
-                {/* <p>
+
+          shops.length === 0 ? (
+            <p className="shop-management-no-shops">No shops found.</p>
+          ) : (
+            <div className="shop-list">
+              {shops.map((shop) => (
+                <div key={shop.shopId} className="shop-item">
+                  <p>
+                    <strong>Shop Name:</strong> {shop.shopName}
+                  </p>
+                  <p>
+                    <strong>Shop Address:</strong> {shop.shopAddress}
+                  </p>
+                  {/* <p>
                   <strong>View Details:</strong>
                   <Link to={`/shop/${shop.shopId}`}>View Details</Link>
                 </p> */}
-                <div className="button-container">
-                <button
-                    onClick={() => handleSelectedShopClick(shop.shopId)}
-                  >
-                    View Shop
-                  </button>
+                  <div className="button-container">
+                    <button className='button-view-shop'
+                      onClick={() => handleSelectedShopClick(shop.shopId)}
+                    >
+                      View Shop
+                    </button>
+                  </div>
                 </div>
-              </div>
-            ))}
-          </div>
-        ))}
+              ))}
+            </div>
+          ))}
 
-             
+
       </div>
 
-     
+
 
       <RightSidebar />
     </div>
