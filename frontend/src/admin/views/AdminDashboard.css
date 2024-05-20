@@ -1,0 +1,54 @@
+.admin-content {
+  flex: 1;
+  flex-direction: column;
+  margin-left: 350px;
+  margin-right: 100px;
+  padding: 20px;
+}
+
+.dashboard-options {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 20px;
+}
+
+.dashboard-option {
+  cursor: pointer;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  user-select: none;
+}
+
+.dashboard-option:hover {
+  background-color: #f0f0f0;
+}
+
+.dashboard-option.selected {
+  background-color: #4caf50;
+  color: #fff;
+}
+
+.dashboard-content {
+  margin-top: 20px;
+  flex: 1;
+}
+
+.icon {
+  width: 46px;
+  height: 46px;
+  margin-bottom: 16px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 768px) {
+  .admin-content {
+    margin-left: 0; 
+  }
+
+
+} 
