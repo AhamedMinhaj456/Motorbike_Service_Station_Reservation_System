@@ -1,6 +1,7 @@
 package com.motorbike_reservation_system.backend.Reservation;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
@@ -29,11 +30,11 @@ public class ReservationController {
         return reservationService.getReservation();
     }
 
+
     @GetMapping("/reservationById/{reservationId}")
     public Reservation findReservationByReservationId(@PathVariable String reservationId) {
         return reservationService.getReservationByReservationId(reservationId);
     }
-
 
 
 //    @PutMapping("/updateReservation")
@@ -62,5 +63,10 @@ public class ReservationController {
         return "dropdown";
     }
 
+    @GetMapping("/ReservationDetails")
+    public ResponseEntity<List<ReservationDetailsDTO>> getAllReservations() {
+        List<ReservationDetailsDTO> reservationDetailsDTOS = reservationService.getAllReservationDTOs();
+        return ResponseEntity.ok(reservationDetailsDTOS);
 
+    }
 }

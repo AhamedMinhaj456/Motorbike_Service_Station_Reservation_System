@@ -8,7 +8,11 @@ import com.motorbike_reservation_system.backend.Repair_Service.RepairRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+
+import java.sql.Date;
+import java.sql.Time;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class ReservationService {
@@ -24,11 +28,11 @@ public class ReservationService {
     private FaultRepository faultRepo;
 
 
-
     @Autowired
     public ReservationService(ReservationRepo reservationRepo) {
         this.reservationRepo = reservationRepo;
     }
+
     public Reservation saveReservation(Reservation reservation) {
         return reservationRepo.save(reservation);
     }
@@ -45,7 +49,6 @@ public class ReservationService {
         return reservationRepo.findByReservationId(reservationId);
         //.orElse(null);
     }
-
 
 
     public java.lang.String deleteReservation(java.lang.String reservationId) {
@@ -66,7 +69,6 @@ public class ReservationService {
 //    }
 
 
-
     public Reservation addReservation(ReservationDTO reservationDTO) {
 
         Reservation reservation = Reservation.builder()
@@ -82,4 +84,26 @@ public class ReservationService {
         return reservationRepo.save(reservation);
     }
 
+
+    public List<ReservationDetailsDTO> getAllReservationDTOs() {
+        List<Reservation> reservations = listAll();
+        return reservations.stream()
+                .map(reservation -> new ReservationDetailsDTO(
+                        reservation.getReservationId(),
+                        reservation.getMotorbikeNumber(),
+                        convertToSqlDate(reservation.getReservationDate()),
+                        reservation.getReservationTime(),
+                        reservation.getAdvancePayment(),
+                        (reservation.getCustomer() != null) ? reservation.getCustomer().getCustomerName() : null,
+                        (reservation.getShop() != null) ? reservation.getShop().getShopName() : null
+                ))
+                .collect(Collectors.toList());
+    }
+
+    private java.sql.Date convertToSqlDate(java.util.Date date) {
+        if (date != null) {
+            return new java.sql.Date(date.getTime());
+        }
+        return null;
+    }
 }
