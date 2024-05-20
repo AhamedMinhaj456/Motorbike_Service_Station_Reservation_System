@@ -95,23 +95,23 @@ const AdminManagementWindow = () => {
   };
 
   return (
-    <div className="shop-management">
+    <div className="admin-management">
       <LeftSidebar />
 
-      <div className="shop-management-content">
-        <h2 className="shop-management-heading">Admin Management</h2>
+      <div className="admin-management-content">
+        <h2 className="admin-management-heading">Admin Management</h2>
         {selectedadminId ? (
-          <div className="component-div">
+          <div className="component-div-admin">
             <AdminDetailsWindow adminId={selectedadminId} />
           </div>
         ) : (
     
         admins.length === 0 ? (
-          <p className="shop-management-no-shops">No admins found.</p>
+          <p className="admin-management-no-shops">No admins found.</p>
         ) : (
-          <div className="shop-list">
+          <div className="admin-list">
             {admins.map((admin) => (
-              <div key={admin.adminId} className="shop-item">
+              <div key={admin.adminId} className="admin-item">
                 <p>
                   <strong>Admin Name:</strong> {admin.adminName}
                 </p>
@@ -122,8 +122,8 @@ const AdminManagementWindow = () => {
                   <strong>View Details:</strong>
                   <Link to={`/shop/${shop.adminId}`}>View Details</Link>
                 </p> */}
-                <div className="button-container">
-                <button
+                <div className="button-container-3">
+                <button className='view-admin'
                     onClick={() => handleSelectedShopClick(admin.adminId)}
                   >
                     View Admin
