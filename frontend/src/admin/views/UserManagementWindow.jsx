@@ -16,15 +16,11 @@ const UserManagementWindow = () => {
   ]);
 
   useEffect(() => {
-    // Backend developer: Fetch user data from the backend and update state
-    // Example:
     fetchData();
   }, []);
 
-  // Backend connection: Function to fetch user data from the backend
-  const fetchData = async () => {
+ const fetchData = async () => {
     try {
-      // Example using axios:
       const response = await axios.get('http://localhost:8095/customer/getCustomer');
       setCustomers(response.data);
     } catch (error) {

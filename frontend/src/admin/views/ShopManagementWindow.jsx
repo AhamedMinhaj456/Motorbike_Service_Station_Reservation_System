@@ -119,10 +119,6 @@ const ShopManagementWindow = () => {
                   <p>
                     <strong>Shop Address:</strong> {shop.shopAddress}
                   </p>
-                  {/* <p>
-                  <strong>View Details:</strong>
-                  <Link to={`/shop/${shop.shopId}`}>View Details</Link>
-                </p> */}
                   <div className="button-container">
                     <button className='button-view-shop'
                       onClick={() => handleSelectedShopClick(shop.shopId)}
