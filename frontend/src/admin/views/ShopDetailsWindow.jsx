@@ -169,7 +169,7 @@ const ShopDetailsWindow = ({ shopId }) => {
           </div>
 
           <Link to={"/shop-management"}>
-            <button className=""
+            <button className="back-button-1"
               onClick={() => window.location.reload()}
             >
               Back

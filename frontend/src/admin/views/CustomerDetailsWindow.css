@@ -47,7 +47,7 @@ h3 {
   transition: color 0.3s; 
 }
 
-.Reservation-details-list p strong {
+.customer-details-list p strong {
   margin-right: 10px;
   text-align: left;
 }
