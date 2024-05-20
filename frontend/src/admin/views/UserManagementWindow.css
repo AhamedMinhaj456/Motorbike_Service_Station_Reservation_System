@@ -1,10 +1,11 @@
 .user-management-content {
-    flex: 1;
-    flex-direction: column;
-    align-items: center;
-    margin-left: 460px;
-    /* margin-right: 100px; */
-    padding: 20px;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: center;
+  margin-left: 350px;
+  margin-right: 80px;
+  padding: 20px;
 }
   
 .user-management-content h2 {
@@ -14,24 +15,29 @@
 }
   
 .user-list {
-    overflow-y: auto;
-    width: 80%;
-    margin-top: 10px; 
+  overflow-y: auto;
+  width: 90%;
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
   
 .user-item {
   width: 100%;
-  align-self: center;
   background-color: #F1F4F7;
   margin-bottom: 20px;
-  border: 0.5px solid #ccc;
+  border: 1px solid transparent; 
   border-radius: 8px;
   padding: 20px;
-  transition: transform 0.3s, background-color 0.3s; 
+  display: flex;
+  flex-direction: column;
+  transition: border-color 0.3s;
 }
   
 .user-item:hover {
   transform: translateY(-5px); 
+  border-color: #007bff; 
   background: linear-gradient(to bottom, #eaeede, #9baab7);
 }
 
@@ -44,14 +50,31 @@
   color: rgb(24, 74, 9); 
 }
 
+.button-container-2 {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  height: 100%; 
+}
+
+.show-details {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.show-details:hover {
+  background-color: #b2e1a6;
+}
+
 @media screen and (max-width: 768px) {
   .user-management-content {
-    margin-left: 10px; 
-    margin-right: 35px; 
+    margin-left: 0px; 
   }
-  .user-management-heading {
-    margin-left: -30px;
-    margin-right: 100px;
-  }
+
 }
   

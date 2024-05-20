@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import LeftSidebar from '../common/LeftSidebar';
 import RightSidebar from '../common/RightSidebar';
 import CustomerDetailsWindow from "./CustomerDetailsWindow";
-import axios from 'axios'; // Import axios for making HTTP requests
+import axios from 'axios'; 
 
 const UserManagementWindow = () => {
   const [customers, setCustomers] = useState([
@@ -69,8 +69,8 @@ const UserManagementWindow = () => {
                 <p>
                   <strong>Customer Username:</strong> {customer.customerUsername}
                 </p>
-                <div>
-                <button
+                <div className="button-container-2">
+                <button className='show-details'
                     onClick={() => handleSelectedShopClick(customer.customerId)}
                   >
                     Show Details
