@@ -115,14 +115,13 @@ const SubscriptionPlansManagementWindow = () => {
                 value={newPlan.subscriptionPlanPrice}
                 onChange={handleChange}
               />
-              <button className="save-button" type="submit">
+              <button className="save-button-1" type="submit">
                 Save
               </button>
             </form>
           </div>
         </div>
 
-        {/* Render the plans' forms */}
         {plans.map((plan) => (
           <div key={plan.subscriptionPlanId} className="plan-item">
             <label>
@@ -166,12 +165,12 @@ const SubscriptionPlansManagementWindow = () => {
             )}
             <div className="subscription-plans-management-buttons">
           <button
-            className={`edit-button ${editMode ? 'active' : ''}`}
+            className={`edit-button-1 ${editMode ? 'active' : ''}`}
             onClick={() => setEditMode(!editMode)}
           >
             Edit
           </button>
-          <button className="save-button" onClick={handleSave} disabled={!editMode}>
+          <button className="save-button-1" onClick={handleSave} disabled={!editMode}>
             Save
           </button>
         </div>
