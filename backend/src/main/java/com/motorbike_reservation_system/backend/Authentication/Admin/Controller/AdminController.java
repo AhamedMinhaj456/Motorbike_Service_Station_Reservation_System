@@ -6,6 +6,7 @@ import com.motorbike_reservation_system.backend.Authentication.Admin.Entity.Admi
 import com.motorbike_reservation_system.backend.Authentication.Admin.Response.AdminLoginResponse;
 import com.motorbike_reservation_system.backend.Authentication.Admin.Service.AdminService;
 import com.motorbike_reservation_system.backend.Authentication.Admin.Service.Impl.AdminIMPL;
+import com.motorbike_reservation_system.backend.Authentication.Customer.Entity.Customer;
 import com.motorbike_reservation_system.backend.Reservation.Reservation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -39,5 +40,15 @@ public class AdminController {
     @GetMapping("/getAdmin")
     public List<Admin> findAllAdmin() {
         return adminIMPL.getAdmin();
+    }
+
+    @PutMapping("/{adminId}/active-status")
+    public void updateActiveStatus(@PathVariable int adminId, @RequestParam String activeStatus) {
+        adminIMPL.updateActiveStatus(adminId, activeStatus);
+    }
+
+    @GetMapping("/{adminId}")
+    public Admin getCustomerById(@PathVariable int adminId) {
+        return adminIMPL.getAdminById(adminId);
     }
 }

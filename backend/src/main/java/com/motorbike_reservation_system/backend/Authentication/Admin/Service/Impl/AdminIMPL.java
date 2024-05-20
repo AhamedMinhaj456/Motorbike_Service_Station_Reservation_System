@@ -9,6 +9,7 @@ import com.motorbike_reservation_system.backend.Authentication.Admin.Service.Adm
 import com.motorbike_reservation_system.backend.Authentication.Customer.Dto.CustomerLoginDTO;
 import com.motorbike_reservation_system.backend.Authentication.Customer.Entity.Customer;
 import com.motorbike_reservation_system.backend.Authentication.Customer.Response.CustomerLoginResponse;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -26,19 +27,18 @@ public class AdminIMPL implements AdminService {
 
     @Override
     public String addAdmin(AdminDTO adminDTO) {
-
-        Admin admin =new Admin(
-                adminDTO.getAdminId(),
-                adminDTO.getAdminName(),
-                adminDTO.getAdminEmail(),
-                this.passwordEncoder.encode(adminDTO.getAdminPassword()),
-                adminDTO.getAdminRole()
-
-        );
+        Admin admin = Admin.builder()
+                .adminId(adminDTO.getAdminId())
+                .adminName(adminDTO.getAdminName())
+                .adminEmail(adminDTO.getAdminEmail())
+                .adminPassword(this.passwordEncoder.encode(adminDTO.getAdminPassword()))
+                .adminRole(adminDTO.getAdminRole())
+                .activeStatus(Optional.ofNullable(adminDTO.getActiveStatus()).orElse("active"))
+                .build();
         adminRepo.save(admin);
-        return admin.getAdminName() ;
-        //       return "saved Successfully";
+        return admin.getAdminName();
     }
+
 
 
 
@@ -64,5 +64,15 @@ public class AdminIMPL implements AdminService {
             else return new AdminLoginResponse("Password not Match", false);
         }
         else return new AdminLoginResponse("Email not Exists",false);
+    }
+
+    @Transactional
+    public void updateActiveStatus(int adminId, String activeStatus) {
+        adminRepo.updateActiveStatus(adminId, activeStatus);
+    }
+
+
+    public Admin getAdminById(int adminId) {
+        return adminRepo.findById(adminId).orElseThrow(() -> new RuntimeException("User not found"));
     }
 }

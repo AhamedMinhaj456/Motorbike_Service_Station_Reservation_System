@@ -65,4 +65,21 @@ public class ShopController {
     public List<Shop> searchUsers(@RequestParam("q") String searchTerm) {
         return shopImpl.searchUsers(searchTerm);
     }
+
+    @PutMapping("/{shopId}/active-status")
+    public void updateActiveStatus(@PathVariable int shopId, @RequestParam String activeStatus) {
+        shopImpl.updateActiveStatus(shopId, activeStatus);
+    }
+
+    @PutMapping("/{shopId}/approved-status")
+    public void updateApprovedStatus(@PathVariable int shopId, @RequestParam String approvedStatus) {
+        shopImpl.updateApprovedStatus(shopId, approvedStatus);
+    }
+
+    @GetMapping("/{shopId}")
+    public Shop getShopById(@PathVariable int shopId) {
+        return shopImpl.getShopById(shopId);
+    }
+
+
 }

@@ -6,6 +6,8 @@ import com.motorbike_reservation_system.backend.Authentication.Customer.Entity.C
 import com.motorbike_reservation_system.backend.Authentication.Customer.Repo.CustomerRepo;
 import com.motorbike_reservation_system.backend.Authentication.Customer.Response.CustomerLoginResponse;
 import com.motorbike_reservation_system.backend.Authentication.Customer.Service.CustomerService;
+import com.motorbike_reservation_system.backend.Authentication.Shop.Entity.Shop;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -21,21 +23,23 @@ public class CustomerImpl implements CustomerService {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
+
     @Override
     public int addCustomer(CustomerDTO customerDTO) {
-
-        Customer customer = new Customer(
-                customerDTO.getCustomerId(),
-                customerDTO.getCustomerName(),
-                customerDTO.getCustomerEmail(),
-                customerDTO.getCustomerPhoneNumber(),
-                customerDTO.getCustomerUsername(),
-                this.passwordEncoder.encode(customerDTO.getCustomerPassword())
-        );
+        Customer customer = Customer.builder()
+                .customerId(customerDTO.getCustomerId())
+                .customerName(customerDTO.getCustomerName())
+                .customerEmail(customerDTO.getCustomerEmail())
+                .customerPhoneNumber(customerDTO.getCustomerPhoneNumber())
+                .customerUsername(customerDTO.getCustomerUsername())
+                .customerPassword(this.passwordEncoder.encode(customerDTO.getCustomerPassword()))
+                .activeStatus(Optional.ofNullable(customerDTO.getActiveStatus()).orElse("active"))
+                .build();
         customerRepo.save(customer);
         return customer.getCustomerId();
-        //return "saved Successfully";
     }
+
+
     public List<Customer> getCustomer() {
         return customerRepo.findAll();
     }
@@ -57,5 +61,15 @@ public class CustomerImpl implements CustomerService {
             else return new CustomerLoginResponse(0,"Password not Match", false);
         }
         else return new CustomerLoginResponse(0,"Email not Exists",false);
+    }
+
+    @Transactional
+    public void updateActiveStatus(int customerId, String activeStatus) {
+        customerRepo.updateActiveStatus(customerId, activeStatus);
+    }
+
+
+    public Customer getCustomerById(int customerId) {
+        return customerRepo.findById(customerId).orElseThrow(() -> new RuntimeException("User not found"));
     }
 }

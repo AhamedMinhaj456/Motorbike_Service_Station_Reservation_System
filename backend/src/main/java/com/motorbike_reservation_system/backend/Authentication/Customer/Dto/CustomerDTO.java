@@ -17,10 +17,11 @@ public class CustomerDTO {
 
 
     private int customerId;
-    private java.lang.String customerName;
-    private java.lang.String customerEmail;
-    private java.lang.String customerPhoneNumber;
-    private java.lang.String customerUsername;
-    private java.lang.String customerPassword;
+    private String customerName;
+    private String customerEmail;
+    private String customerPhoneNumber;
+    private String customerUsername;
+    private String customerPassword;
+    private String activeStatus;
 
 }

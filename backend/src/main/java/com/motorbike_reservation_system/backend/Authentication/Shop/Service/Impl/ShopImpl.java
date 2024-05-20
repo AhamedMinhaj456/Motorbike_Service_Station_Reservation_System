@@ -7,6 +7,7 @@ import com.motorbike_reservation_system.backend.Authentication.Shop.Entity.Shop;
 import com.motorbike_reservation_system.backend.Authentication.Shop.Response.ShopLoginResponse;
 import com.motorbike_reservation_system.backend.Authentication.Shop.Repo.ShopRepo;
 import com.motorbike_reservation_system.backend.Authentication.Shop.Service.ShopService;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -25,7 +26,7 @@ public class ShopImpl implements ShopService {
 
 
     public int addShop(ShopDTO shopDTO) {
-       Shop shop = Shop.builder()
+        Shop shop = Shop.builder()
                 .shopId(shopDTO.getShopId())
                 .shopName(shopDTO.getShopName())
                 .shopPassword(this.passwordEncoder.encode(shopDTO.getShopPassword()))
@@ -34,10 +35,13 @@ public class ShopImpl implements ShopService {
                 .taxId(shopDTO.getTaxId())
                 .email(shopDTO.getEmail())
                 .subscriptionPlan(shopDTO.getSubscriptionPlan())
+                .activeStatus(Optional.ofNullable(shopDTO.getActiveStatus()).orElse("active"))
+                .approvedStatus(Optional.ofNullable(shopDTO.getApprovedStatus()).orElse("pending"))
                 .build();
         shopRepo.save(shop);
         return shop.getShopId();
     }
+
 
     public Shop savePassword(ShopPasswordDTO shopPasswordDTO) {
         Shop existingShop = shopRepo.findByShopId(shopPasswordDTO.getShopId());
@@ -78,5 +82,19 @@ public class ShopImpl implements ShopService {
 
     public List<Shop> searchUsers(String searchTerm) {
         return shopRepo.findByShopNameOrShopAddressOrEmail(searchTerm);
+    }
+
+    @Transactional
+    public void updateActiveStatus(int shopId, String activeStatus) {
+        shopRepo.updateActiveStatus(shopId, activeStatus);
+    }
+
+    @Transactional
+    public void updateApprovedStatus(int shopId, String approvedStatus) {
+        shopRepo.updateApprovedStatus(shopId, approvedStatus);
+    }
+
+    public Shop getShopById(int shopId) {
+        return shopRepo.findById(shopId).orElseThrow(() -> new RuntimeException("User not found"));
     }
 }

@@ -1,7 +1,9 @@
 package com.motorbike_reservation_system.backend.Authentication.Shop.Repo;
 
 import com.motorbike_reservation_system.backend.Authentication.Shop.Entity.Shop;
+import jakarta.transaction.Transactional;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.data.repository.query.Param;
@@ -37,5 +39,16 @@ public interface ShopRepo extends JpaRepository<Shop,Integer> {
             "LOWER(u.shopAddress) LIKE LOWER(CONCAT('%', :searchTerm, '%')) OR " +
             "LOWER(u.email) LIKE LOWER(CONCAT('%', :searchTerm, '%'))")
     List<Shop> findByShopNameOrShopAddressOrEmail(@Param("searchTerm") String searchTerm);
+
+    @Modifying
+    @Transactional
+    @Query("UPDATE Shop u SET u.activeStatus = :activeStatus WHERE u.shopId = :shopId")
+    void updateActiveStatus(@Param("shopId") int shopId, @Param("activeStatus") String activeStatus);
+
+    @Modifying
+    @Transactional
+    @Query("UPDATE Shop u SET u.approvedStatus = :approvedStatus WHERE u.shopId = :shopId")
+    void updateApprovedStatus(@Param("shopId") int shopId, @Param("approvedStatus") String approvedStatus);
+
 
 }

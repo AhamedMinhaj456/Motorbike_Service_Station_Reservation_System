@@ -20,5 +20,7 @@ public class ShopDTO {
     private String taxId;
     private String email;
     private String subscriptionPlan;
+    private String activeStatus;
+    private String approvedStatus;
 
 }
