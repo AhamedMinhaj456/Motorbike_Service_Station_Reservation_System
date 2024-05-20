@@ -8,6 +8,7 @@ import UserManagementIcon from '../../assets/UserManagement.svg';
 import SubscriptionIcon from '../../assets/Subscription.svg';
 import FaultIcon from '../../assets/Category.svg';
 import Account_Setting_Icon from '../../assets/account_setting.svg';
+import PaymentManagementIcon from '../../assets/payment.svg'; // Add the icon for Payment Management
 
 const LeftSidebar = () => {
   const [isSidebarOpen, setSidebarOpen] = useState(false);
@@ -42,9 +43,15 @@ const LeftSidebar = () => {
           <img src={UserManagementIcon} alt="UserManagement" />
           <span>User Management</span>
         </Link>
+
         <Link to="/AdminManagementWindow" className="list-item">
           <img src={UserManagementIcon} alt="UserManagement" />
           <span>Admin Management</span>
+        </Link>
+
+        <Link to="/payment-management" className="list-item">
+          <img src={PaymentManagementIcon} alt="PaymentManagement" />
+          <span>Payment Management</span>
         </Link>
 
         <Link to="/subscription-plans" className="list-item">
@@ -58,7 +65,7 @@ const LeftSidebar = () => {
         </Link>
 
         <div className="list-item dropdown">
-          <img src={Account_Setting_Icon} alt="Acount & Setting" />
+          <img src={Account_Setting_Icon} alt="Account & Setting" />
           <span>Account & Setting</span>
           <div className="dropdown-content">
             <Link to="/profile">

@@ -19,7 +19,7 @@ import ShopDetailsWindow from "./admin/views/ShopDetailsWindow";
 import CustomerDetailsWindow from "./admin/views/CustomerDetailsWindow";
 import AdminManagementWindow from "./admin/views/AdminManagementWindow";
 import AdminDetailsWindow from "./admin/views/AdminDetailsWindow";
-
+import PaymentManagementWindow from "./admin/views/PaymentManagementWindow"
 
 
 const App = () =>{
@@ -32,6 +32,7 @@ const App = () =>{
         <Route path="/fault-management" element={<FaultManagementWindow />} />
         <Route path="/user-management" element={<UserManagementWindow />} />
         <Route path="/shop-management" element={<ShopManagementWindow />} />
+        <Route path="/payment-management" element={<PaymentManagementWindow />} />
         <Route path="/subscription-plans" element={<SubscriptionPlansManagementWindow />} />
         <Route path="/profile" element={<AdminProfileWindow />} />
         <Route path="/account-setting" element={<AccountSettingWindow />} />
