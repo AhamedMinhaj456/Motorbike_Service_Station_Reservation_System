@@ -1,0 +1,66 @@
+.admin-dashboard {
+  display: flex;
+}
+
+.left-sidebar {
+  width: 350px;
+  background-color: #CAF0F8;
+  color: #fff;
+  padding: 10px;
+  height: 100vh;
+}
+
+.admin-content {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  margin-left: 350px;
+  padding: 20px;
+}
+
+.dashboard-options {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 20px;
+}
+
+.dashboard-option {
+  cursor: pointer;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  user-select: none;
+}
+
+.dashboard-option:hover {
+  background-color: #f0f0f0;
+}
+
+.dashboard-option.selected {
+  background-color: #4caf50;
+  color: #fff;
+}
+
+.dashboard-content {
+  margin-top: 20px;
+  flex: 1;
+}
+
+.right-sidebar {
+  width: 80px;
+  background-color: #ADE8F4;
+  color: #fff;
+  padding: 10px;
+  height: 100vh;
+}
+
+.icon {
+  width: 46px;
+  height: 46px;
+  margin-bottom: 16px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}

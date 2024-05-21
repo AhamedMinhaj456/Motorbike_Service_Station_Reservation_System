@@ -1,0 +1,125 @@
+.secure-payment {
+    width: 100%;
+    min-height: 100vh;
+    background: url('../assets/handshake.jpeg') center/cover;
+    display: flex;
+    justify-content: space-between;
+    align-content: center;    
+    text-align: center;
+    padding: 20px; 
+}
+
+.secure-payment-left {
+    flex-basis: 48%;
+    color: purple; 
+    text-align: center;
+    align-items: flex-start;
+}
+
+.secure-payment-left h2 {
+    margin: 70px; 
+    font-size: 2.5rem; 
+    line-height: 1.2;
+    color: purple; 
+   
+}
+
+.Visa {
+    margin-top: 20px;
+    margin-left: 150px;
+    margin-bottom: 10px;
+}
+
+.secure-payment-right {
+    display: flex;
+    flex-direction: column;
+    width: 520px;
+    background: lightblue;
+    border-radius: 10px;
+    margin-top: 10px;
+    padding: 30px 40px;
+    margin-right: 80px;
+    justify-content: center;
+    align-items: center;
+}
+
+.secure-payment-right h2 {
+    font-size: 30px;
+    margin-top: 10px;
+    font-family: sans-serif;
+    font-weight: bold;
+}
+
+
+.fields {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-top: 30px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.fields p1{
+    font-weight: 600;
+}
+
+.form-control {
+    border-radius: 10px;
+    margin-bottom: 20px;
+    text-align: left;
+    
+    
+}
+
+
+.form-control label {
+    margin-bottom: 5px;
+    margin-left: 10px; 
+    width: auto; 
+    text-align: left; 
+}
+
+
+.form-control input {
+    width: 100%;
+    padding: 10px;
+    border-radius: 10px;
+    height: 30px;
+    margin-bottom: 10px;
+   
+}
+
+
+.last-para p{
+    font-family: cambria;
+    font-weight: 900px;
+   
+}
+
+
+
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    margin-top: auto;   
+}
+
+button[type="submit"] {
+    align-self: center;
+    border-radius: 5px;
+    width: 200px;
+    height: 30px;
+    background-color: rgb(18, 4, 88);
+    font-weight: bold;
+    margin-top: 40px;
+    color: azure;
+}
+
+button[type="submit"]:hover {
+    background-color: rgb(197, 114, 239);
+}
+
+
+

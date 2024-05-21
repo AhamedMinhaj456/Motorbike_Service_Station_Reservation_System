@@ -1,0 +1,136 @@
+.subscription {
+    width: 100%;
+    min-height: 100vh;
+    background: url('../assets/handshake.jpeg') center/cover;
+    align-content: center;    
+    text-align: center;
+    padding: 20px; 
+}
+.subscription-left {
+    color: purple; 
+    text-align: left;
+    align-items: flex-start;
+}
+
+.subscription-left h2 {
+    margin: 70px; 
+    font-size: 2.5rem; 
+    line-height: 1.2;
+    color: purple; 
+   
+}
+
+.subscription-right {
+    display: flex;
+    flex-direction: column;
+    width: 820px;
+    background: lightblue;
+    border-radius: 10px;
+    margin-top: 10px;
+    padding: 30px 40px;
+    margin-right: 80px;
+    justify-content: center;
+    align-items: center;
+    margin-left: 30px;
+   
+}
+
+.subscription-right h2 {
+    font-size: 30px;
+    margin-top: 10px;
+    font-family: sans-serif;
+    font-weight: bold;
+}
+
+.registrationform {
+    display: flex;
+    justify-content: space-between;
+    gap: 40px; /* Increase the gap between plan subclasses */
+    width: 100%; /* Ensure the form spans the full width */
+    margin-top: 30px;
+}
+
+
+
+
+.advancedplan,
+.basicplan,
+.premiumplan {
+    flex: 1; /* Make each plan subclass occupy equal space */
+    padding: 20px;
+    border-radius: 10px;
+    background-color: #ffffff;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 200px;
+}
+
+.advancedplan:hover,
+.basicplan:hover,
+.premiumplan:hover {
+    background-color: #94c3f0;
+    
+}
+.tx-1{
+    color: rgb(100, 55, 95);
+    font-weight: bold;
+    font-size: 22px;
+}
+.tx-2{
+    color: rgb(51, 65, 125);
+    font-weight: bold;
+    font-size: 18px;
+}
+.UL {
+    padding-left: 20px;
+}
+
+.LI {
+    margin: 5px 0;
+    padding-left: 1em;
+    text-indent: -1em;
+    display: flex;
+    align-items: baseline; /* Align items along the baseline */
+}
+
+.buynowbutton {
+    background-color: #16c45b;
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    height:40px ;
+    margin-top: 20px;
+}
+
+.buynowbutton:hover {
+    background-color: #128c4e; /* Change color on hover */
+}
+
+
+
+
+
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    margin-top: auto;   
+}
+
+button[type="submit"] {
+    align-self: center;
+    border-radius: 5px;
+    width: 200px;
+    height: 30px;
+    background-color: rgb(18, 4, 88);
+    font-weight: bold;
+    margin-top: 40px;
+    color: azure;
+}
+
+button[type="submit"]:hover {
+    background-color: rgb(197, 114, 239);
+}
