@@ -6,7 +6,8 @@
   padding: 20px;
 }
 
-.shop-details-management-content h2,h3 {
+.shop-details-management-content h2,
+.shop-details-management-content h3 {
   margin-top: 10px;
   margin-bottom: 20px;
   text-align: center;
@@ -23,9 +24,9 @@
 
 .shop-details-item {
   width: 100%;
-  background-color: #F1F4F7;
+  background-color: #f1f4f7;
   margin-bottom: 20px;
-  border: 1px solid transparent; 
+  border: 1px solid transparent;
   border-radius: 8px;
   padding: 20px;
   display: flex;
@@ -34,24 +35,35 @@
 }
 
 .shop-details-item:hover {
-  transform: translateY(-5px); 
-  border-color: #007bff; 
+  transform: translateY(-5px);
+  border-color: #007bff;
   background: linear-gradient(to bottom, #eaeede, #9baab7);
 }
 
-
 .shop-details-list p {
   margin-bottom: 10px;
-  transition: color 0.3s; 
+  transition: color 0.3s;
 }
 
-.Reservation-details-list p strong {
+.shop-details-list p strong {
   margin-right: 10px;
   text-align: left;
 }
 
-.Reservation-details-list p span {
+.shop-details-list p span {
   text-align: right;
+}
+
+.shop-details-list .switch-container,
+.shop-details-list .radio-container {
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+}
+
+.switch-container label,
+.radio-container label {
+  margin-right: 10px;
 }
 
 .back-button-1 {
@@ -86,7 +98,6 @@
 
 @media screen and (max-width: 768px) {
   .shop-details-management-content {
-    margin-left: 0px; 
+    margin-left: 0px;
   }
-
 }

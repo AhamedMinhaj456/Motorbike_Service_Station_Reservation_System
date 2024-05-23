@@ -36,7 +36,9 @@
 }
 
 .shop-item:hover {
+  transform: translateY(-5px); 
   border-color: #007bff; 
+  background: linear-gradient(to bottom, #eaeede, #9baab7);
 }
 
 .button-container {
