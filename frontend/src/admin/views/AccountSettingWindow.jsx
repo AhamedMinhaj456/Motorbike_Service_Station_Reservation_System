@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import './AccountSettingWindow.css';
 import LeftSidebar from '../common/LeftSidebar';
 import RightSidebar from '../common/RightSidebar';
+import { FaBars } from 'react-icons/fa';
 
 const AccountSettingWindow = () => {
   const [accountSettings, setAccountSettings] = useState({
@@ -25,9 +26,20 @@ const AccountSettingWindow = () => {
     console.log('Account settings updated:', accountSettings);
   };
 
+  const [sidebarOpen, setSidebarOpen] = useState(false); 
+  const toggleSidebar = () => {
+    setSidebarOpen(!sidebarOpen); 
+  };
+
   return (
     <div className="account-setting-window">
-      <LeftSidebar />
+      <div className="hamburger-icon" onClick={toggleSidebar}>
+        <FaBars />
+      </div>
+
+      <div className={`left-sidebar ${sidebarOpen ? 'open' : ''}`}>
+        <LeftSidebar />
+      </div>
 
       <div className="account-setting-content">
         <h2>Account Settings</h2>

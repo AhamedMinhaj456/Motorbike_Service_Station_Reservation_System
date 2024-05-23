@@ -5,6 +5,7 @@ import LeftSidebar from '../common/LeftSidebar';
 import RightSidebar from '../common/RightSidebar';
 import CustomerDetailsWindow from "./CustomerDetailsWindow";
 import axios from 'axios'; 
+import { FaBars } from 'react-icons/fa';
 
 const UserManagementWindow = () => {
   const [customers, setCustomers] = useState([
@@ -40,9 +41,20 @@ const UserManagementWindow = () => {
     <Link to={"/ShopDetails"}></Link>;
   };
 
+  const [sidebarOpen, setSidebarOpen] = useState(false); 
+  const toggleSidebar = () => {
+    setSidebarOpen(!sidebarOpen); 
+  };
+
   return (
     <div className="user-management">
-      <LeftSidebar />
+      <div className="hamburger-icon" onClick={toggleSidebar}>
+        <FaBars />
+      </div>
+
+      <div className={`left-sidebar ${sidebarOpen ? 'open' : ''}`}>
+        <LeftSidebar />
+      </div>
 
       <div className="user-management-content">
         <h2 className="user-management-heading">Customer Management</h2>

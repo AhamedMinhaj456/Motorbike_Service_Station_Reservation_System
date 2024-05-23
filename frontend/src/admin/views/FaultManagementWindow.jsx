@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './FaultManagementWindow.css';
 import LeftSidebar from '../common/LeftSidebar';
 import RightSidebar from '../common/RightSidebar';
+import { FaBars } from 'react-icons/fa';
 
 const FaultManagementWindow = () => {
   const [faults, setFaults] = useState(
@@ -211,9 +212,21 @@ const FaultManagementWindow = () => {
     );
   };
 
+  const [sidebarOpen, setSidebarOpen] = useState(false); 
+  const toggleSidebar = () => {
+    setSidebarOpen(!sidebarOpen); 
+  };
+
   return (
     <div className="fault-management">
-      <LeftSidebar />
+      <div className="hamburger-icon" onClick={toggleSidebar}>
+        <FaBars />
+      </div>
+
+      <div className={`left-sidebar ${sidebarOpen ? 'open' : ''}`}>
+        <LeftSidebar />
+      </div>
+      
       <div className="fault-management-content">
         {step === 1 && (
           <div className='part'>

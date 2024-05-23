@@ -5,6 +5,7 @@ import LeftSidebar from '../common/LeftSidebar';
 import RightSidebar from '../common/RightSidebar';
 import axios from 'axios'; 
 import AdminDetailsWindow from "./AdminDetailsWindow";
+import { FaBars } from 'react-icons/fa';
 
 const AdminManagementWindow = () => {
   const [admins, setAdmins] = useState([
@@ -94,9 +95,20 @@ const AdminManagementWindow = () => {
     <Link to={"/AdminDetails"}></Link>;
   };
 
+  const [sidebarOpen, setSidebarOpen] = useState(false); 
+  const toggleSidebar = () => {
+    setSidebarOpen(!sidebarOpen); 
+  };
+
   return (
     <div className="admin-management">
-      <LeftSidebar />
+      <div className="hamburger-icon" onClick={toggleSidebar}>
+        <FaBars />
+      </div>
+
+      <div className={`left-sidebar ${sidebarOpen ? 'open' : ''}`}>
+        <LeftSidebar />
+      </div>
 
       <div className="admin-management-content">
         <h2 className="admin-management-heading">Admin Management</h2>

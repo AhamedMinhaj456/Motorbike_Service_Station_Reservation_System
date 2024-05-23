@@ -48,6 +48,7 @@ const AdminDashboard = () => {
     ],
   };
 
+  
   return (
     <div className="admin-dashboard">
       <div className="hamburger-icon" onClick={toggleSidebar}>
@@ -55,7 +56,6 @@ const AdminDashboard = () => {
       </div>
 
       <div className={`left-sidebar ${sidebarOpen ? 'open' : ''}`}>
-        <h1>error</h1>
         <LeftSidebar />
       </div>
 

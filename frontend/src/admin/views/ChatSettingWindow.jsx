@@ -3,6 +3,7 @@ import './ChatSettingWindow.css';
 import LeftSidebar from '../common/LeftSidebar';
 import RightSidebar from '../common/RightSidebar';
 import axios from 'axios';
+import { FaBars } from 'react-icons/fa';
 
 const ChatSettingWindow = () => {
   const [chatSettings, setChatSettings] = useState({
@@ -49,9 +50,20 @@ const ChatSettingWindow = () => {
     }
   };
 
+  const [sidebarOpen, setSidebarOpen] = useState(false); 
+  const toggleSidebar = () => {
+    setSidebarOpen(!sidebarOpen); 
+  };
+
   return (
     <div className="chat-setting-window">
-      <LeftSidebar />
+      <div className="hamburger-icon" onClick={toggleSidebar}>
+        <FaBars />
+      </div>
+
+      <div className={`left-sidebar ${sidebarOpen ? 'open' : ''}`}>
+        <LeftSidebar />
+      </div>
 
       <div className="chat-setting-content">
         <h2>Chatbox</h2>

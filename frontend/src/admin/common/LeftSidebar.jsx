@@ -1,6 +1,5 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { FaBars } from 'react-icons/fa'; 
+import React from 'react';
+import { Link } from 'react-router-dom'; 
 import './LeftSidebar.css';
 import bikePulseLogo from '../../assets/logo.png';
 import ShopManagementIcon from '../../assets/Shop.svg';
@@ -8,24 +7,14 @@ import UserManagementIcon from '../../assets/UserManagement.svg';
 import SubscriptionIcon from '../../assets/Subscription.svg';
 import FaultIcon from '../../assets/Category.svg';
 import Account_Setting_Icon from '../../assets/account_setting.svg';
-import PaymentManagementIcon from '../../assets/payment.svg'; // Add the icon for Payment Management
+import PaymentManagementIcon from '../../assets/payment.svg'; 
 
 const LeftSidebar = () => {
-  const [isSidebarOpen, setSidebarOpen] = useState(false);
-
-  const handleToggleSidebar = () => {
-    setSidebarOpen(!isSidebarOpen);
-  };
 
   return (
-    <div className={`left-sidebar ${isSidebarOpen ? 'open' : ''}`}>
-      {/* Hamburger Icon for toggling the sidebar on smaller screens */}
-      <div className="hamburger-icon" onClick={handleToggleSidebar}>
-        <FaBars />
-      </div>
-
+    <div >
       <div className="logo-container">
-        <img src={bikePulseLogo} alt="BikePulse Logo" className="logo" />
+        <img src={bikePulseLogo} alt="BikePulse Logo" className="logo-website" />
       </div>
 
       <div className="search-bar">

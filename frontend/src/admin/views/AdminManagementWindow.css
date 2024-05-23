@@ -71,6 +71,21 @@
   color: rgb(24, 74, 9);
 }
 
+.hamburger-icon {
+  display: block;
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  z-index: 999;
+  cursor: pointer;
+}
+
+@media screen and (min-width: 769px) {
+  .hamburger-icon {
+    display: none;
+  }
+}
+
 @media screen and (max-width: 768px) {
   .admin-management-content {
     margin-left: 0;

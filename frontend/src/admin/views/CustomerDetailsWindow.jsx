@@ -5,6 +5,7 @@ import LeftSidebar from "../common/LeftSidebar";
 import RightSidebar from "../common/RightSidebar";
 import axios from 'axios';
 import Switch from 'react-switch';
+import { FaBars } from 'react-icons/fa';
 
 const CustomerDetailsWindow = ({ customerId }) => {
 
@@ -70,10 +71,21 @@ const CustomerDetailsWindow = ({ customerId }) => {
 
   };
 
+  const [sidebarOpen, setSidebarOpen] = useState(false); 
+  const toggleSidebar = () => {
+    setSidebarOpen(!sidebarOpen); 
+  };
+
   return (
 
     <div className="customer-details-management">
-      <LeftSidebar />
+      <div className="hamburger-icon" onClick={toggleSidebar}>
+        <FaBars />
+      </div>
+
+      <div className={`left-sidebar ${sidebarOpen ? 'open' : ''}`}>
+        <LeftSidebar />
+      </div>
 
       <div className="customer-details-management-content">
         <h3>{customerDetails.customerName} Customer Details</h3>

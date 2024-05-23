@@ -3,9 +3,9 @@ import './PaymentManagementWindow.css';
 import LeftSidebar from '../common/LeftSidebar';
 import RightSidebar from '../common/RightSidebar';
 import axios from 'axios';
+import { FaBars } from 'react-icons/fa';
 
 const PaymentManagementWindow = () => {
-  // Initial default payments
   const [payments, setPayments] = useState([
     { paymentId: 1, paymentName: 'Payment 1', paymentDetails: 'Details of Payment 1' },
     { paymentId: 2, paymentName: 'Payment 2', paymentDetails: 'Details of Payment 2' },
@@ -25,9 +25,21 @@ const PaymentManagementWindow = () => {
     }
   };
 
+  const [sidebarOpen, setSidebarOpen] = useState(false); 
+  const toggleSidebar = () => {
+    setSidebarOpen(!sidebarOpen); 
+  };
+
   return (
     <div className="payment-management">
-      <LeftSidebar />
+      <div className="hamburger-icon" onClick={toggleSidebar}>
+        <FaBars />
+      </div>
+
+      <div className={`left-sidebar ${sidebarOpen ? 'open' : ''}`}>
+        <LeftSidebar />
+      </div>
+
       <div className="payment-management-content-1">
         <h2 className="payment-management-heading-1">Payment Management</h2>
         {payments.length === 0 ? (

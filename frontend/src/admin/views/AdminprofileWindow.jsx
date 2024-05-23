@@ -3,12 +3,13 @@ import './AdminProfileWindow.css';
 import LeftSidebar from '../common/LeftSidebar';
 import RightSidebar from '../common/RightSidebar';
 import axios from 'axios';
+import { FaBars } from 'react-icons/fa';
 
 const AdminProfileWindow = () => {
     const [profileData, setProfileData] = useState({
         username: 'admin',
         email: 'admin@example.com',
-        profileImage: null, 
+        profileImage: null,
     });
 
     // State to store activity log
@@ -25,7 +26,7 @@ const AdminProfileWindow = () => {
         // fetchActivityLog().then((data) => {
         //     setActivityLog(data);
         // });
-    }, []); 
+    }, []);
 
     const handleProfileUpdate = (e) => {
         e.preventDefault();
@@ -70,9 +71,20 @@ const AdminProfileWindow = () => {
         logActivity(sampleActivity);
     };
 
+    const [sidebarOpen, setSidebarOpen] = useState(false);
+    const toggleSidebar = () => {
+        setSidebarOpen(!sidebarOpen);
+    };
+
     return (
         <div className="admin-profile-window">
-            <LeftSidebar />
+            <div className="hamburger-icon" onClick={toggleSidebar}>
+                <FaBars />
+            </div>
+
+            <div className={`left-sidebar ${sidebarOpen ? 'open' : ''}`}>
+                <LeftSidebar />
+            </div>
 
             <div className="admin-profile-content">
                 <h2 className="admin-profile-title">Admin Profile</h2>

@@ -9,21 +9,11 @@
   color: #fff;
 }
 
-.hamburger-icon {
-  display: none;
-  cursor: pointer;
-  font-size: 20px;
-  position: fixed;
-  top: 10px;
-  left: 10px;
-  z-index: 999; 
-}
-
 .logo-container {
   padding: 10px;
 }
 
-.logo {
+.logo-website {
   width: 100%;
   height: auto;
 }
@@ -109,14 +99,4 @@
     transition: width 0.3s ease; 
   }
 
-  .left-sidebar.open .logo-container,
-  .left-sidebar.open .search-bar,
-  .left-sidebar.open .white-box {
-    display: block;
-  }
-  
-  .left-sidebar.open .list-item,
-  .left-sidebar.open .dropdown-content {
-    margin-left: 0;
-  }
 }

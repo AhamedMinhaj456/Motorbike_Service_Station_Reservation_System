@@ -152,7 +152,6 @@ tbody tr:hover td {
   box-sizing: border-box; 
 }
 
-/* Fault Management Buttons */
 .fault-management-buttons {
   display: flex;
   justify-content: space-between;
@@ -176,7 +175,21 @@ tbody tr:hover td {
   background-color: #9dc8ec;
 }
 
-/* Media Query for Responsive Design */
+.hamburger-icon {
+  display: block;
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  z-index: 999;
+  cursor: pointer;
+}
+
+@media screen and (min-width: 769px) {
+  .hamburger-icon {
+    display: none;
+  }
+}
+
 @media screen and (max-width: 768px) {
   .fault-management-content {
       margin-left: 0; 

@@ -5,9 +5,9 @@ import LeftSidebar from "../common/LeftSidebar";
 import RightSidebar from "../common/RightSidebar";
 import axios from 'axios';
 import Switch from 'react-switch';
+import { FaBars } from 'react-icons/fa';
+
 const ShopDetailsWindow = ({ shopId }) => {
-
-
   const [shopDetails, setShopDetails] = useState({
     shopId: 5,
     shopName: "John Doe",
@@ -72,10 +72,21 @@ const ShopDetailsWindow = ({ shopId }) => {
     setApprovedStatus(response.data.approvedStatus);
   };
 
+  const [sidebarOpen, setSidebarOpen] = useState(false); 
+  const toggleSidebar = () => {
+    setSidebarOpen(!sidebarOpen); 
+  };
+
   return (
 
     <div className="shop-details-management">
-      <LeftSidebar />
+      <div className="hamburger-icon" onClick={toggleSidebar}>
+        <FaBars />
+      </div>
+
+      <div className={`left-sidebar ${sidebarOpen ? 'open' : ''}`}>
+        <LeftSidebar />
+      </div>
 
       <div className="shop-details-management-content">
         <h3>{shopDetails.shopName} Shop Details</h3>

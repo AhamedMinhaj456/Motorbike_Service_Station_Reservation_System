@@ -10,7 +10,6 @@ import AdminHomePage from "./admin/views/AdminHomePage";
 import AdminProfileWindow from "./admin/views/AdminprofileWindow";
 import AccountSettingWindow from "./admin/views/AccountSettingWindow";
 import ChatSettingWindow from "./admin/views/ChatSettingWindow";
-import ShopViewDetailsWindow from "./admin/views/ShopViewDetailsWindow";
 import AddFault from "./admin/views/Fault/BikeModel";
 import BikeCompany from "./admin/views/Fault/BikeCompany";
 import FaultSection from "./admin/views/Fault/FaultSection/FaultSection";
@@ -37,7 +36,6 @@ const App = () =>{
         <Route path="/profile" element={<AdminProfileWindow />} />
         <Route path="/account-setting" element={<AccountSettingWindow />} />
         <Route path="/chat-setting" element={<ChatSettingWindow />} />
-        <Route path="/shop-1" element={<ShopViewDetailsWindow />} />
         <Route path="/bikemodel" element={<BikeModel />} />
         <Route path="/bikecompany" element={<BikeCompany />} />
         <Route path="/faultsection" element={<FaultSection />} />
