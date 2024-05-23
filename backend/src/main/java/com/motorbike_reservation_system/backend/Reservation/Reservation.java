@@ -24,9 +24,13 @@ public class Reservation {
     @Id
     private String reservationId;
     private String motorbikeNumber;
+    private String serviceType;
     private Date reservationDate;
     private Time reservationTime;
-    private String advancePayment;
+    private String reservationAddress;
+    private String approvedStatus;
+    private String processStatus;
+    private String paymentStatus;
 
     @ManyToOne(cascade = {CascadeType.DETACH, CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH})
     @JoinColumn(name = "shop_id")

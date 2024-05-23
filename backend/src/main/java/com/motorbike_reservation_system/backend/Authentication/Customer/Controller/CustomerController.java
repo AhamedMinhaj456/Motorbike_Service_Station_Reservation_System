@@ -4,6 +4,7 @@ import com.motorbike_reservation_system.backend.Authentication.Customer.Dto.Cust
 import com.motorbike_reservation_system.backend.Authentication.Customer.Dto.CustomerLoginDTO;
 
 import com.motorbike_reservation_system.backend.Authentication.Customer.Entity.Customer;
+import com.motorbike_reservation_system.backend.Authentication.Customer.Entity.CustomerAddress;
 import com.motorbike_reservation_system.backend.Authentication.Customer.Response.CustomerLoginResponse;
 import com.motorbike_reservation_system.backend.Authentication.Customer.Service.CustomerService;
 import com.motorbike_reservation_system.backend.Authentication.Customer.Service.Impl.CustomerImpl;
@@ -50,5 +51,15 @@ public class CustomerController {
     @GetMapping("/{customerId}")
     public Customer getCustomerById(@PathVariable int customerId) {
         return customerImpl.getCustomerById(customerId);
+    }
+
+    @PostMapping(path= "/addAddress")
+    public String addCustomerAddress(@RequestBody CustomerAddress customerAddress){
+        String customerAddressId = customerService.addCustomerAddress(customerAddress);
+        return customerAddressId;
+    }
+    @GetMapping("getCustomerAddress")
+    public List<CustomerAddress> getAllCustomerAddress(){
+        return customerImpl.getCustomerAddress();
     }
 }

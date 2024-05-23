@@ -69,4 +69,24 @@ public class ReservationController {
         return ResponseEntity.ok(reservationDetailsDTOS);
 
     }
+
+    @PutMapping("/{reservationId}/approved-status")
+    public void updateApprovedStatus(@PathVariable String reservationId, @RequestParam String approvedStatus) {
+        reservationService.updateApprovedStatus(reservationId, approvedStatus);
+    }
+
+    @PutMapping("/{reservationId}/process-status")
+    public void updateProcessStatus(@PathVariable String reservationId, @RequestParam String processStatus) {
+        reservationService.updateProcessStatus(reservationId, processStatus);
+    }
+
+    @PutMapping("/{reservationId}/payment-status")
+    public void updatePaymentStatus(@PathVariable String reservationId, @RequestParam String paymentStatus) {
+        reservationService.updatePaymentStatus(reservationId, paymentStatus);
+    }
+
+    @GetMapping("/{reservationId}")
+    public Reservation getReservationById(@PathVariable String reservationId) {
+        return reservationService.getReservationById(reservationId);
+    }
 }

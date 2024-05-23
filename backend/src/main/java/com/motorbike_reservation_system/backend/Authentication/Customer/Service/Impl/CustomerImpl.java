@@ -3,10 +3,11 @@ package com.motorbike_reservation_system.backend.Authentication.Customer.Service
 import com.motorbike_reservation_system.backend.Authentication.Customer.Dto.CustomerDTO;
 import com.motorbike_reservation_system.backend.Authentication.Customer.Dto.CustomerLoginDTO;
 import com.motorbike_reservation_system.backend.Authentication.Customer.Entity.Customer;
+import com.motorbike_reservation_system.backend.Authentication.Customer.Entity.CustomerAddress;
+import com.motorbike_reservation_system.backend.Authentication.Customer.Repo.CustomerAddressRepo;
 import com.motorbike_reservation_system.backend.Authentication.Customer.Repo.CustomerRepo;
 import com.motorbike_reservation_system.backend.Authentication.Customer.Response.CustomerLoginResponse;
 import com.motorbike_reservation_system.backend.Authentication.Customer.Service.CustomerService;
-import com.motorbike_reservation_system.backend.Authentication.Shop.Entity.Shop;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -22,6 +23,8 @@ public class CustomerImpl implements CustomerService {
 
     @Autowired
     private PasswordEncoder passwordEncoder;
+    @Autowired
+    private CustomerAddressRepo customerAddressRepo;
 
 
     @Override
@@ -71,5 +74,24 @@ public class CustomerImpl implements CustomerService {
 
     public Customer getCustomerById(int customerId) {
         return customerRepo.findById(customerId).orElseThrow(() -> new RuntimeException("User not found"));
+    }
+
+
+    // Customer Address
+    @Override
+    public String addCustomerAddress(CustomerAddress customerAddress) {
+        customerAddress = CustomerAddress.builder()
+                .customerAddressId(customerAddress.getCustomerAddressId())
+                .street(customerAddress.getStreet())
+                .city(customerAddress.getCity())
+                .State(customerAddress.getState())
+                //.activeStatus(Optional.ofNullable(customerDTO.getActiveStatus()).orElse("active"))
+                .build();
+        customerAddressRepo.save(customerAddress);
+        return customerAddress.getCustomerAddressId();
+    }
+
+    public List<CustomerAddress> getCustomerAddress(){
+        return customerAddressRepo.findAll();
     }
 }
