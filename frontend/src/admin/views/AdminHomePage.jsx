@@ -71,11 +71,10 @@ const AdminHomePage = () => {
       </h2>
       <div className="container">
         <div className="login-section">
-          <h2>Hi There!</h2>
-          <p>Already have an account?</p>
-          <p>Click on Emoji</p>
+          <h2>{isSignUp ? 'Hi There! Already have an account?' : "Hi There!, Don't have an account?"}</h2>
+          <p>{isSignUp ? 'Click the Emoji to Sign In' : "Click the Emoji to Sign Up"}</p>
           <div className="emoji" onClick={() => setIsSignUp(!isSignUp)}>
-            <span role="img" aria-label="emoji">😋</span>
+            <span role="img" aria-label="emoji">{isSignUp ? '😋' : '🔒'}</span>
           </div>
         </div>
         {isSignUp ? (
