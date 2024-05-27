@@ -75,6 +75,7 @@ import { CssBaseline, ThemeProvider } from "@mui/material";
 import { ColorModeContext, useMode } from "./components/theme";
 import Chatbot from "./components/Chatbot";*/
 import DashboardLayout from "./components/DashboardLayout";
+import ShopHome from "./components/ShopDetailed/ShopHome";
 import './App.css';
 
 
@@ -159,6 +160,7 @@ function App() {
         <Route path="/payment" element={<Payment />} />
         <Route path="/fault" element={<Fault />} />
         <Route path="/cart" element={<Cart />} />
+        <Route path="/shop-home" element={<ShopHome/>}/>
         
         {/* Dashboard Routes */}
         <Route path="/*" element={<DashboardLayout />} />
