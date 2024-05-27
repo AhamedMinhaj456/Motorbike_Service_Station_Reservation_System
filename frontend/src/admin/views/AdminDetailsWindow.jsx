@@ -64,13 +64,12 @@ const AdminDetailsWindow = ({ adminId }) => {
 
   };
 
-  const [sidebarOpen, setSidebarOpen] = useState(false); 
+  const [sidebarOpen, setSidebarOpen] = useState(false);
   const toggleSidebar = () => {
-    setSidebarOpen(!sidebarOpen); 
+    setSidebarOpen(!sidebarOpen);
   };
 
   return (
-
     <div className="admin-details-management">
       <div className="hamburger-icon" onClick={toggleSidebar}>
         <FaBars />
@@ -83,7 +82,6 @@ const AdminDetailsWindow = ({ adminId }) => {
       <div className="admin-details-management-content">
         <h3>{adminDetails.adminName} Admin Details</h3>
 
-        <div className="admin-details-list">
           <div className="admin-details-item">
             <p>
               <strong>Admin ID:</strong>
@@ -102,12 +100,9 @@ const AdminDetailsWindow = ({ adminId }) => {
               <strong>adminEmail:</strong>
               <span>{adminDetails.adminEmail}</span>
             </p>
-
           </div>
 
-          <div>
-
-            <div>
+          <div className="active-status-admin">
               <h2>Update Active Status</h2>
               <label>
                 <span>Deactive</span>
@@ -124,20 +119,15 @@ const AdminDetailsWindow = ({ adminId }) => {
                 />
                 <span>Active</span>
               </label>
-            </div>
-
           </div>
 
           <Link to={"/admin-management"}>
-            <button
-              className="back-button-3"
-              onClick={() => window.location.reload()}
-            >
+            <button className="back-button-3" onClick={() => window.location.reload()}>
               Back
             </button>
           </Link>
         </div>
-      </div>
+ 
 
       <RightSidebar />
     </div>

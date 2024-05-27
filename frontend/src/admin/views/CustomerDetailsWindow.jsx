@@ -71,13 +71,12 @@ const CustomerDetailsWindow = ({ customerId }) => {
 
   };
 
-  const [sidebarOpen, setSidebarOpen] = useState(false); 
+  const [sidebarOpen, setSidebarOpen] = useState(false);
   const toggleSidebar = () => {
-    setSidebarOpen(!sidebarOpen); 
+    setSidebarOpen(!sidebarOpen);
   };
 
   return (
-
     <div className="customer-details-management">
       <div className="hamburger-icon" onClick={toggleSidebar}>
         <FaBars />
@@ -90,7 +89,6 @@ const CustomerDetailsWindow = ({ customerId }) => {
       <div className="customer-details-management-content">
         <h3>{customerDetails.customerName} Customer Details</h3>
 
-        <div className="customer-details-list">
           <div className="customer-details-item">
             <p>
               <strong>Customer ID:</strong>
@@ -104,7 +102,6 @@ const CustomerDetailsWindow = ({ customerId }) => {
               <strong>Customer Username:</strong>
               <span>{customerDetails.customerUsername}</span>
             </p>
-
             <p>
               <strong>Phone Number:</strong>
               <span>{customerDetails.customerPhoneNumber}</span>
@@ -113,41 +110,35 @@ const CustomerDetailsWindow = ({ customerId }) => {
               <strong>customerEmail:</strong>
               <span>{customerDetails.customerEmail}</span>
             </p>
-
           </div>
 
-          <div>
-
-            <div>
-              <h2>Update Active Status</h2>
-              <label>
-                <span>Deactive</span>
-                <Switch
-                  checked={activeStatus}
-                  onChange={setActiveStatus}
-                  onColor="#86d3ff"
-                  onHandleColor="#2693e6"
-                  handleDiameter={30}
-                  uncheckedIcon={false}
-                  checkedIcon={false}
-                  height={20}
-                  width={48}
-                />
-                <span>Active</span>
-              </label>
-            </div>
-
-          </div>
-
-          <Link to={"/user-management"}>
-            <button
-              className="back-button-2"
-              onClick={() => window.location.reload()}
-            >
-              Back
-            </button>
-          </Link>
+          <div className="active-status-customer">
+            <h2>Update Active Status</h2>
+            <label>
+              <span>Deactive</span>
+              <Switch
+                checked={activeStatus}
+                onChange={setActiveStatus}
+                onColor="#86d3ff"
+                onHandleColor="#2693e6"
+                handleDiameter={30}
+                uncheckedIcon={false}
+                checkedIcon={false}
+                height={20}
+                width={48}
+              />
+              <span>Active</span>
+            </label>
         </div>
+
+        <Link to={"/user-management"}>
+          <button
+            className="back-button-2"
+            onClick={() => window.location.reload()}
+          >
+            Back
+          </button>
+        </Link>
       </div>
 
       <RightSidebar />

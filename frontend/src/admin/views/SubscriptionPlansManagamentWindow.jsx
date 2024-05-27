@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import './SubscriptionPlansmanagementWindow.css'; 
+import './SubscriptionPlansmanagementWindow.css';
 import LeftSidebar from '../common/LeftSidebar';
 import RightSidebar from '../common/RightSidebar';
 import axios from 'axios';
@@ -52,40 +52,40 @@ const SubscriptionPlansManagementWindow = () => {
       });
   };
 
-  
-    const [newPlan, setNewPlan] = useState({
-      subscriptionPlanName: '',
-      subscriptionPlanDescription: '',
-      subscriptionPlanPrice: '',
-    });
-  
-    const handleChange = (e) => {
-      const { name, value } = e.target;
-      setNewPlan((prevPlan) => ({
-        ...prevPlan,
-        [name]: value,
-      }));
-    };
-  
-    const handleFormSubmit = async (e) => {
-      e.preventDefault();
-      try {
-        await axios.post('http://localhost:8096/subscriptionPlan/addSubscriptionPlan', newPlan);
-        alert('Subscription Plan Successfully Added');
-        setNewPlan({
-          subscriptionPlanName: '',
-          subscriptionPlanDescription: '',
-          subscriptionPlanPrice: '',
-        });
-      } catch (err) {
-        alert(err);
-      }
-    };
 
-    const [sidebarOpen, setSidebarOpen] = useState(false); 
-    const toggleSidebar = () => {
-      setSidebarOpen(!sidebarOpen); 
-    };
+  const [newPlan, setNewPlan] = useState({
+    subscriptionPlanName: '',
+    subscriptionPlanDescription: '',
+    subscriptionPlanPrice: '',
+  });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setNewPlan((prevPlan) => ({
+      ...prevPlan,
+      [name]: value,
+    }));
+  };
+
+  const handleFormSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      await axios.post('http://localhost:8096/subscriptionPlan/addSubscriptionPlan', newPlan);
+      alert('Subscription Plan Successfully Added');
+      setNewPlan({
+        subscriptionPlanName: '',
+        subscriptionPlanDescription: '',
+        subscriptionPlanPrice: '',
+      });
+    } catch (err) {
+      alert(err);
+    }
+  };
+
+  const [sidebarOpen, setSidebarOpen] = useState(false);
+  const toggleSidebar = () => {
+    setSidebarOpen(!sidebarOpen);
+  };
 
   return (
     <div className="subscription-plans-management">
@@ -98,8 +98,8 @@ const SubscriptionPlansManagementWindow = () => {
       </div>
 
       <div className="subscription-plans-management-content">
-        
-      <div className='add-plan-wrapper'>
+
+        <div className='add-plan-wrapper'>
           <h2 className='subscription-management-heading'>Subscription Plans Management</h2>
           <div className='add-plan'>
             <form className="plan-form" onSubmit={handleFormSubmit}>
@@ -176,16 +176,16 @@ const SubscriptionPlansManagementWindow = () => {
               </form>
             )}
             <div className="subscription-plans-management-buttons">
-          <button
-            className={`edit-button-1 ${editMode ? 'active' : ''}`}
-            onClick={() => setEditMode(!editMode)}
-          >
-            Edit
-          </button>
-          <button className="save-button-1" onClick={handleSave} disabled={!editMode}>
-            Save
-          </button>
-        </div>
+              <button
+                className={`edit-button-1 ${editMode ? 'active' : ''}`}
+                onClick={() => setEditMode(!editMode)}
+              >
+                Edit
+              </button>
+              <button className="save-button-1" onClick={handleSave} disabled={!editMode}>
+                Save
+              </button>
+            </div>
           </div>
         ))}
 

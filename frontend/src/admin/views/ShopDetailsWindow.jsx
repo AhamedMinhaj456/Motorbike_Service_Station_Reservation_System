@@ -72,13 +72,12 @@ const ShopDetailsWindow = ({ shopId }) => {
     setApprovedStatus(response.data.approvedStatus);
   };
 
-  const [sidebarOpen, setSidebarOpen] = useState(false); 
+  const [sidebarOpen, setSidebarOpen] = useState(false);
   const toggleSidebar = () => {
-    setSidebarOpen(!sidebarOpen); 
+    setSidebarOpen(!sidebarOpen);
   };
 
   return (
-
     <div className="shop-details-management">
       <div className="hamburger-icon" onClick={toggleSidebar}>
         <FaBars />
@@ -91,111 +90,101 @@ const ShopDetailsWindow = ({ shopId }) => {
       <div className="shop-details-management-content">
         <h3>{shopDetails.shopName} Shop Details</h3>
 
-        <div className="shop-details-list">
-          <div className="shop-details-item">
-            <p>
-              <strong>Shop ID:</strong>
-              <span>{shopDetails.shopId}</span>
-            </p>
-            <p>
-              <strong>Shop Name:</strong>
-              <span>{shopDetails.shopName}</span>
-            </p>
-
-            <p>
-              <strong>Shop Address:</strong>
-              <span>{shopDetails.shopAddress}</span>
-            </p>
-
-            <p>
-              <strong>Phone Number:</strong>
-              <span>{shopDetails.contactNumber}</span>
-            </p>
-            <p>
-              <strong>Email:</strong>
-              <span>{shopDetails.email}</span>
-            </p>
-            <p>
-              <strong>Tax Id:</strong>
-              <span>{shopDetails.taxId}</span>
-            </p>
-            <p>
-              <strong>Subscription Plan:</strong>
-              <span>{shopDetails.subscriptionPlan}</span>
-            </p>
-          </div>
-
-          <div>
-
-            <div>
-              <h2>Update Active Status</h2>
-              <label>
-                <span>Deactive</span>
-                <Switch
-                  checked={activeStatus}
-                  onChange={setActiveStatus}
-                  onColor="#86d3ff"
-                  onHandleColor="#2693e6"
-                  handleDiameter={30}
-                  uncheckedIcon={false}
-                  checkedIcon={false}
-                  height={20}
-                  width={48}
-                />
-                <span>Active</span>
-              </label>
-            </div>
-            <div>
-              <h2>Update Approved Status</h2>
-              <div>
-                <label>
-                  <input
-                    type="radio"
-                    value="pending"
-                    checked={approvedStatus === 'pending'}
-                    onChange={(e) => setApprovedStatus(e.target.value)}
-                  />
-                  Pending
-                </label>
-                <label>
-                  <input
-                    type="radio"
-                    value="approved"
-                    checked={approvedStatus === 'approved'}
-                    onChange={(e) => setApprovedStatus(e.target.value)}
-                  />
-                  Approved
-                </label>
-                <label>
-                  <input
-                    type="radio"
-                    value="rejected"
-                    checked={approvedStatus === 'rejected'}
-                    onChange={(e) => setApprovedStatus(e.target.value)}
-                  />
-                  Rejected
-                </label>
-              </div>
-            </div>
-          </div>
-
-          <Link to={"/shop-management"}>
-            <button className="back-button-1"
-              onClick={() => window.location.reload()}
-            >
-              Back
-            </button>
-          </Link>
+        <div className="shop-details-item">
+          <p>
+            <strong>Shop ID:</strong>
+            <span>{shopDetails.shopId}</span>
+          </p>
+          <p>
+            <strong>Shop Name:</strong>
+            <span>{shopDetails.shopName}</span>
+          </p>
+          <p>
+            <strong>Shop Address:</strong>
+            <span>{shopDetails.shopAddress}</span>
+          </p>
+          <p>
+            <strong>Phone Number:</strong>
+            <span>{shopDetails.contactNumber}</span>
+          </p>
+          <p>
+            <strong>Email:</strong>
+            <span>{shopDetails.email}</span>
+          </p>
+          <p>
+            <strong>Tax Id:</strong>
+            <span>{shopDetails.taxId}</span>
+          </p>
+          <p>
+            <strong>Subscription Plan:</strong>
+            <span>{shopDetails.subscriptionPlan}</span>
+          </p>
         </div>
 
+        <div className="active-status-shop">
+          <h2>Update Active Status</h2>
+          <label>
+            <span>Deactive</span>
+            <Switch
+              checked={activeStatus}
+              onChange={setActiveStatus}
+              onColor="#86d3ff"
+              onHandleColor="#2693e6"
+              handleDiameter={30}
+              uncheckedIcon={false}
+              checkedIcon={false}
+              height={20}
+              width={48}
+            />
+            <span>Active</span>
+          </label>
+        </div>
+        <div>
+          <div className="approved-status-shop">
+            <h2>Update Approved Status</h2>
+            <div>
+              <label>
+                <input
+                  type="radio"
+                  value="pending"
+                  checked={approvedStatus === 'pending'}
+                  onChange={(e) => setApprovedStatus(e.target.value)}
+                />
+                Pending
+              </label>
+              <label>
+                <input
+                  type="radio"
+                  value="approved"
+                  checked={approvedStatus === 'approved'}
+                  onChange={(e) => setApprovedStatus(e.target.value)}
+                />
+                Approved
+              </label>
+              <label>
+                <input
+                  type="radio"
+                  value="rejected"
+                  checked={approvedStatus === 'rejected'}
+                  onChange={(e) => setApprovedStatus(e.target.value)}
+                />
+                Rejected
+              </label>
+            </div>
+          </div>
+        </div>
+        
+        <Link to={"/shop-management"}>
+          <button className="back-button-1"
+            onClick={() => window.location.reload()}
+          >
+            Back
+          </button>
+        </Link>
+
       </div>
-
-
-
       <RightSidebar />
     </div>
-
-
   );
 };
 

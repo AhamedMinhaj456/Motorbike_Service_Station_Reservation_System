@@ -45,7 +45,8 @@
     background-color: #e0e0e0;
 }
 
-.input {
+.profile-form input,
+.password-form input {
     width: 100%;
     padding: 10px;
     margin-bottom: 16px;
