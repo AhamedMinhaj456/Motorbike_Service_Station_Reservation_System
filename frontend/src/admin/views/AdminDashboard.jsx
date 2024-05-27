@@ -5,14 +5,12 @@ import RightSidebar from '../common/RightSidebar';
 import { FaBars } from 'react-icons/fa';
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
-import { PieChart, Pie, Cell, Tooltip, ResponsiveContainer, LineChart, Line, XAxis, YAxis, CartesianGrid, Legend } from 'recharts';
+import { Tooltip, ResponsiveContainer, LineChart, Line, XAxis, YAxis, CartesianGrid, Legend } from 'recharts';
 
 const AdminDashboard = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [date, setDate] = useState(new Date());
   const [currentTime, setCurrentTime] = useState(new Date());
-  const [tasks, setTasks] = useState([]);
-  const [newTask, setNewTask] = useState('');
   const [totalUsers, setTotalUsers] = useState(150);
   const [totalShops, setTotalShops] = useState(200);
   const [pendingShops, setPendingShops] = useState(30);
@@ -103,25 +101,6 @@ const AdminDashboard = () => {
     setSidebarOpen(!sidebarOpen);
   };
 
-  const handleAddTask = () => {
-    if (newTask.trim()) {
-      setTasks([...tasks, { text: newTask, completed: false }]);
-      setNewTask('');
-    }
-  };
-
-  const handleToggleTask = (index) => {
-    const updatedTasks = tasks.map((task, i) =>
-      i === index ? { ...task, completed: !task.completed } : task
-    );
-    setTasks(updatedTasks);
-  };
-
-  const handleDeleteTask = (index) => {
-    const updatedTasks = tasks.filter((_, i) => i !== index);
-    setTasks(updatedTasks);
-  };
-
   const handleAddSchedule = () => {
     if (newSchedule.trim()) {
       setSchedules([...schedules, { date: date, text: newSchedule, completed: false }]);
@@ -155,6 +134,31 @@ const AdminDashboard = () => {
           </li>
         ))}
       </ul>
+    );
+  };
+
+  const renderTodaySchedules = () => {
+    const today = new Date();
+    const todaySchedules = schedules.filter(schedule =>
+      schedule.date.toDateString() === today.toDateString()
+    );
+
+    return (
+      <div className="overview">
+        <h2>Today's Schedule</h2>
+        {todaySchedules.length > 0 ? (
+          <ul className="schedules">
+            {todaySchedules.map((schedule, index) => (
+              <li key={index} className={schedule.completed ? 'completed' : ''}>
+                <span onClick={() => handleToggleSchedule(index)}>{schedule.text}</span>
+                <button onClick={() => handleDeleteSchedule(index)}>Delete</button>
+              </li>
+            ))}
+          </ul>
+        ) : (
+          <p>No schedules for today.</p>
+        )}
+      </div>
     );
   };
 
@@ -203,29 +207,9 @@ const AdminDashboard = () => {
           {renderIncomeChart()}
         </div>
 
-        <div className="to-do-list">
-          <h2>To-Do List</h2>
-          <div className="task-input">
-            <input
-              type="text"
-              value={newTask}
-              onChange={(e) => setNewTask(e.target.value)}
-              placeholder="Add a new task..."
-            />
-            <button onClick={handleAddTask}>Add</button>
-          </div>
-          <ul className="tasks">
-            {tasks.map((task, index) => (
-              <li key={index} className={task.completed ? 'completed' : ''}>
-                <span onClick={() => handleToggleTask(index)}>{task.text}</span>
-                <button onClick={() => handleDeleteTask(index)}>Delete</button>
-              </li>
-            ))}
-          </ul>
-        </div>
-
-        <div className="calendar-schedule">
+        <div className="calendar-overview">
           <div className="calendar">
+            <h2>Calendar Schedule</h2>
             <Calendar
               onChange={setDate}
               value={date}
@@ -233,20 +217,21 @@ const AdminDashboard = () => {
               maxDate={new Date()}
               locale="en-US"
             />
-          </div>
-          <div className="schedule">
-            <h2>Schedule for {date.toDateString()}</h2>
-            <div className="schedule-input">
-              <input
-                type="text"
-                value={newSchedule}
-                onChange={(e) => setNewSchedule(e.target.value)}
-                placeholder="Add a new schedule..."
-              />
-              <button onClick={handleAddSchedule}>Add</button>
+            <div className="schedule">
+              <h2>Schedule for {date.toDateString()}</h2>
+              <div className="schedule-input">
+                <input
+                  type="text"
+                  value={newSchedule}
+                  onChange={(e) => setNewSchedule(e.target.value)}
+                  placeholder="Add a new schedule..."
+                />
+                <button onClick={handleAddSchedule}>Add</button>
+              </div>
+              {renderSchedulesForDate(date)}
             </div>
-            {renderSchedulesForDate(date)}
           </div>
+          {renderTodaySchedules()}
         </div>
       </div>
 
