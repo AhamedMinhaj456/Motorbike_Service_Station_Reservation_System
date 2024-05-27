@@ -58,7 +58,7 @@ import Cart from "./components/Cart";
 
 
 
-import Topbar from "./components/dashboard/scenes/global/Topbar"
+/*import Topbar from "./components/dashboard/scenes/global/Topbar"
 import Sidebar from "./components/dashboard/scenes/global/Sidebar";
 import Dashboard from "./components/dashboard/scenes/dashboard";
 import Team from "./components/dashboard/scenes/team";
@@ -73,7 +73,8 @@ import Geography from "./components/dashboard/scenes/geography";
 import Calendar from "./components/dashboard/scenes/calender/calender";
 import { CssBaseline, ThemeProvider } from "@mui/material";
 import { ColorModeContext, useMode } from "./components/theme";
-import Chatbot from "./components/Chatbot";
+import Chatbot from "./components/Chatbot";*/
+import DashboardLayout from "./components/DashboardLayout";
 import './App.css';
 
 
@@ -81,7 +82,7 @@ import './App.css';
 //import { Navbar } from "react-bootstrap";
 
 
-function App() {
+/*function App() {
   const [theme, colorMode] = useMode();
   const [isSidebar, setIsSidebar] = useState(true);
  
@@ -106,6 +107,7 @@ function App() {
           <Route path="/cart" element={<Cart />} />
         </Routes>
       </div>
+      
       <ColorModeContext.Provider value={colorMode}>
         <ThemeProvider theme={theme}>
           <CssBaseline />
@@ -136,5 +138,34 @@ function App() {
   );
 }
 
+
+export default App;*/
+
+function App() {
+  return (
+    <Router>
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/aboutus" element={<Aboutus />} />
+        <Route path="/shops" element={<Shops />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/faultsuggest" element={<FaultSuggest />} />
+        <Route path="/reservation" element={<Reservation />} />
+        <Route path="/profile" element={<Profile />} />
+        <Route path="/account-setting" element={<Settings />} />
+        <Route path="/signup" element={<Signup />} />
+        <Route path="/forgotpw" element={<ForgotPw />} />
+        <Route path="/payment" element={<Payment />} />
+        <Route path="/fault" element={<Fault />} />
+        <Route path="/cart" element={<Cart />} />
+        
+        {/* Dashboard Routes */}
+        <Route path="/*" element={<DashboardLayout />} />
+      </Routes>
+      <Footer />
+    </Router>
+  );
+}
 
 export default App;
