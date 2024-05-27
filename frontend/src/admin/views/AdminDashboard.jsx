@@ -31,6 +31,13 @@ const AdminDashboard = () => {
     { month: 'Dec', income: 0 }
   ]);
 
+  const [schedules, setSchedules] = useState([
+    { date: new Date(), text: 'Meeting with team', completed: false },
+    { date: new Date(new Date().setDate(new Date().getDate() + 1)), text: 'Client call', completed: false },
+    { date: new Date(new Date().setDate(new Date().getDate() + 2)), text: 'Project deadline', completed: false },
+  ]);
+  const [newSchedule, setNewSchedule] = useState('');
+
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrentTime(new Date());
@@ -115,6 +122,42 @@ const AdminDashboard = () => {
     setTasks(updatedTasks);
   };
 
+  const handleAddSchedule = () => {
+    if (newSchedule.trim()) {
+      setSchedules([...schedules, { date: date, text: newSchedule, completed: false }]);
+      setNewSchedule('');
+    }
+  };
+
+  const handleToggleSchedule = (index) => {
+    const updatedSchedules = schedules.map((schedule, i) =>
+      i === index ? { ...schedule, completed: !schedule.completed } : schedule
+    );
+    setSchedules(updatedSchedules);
+  };
+
+  const handleDeleteSchedule = (index) => {
+    const updatedSchedules = schedules.filter((_, i) => i !== index);
+    setSchedules(updatedSchedules);
+  };
+
+  const renderSchedulesForDate = (date) => {
+    const schedulesForDate = schedules.filter(schedule =>
+      schedule.date.toDateString() === date.toDateString()
+    );
+
+    return (
+      <ul className="schedules">
+        {schedulesForDate.map((schedule, index) => (
+          <li key={index} className={schedule.completed ? 'completed' : ''}>
+            <span onClick={() => handleToggleSchedule(index)}>{schedule.text}</span>
+            <button onClick={() => handleDeleteSchedule(index)}>Delete</button>
+          </li>
+        ))}
+      </ul>
+    );
+  };
+
   return (
     <div className="admin-dashboard">
       <div className="hamburger-icon" onClick={toggleSidebar}>
@@ -150,52 +193,66 @@ const AdminDashboard = () => {
             <span>Saved 25%</span>
           </div>
           <div className="stat-card">
-          <h3>Net Profit Margin</h3>
-          <p>${calculateNetProfit()}</p>
-          <span>Saved 65%</span>
+            <h3>Net Profit Margin</h3>
+            <p>${calculateNetProfit()}</p>
+            <span>Saved 65%</span>
+          </div>
+        </div>
+
+        <div className="charts-overview">
+          {renderIncomeChart()}
+        </div>
+
+        <div className="to-do-list">
+          <h2>To-Do List</h2>
+          <div className="task-input">
+            <input
+              type="text"
+              value={newTask}
+              onChange={(e) => setNewTask(e.target.value)}
+              placeholder="Add a new task..."
+            />
+            <button onClick={handleAddTask}>Add</button>
+          </div>
+          <ul className="tasks">
+            {tasks.map((task, index) => (
+              <li key={index} className={task.completed ? 'completed' : ''}>
+                <span onClick={() => handleToggleTask(index)}>{task.text}</span>
+                <button onClick={() => handleDeleteTask(index)}>Delete</button>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div className="calendar-schedule">
+          <div className="calendar">
+            <Calendar
+              onChange={setDate}
+              value={date}
+              minDate={new Date(1970, 0, 1)}
+              maxDate={new Date()}
+              locale="en-US"
+            />
+          </div>
+          <div className="schedule">
+            <h2>Schedule for {date.toDateString()}</h2>
+            <div className="schedule-input">
+              <input
+                type="text"
+                value={newSchedule}
+                onChange={(e) => setNewSchedule(e.target.value)}
+                placeholder="Add a new schedule..."
+              />
+              <button onClick={handleAddSchedule}>Add</button>
+            </div>
+            {renderSchedulesForDate(date)}
+          </div>
         </div>
       </div>
 
-      <div className="charts-overview">
-        {renderIncomeChart()}
-      </div>
-
-      <div className="to-do-list">
-        <h2>To-Do List</h2>
-        <div className="task-input">
-          <input
-            type="text"
-            value={newTask}
-            onChange={(e) => setNewTask(e.target.value)}
-            placeholder="Add a new task..."
-          />
-          <button onClick={handleAddTask}>Add</button>
-        </div>
-        <ul className="tasks">
-          {tasks.map((task, index) => (
-            <li key={index} className={task.completed ? 'completed' : ''}>
-              <span onClick={() => handleToggleTask(index)}>{task.text}</span>
-              <button onClick={() => handleDeleteTask(index)}>Delete</button>
-            </li>
-          ))}
-        </ul>
-      </div>
-
-      <div className="calendar">
-        <Calendar
-          onChange={setDate}
-          value={date}
-          minDate={new Date(1970, 0, 1)} 
-          maxDate={new Date()} 
-          locale="en-US" 
-        />
-      </div>
+      <RightSidebar />
     </div>
-
-    <RightSidebar />
-  </div>
-);
+  );
 };
 
 export default AdminDashboard;
-         

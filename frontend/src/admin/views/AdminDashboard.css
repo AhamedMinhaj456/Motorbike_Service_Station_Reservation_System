@@ -23,7 +23,7 @@
 
 .stat-card {
   background: #ffffff;
-  border: 1px solid #ddd;
+  border: 1px solid #052846;
   border-radius: 5px;
   padding: 20px;
   text-align: center;
@@ -32,10 +32,12 @@
   margin: 10px;
   max-width: 300px;
   cursor: pointer;
+  transition: transform 0.3s, background-color 0.3s;
 }
 
 .stat-card:hover {
-  background: #ebe1e1;
+  background: #caeaf2;
+  transform: translateY(-5px); 
 }
 
 .chart-card {
@@ -48,6 +50,12 @@
   flex: 1;
   margin: 10px;
   max-width: 300px;
+  transition: transform 0.3s, background-color 0.3s;
+}
+
+.chart-card:hover {
+  background: #dfedf0;
+  transform: translateY(-5px); 
 }
 
 .charts-overview {
@@ -64,6 +72,12 @@
   padding: 20px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   margin-bottom: 20px;
+  transition: transform 0.3s, background-color 0.3s;
+}
+
+.to-do-list:hover {
+  background: #eef0f0;
+  transform: translateY(-5px); 
 }
 
 .to-do-list h2 {
@@ -126,7 +140,6 @@
   color: #18bc9c;
 }
 
-
 @media screen and (min-width: 769px) {
   .hamburger-icon {
     display: none;
@@ -145,6 +158,7 @@
   border-radius: 5px;
   padding: 20px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
 }
 
 .react-calendar {
@@ -246,4 +260,59 @@
 
 .react-calendar--selectRange .react-calendar__tile--hover {
   background-color: #e6e6e6;
+}
+
+.schedule {
+  background: #ffffff;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+
+.schedule h2 {
+  margin-bottom: 20px;
+}
+
+.schedule-input {
+  display: flex;
+  margin-bottom: 20px;
+}
+
+.schedule-input input {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  margin-right: 10px;
+}
+
+.schedule-input button {
+  padding: 10px 20px;
+  border: none;
+  background: #18bc9c;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.schedules {
+  list-style: none;
+  padding: 0;
+}
+
+.schedules li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+.schedules li.completed span {
+  text-decoration: line-through;
+  color: #888;
 }
