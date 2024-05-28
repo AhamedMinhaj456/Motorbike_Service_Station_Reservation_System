@@ -1,87 +1,105 @@
-
-import { Box } from "@mui/material";
-import { DataGrid, GridToolbar } from "@mui/x-data-grid";
+import { Box, Button, Typography, useTheme } from "@mui/material";
+import { DataGrid } from "@mui/x-data-grid";
 import { tokens } from "../../../theme";
-import { mockDataContacts } from "../../data/mockData";
 import Header from "../../components/Header";
-import { useTheme } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 
 const ReservationHistory = () => {
+  const navigate = useNavigate();
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
-  const [mockDataContacts, setMockDataContacts] = useState([]);
 
-  // Function to fetch contacts data from the API
-  const fetchContacts = async () => {
+  const [reservationDetails, setReservationDetails] = useState([]);
+
+  // Function to fetch reservation data from the API
+  const fetchReservations = async () => {
     try {
-      const response = await fetch('http://localhost:8095/shop/getShop');
+      const response = await fetch('http://localhost:8095/reservation/ReservationDetails');
       if (!response.ok) {
         throw new Error('Network response was not ok ' + response.statusText);
       }
       const data = await response.json();
-      setMockDataContacts(data);
+      setReservationDetails(data);
     } catch (error) {
       console.error('There has been a problem with your fetch operation:', error);
     }
   };
 
-  // Fetch contacts data when the component mounts
-  // useEffect(() => {
-  //   fetchContacts();
-  // }, []);
+  // Fetch reservation data when the component mounts
+  useEffect(() => {
+    fetchReservations();
+  }, []);
+
+  // Filter reservations to include only those with processStatus = 'completed'
+  const completedReservations = reservationDetails.filter(
+    (reservation) => reservation.processStatus === 'completed'
+  );
 
   const columns = [
-    { field: "id", headerName: "ID", flex: 0.2 },
-    { field: "registrarId", headerName: "Reservation ID",flex: 1 },
+    { field: "reservationId", headerName: "Reservation ID", flex: 1 },
     {
-      field: "name",
+      field: "customerName",
       headerName: "Name",
       flex: 1,
       cellClassName: "name-column--cell",
-      
     },
     {
-      field: "age",
-      headerName: "Previous Reservations",
-      type: "number",
+      field: "motorbikeNumber",
+      headerName: "Motorbike Number",
+      flex: 1,
       headerAlign: "left",
       align: "left",
-      flex: 1.5
     },
     {
-      field: "phone",
-      headerName: "Phone Number",
+      field: "serviceType",
+      headerName: "Service Type",
       flex: 1,
     },
     {
-      field: "email",
-      headerName: "Email",
+      field: "shopName",
+      headerName: "Shop Name",
       flex: 1,
     },
     {
-      field: "address",
-      headerName: "Address",
-      flex: 1,
+      field: "reservationDate",
+      headerName: "Reservation Date",
+      flex: 2,
     },
     {
-      field: "city",
-      headerName: "City",
-      flex: 1,
+      field: "reservationTime",
+      headerName: "Reservation Time",
+      flex: 2,
     },
     {
-      field: "zipCode",
-      headerName: "Zip Code",
-      flex: 1,
+      field: "reservationAddress",
+      headerName: "Reservation Address",
+      flex: 2,
+    },
+    {
+      field: "actions",
+      headerName: "Actions",
+      renderCell: (params) => (
+        <Button
+          variant="contained"
+          color="primary"
+          onClick={() => handleOpenChildWindow(params.row)}
+        >
+          View
+        </Button>
+      ),
+      flex: 2,
     },
   ];
 
+  const handleOpenChildWindow = (rowData) => {
+    // Logic to navigate to a new page with rowData
+    navigate(`/child-window/${rowData.reservationId}`);
+  };
+
   return (
     <Box m="20px">
-      <Header
-        title="RESERVATION HISTORY"
-        subtitle="List of Previous Reservations"
-      />
+      <Header title="Reservation History" subtitle="Managing Completed Reservations" />
       <Box
         m="40px 0 0 0"
         height="75vh"
@@ -109,15 +127,12 @@ const ReservationHistory = () => {
           "& .MuiCheckbox-root": {
             color: `${colors.greenAccent[200]} !important`,
           },
-          "& .MuiDataGrid-toolbarContainer .MuiButton-text": {
-            color: `${colors.grey[100]} !important`,
-          },
         }}
       >
-        <DataGrid
-          rows={mockDataContacts}
+        <DataGrid 
+          rows={completedReservations} 
           columns={columns}
-          components={{ Toolbar: GridToolbar }}
+          getRowId={(row) => row.reservationId} 
         />
       </Box>
     </Box>

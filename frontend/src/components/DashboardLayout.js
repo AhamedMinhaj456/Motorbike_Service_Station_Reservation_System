@@ -5,7 +5,7 @@ import { ColorModeContext, useMode } from './theme';
 import Topbar from './dashboard/scenes/global/Topbar';
 import Sidebar from './dashboard/scenes/global/Sidebar';
 import Dashboard from './dashboard/scenes/dashboard';
-import Team from './dashboard/scenes/team';
+import ManageReservations from './dashboard/scenes/ManageReservations';
 import PaymentReservations from './dashboard/scenes/payments';
 import ReservationHistory from './dashboard/scenes/history';
 import Bar from './dashboard/scenes/bar';
@@ -31,7 +31,7 @@ const DashboardLayout = () => {
             <Topbar setIsSidebar={setIsSidebar} />
             <Routes>
               <Route path="/dash" element={<Dashboard />} />
-              <Route path="/team" element={<Team />} />
+              <Route path="/ManageReservations" element={<ManageReservations />} />
               <Route path="/history" element={<ReservationHistory />} />
               <Route path="/payment-reservations" element={<PaymentReservations />} />
               <Route path="/form" element={<Form />} />

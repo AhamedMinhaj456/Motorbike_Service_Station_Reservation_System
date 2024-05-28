@@ -1,38 +1,58 @@
-import { Box, Typography, useTheme } from "@mui/material";
+import { Box, Button, Typography, useTheme } from "@mui/material";
 import { DataGrid } from "@mui/x-data-grid";
 import { tokens } from "../../../theme";
-import { mockDataTeam } from "../../data/mockData";
-import AdminPanelSettingsOutlinedIcon from "@mui/icons-material/AdminPanelSettingsOutlined";
-import LockOpenOutlinedIcon from "@mui/icons-material/LockOpenOutlined";
-import SecurityOutlinedIcon from "@mui/icons-material/SecurityOutlined";
 import Header from "../../components/Header";
-
+import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
 
 const ManageReservations = () => {
+  const navigate = useNavigate();
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
+
+  const [reservationDetails, setReservationDetails] = useState([]);
+
+  // Function to fetch contacts data from the API
+  const fetchContacts = async () => {
+    try {
+      const response = await fetch('http://localhost:8095/reservation/ReservationDetails');
+      if (!response.ok) {
+        throw new Error('Network response was not ok ' + response.statusText);
+      }
+      const data = await response.json();
+      setReservationDetails(data);
+    } catch (error) {
+      console.error('There has been a problem with your fetch operation:', error);
+    }
+  };
+
+  // Fetch contacts data when the component mounts
+  useEffect(() => {
+    fetchContacts();
+  }, []);
+
   const columns = [
-    { field: "id", headerName: "No", flex: 0.5 },
+    { field: "reservationId", headerName: "reservationId", flex: 0.5 },
     {
-      field: "name",
+      field: "customerName",
       headerName: "Name",
       flex: 1,
       cellClassName: "name-column--cell",
     },
     {
-      field: "age",
+      field: "motorbikeNumber",
       headerName: "Motorbike Number",
       type: "number",
       headerAlign: "left",
       align: "left",
     },
     {
-      field: "phone",
+      field: "serviceType",
       headerName: "Service Type",
       flex: 1,
     },
     {
-      field: "email",
+      field: "reservationDate",
       headerName: "Reservation Date",
       flex: 1,
     },
@@ -60,48 +80,15 @@ const ManageReservations = () => {
       ),
       flex: 1,
     },
-  
-    // {
-    //   field: "accessLevel",
-    //   headerName: "Access Level",
-    //   flex: 1,
-    //   renderCell: ({ row: { access } }) => {
-    //     return (
-    //       <Box
-    //         width="60%"
-    //         m="0 auto"
-    //         p="5px"
-    //         display="flex"
-    //         justifyContent="center"
-    //         backgroundColor={
-    //           access === "admin"
-    //             ? colors.greenAccent[600]
-    //             : access === "manager"
-    //             ? colors.greenAccent[700]
-    //             : colors.greenAccent[700]
-    //         }
-    //         borderRadius="4px"
-    //       >
-    //         {access === "admin" && <AdminPanelSettingsOutlinedIcon />}
-    //         {access === "manager" && <SecurityOutlinedIcon />}
-    //         {access === "user" && <LockOpenOutlinedIcon />}
-    //         <Typography color={colors.grey[100]} sx={{ ml: "5px" }}>
-    //           {access}
-    //         </Typography>
-    //       </Box>
-    //     );
-    //   },
-    // },
   ];
 
   const handleOpenChildWindow = (rowData) => {
-    // Logic to open child window with rowData
-    window.open(`/child-window/${rowData.id}`, 'ChildWindow', 'width=800,height=600');
+    navigate(`/child-window/${rowData.reservationId}`);
   };
 
   return (
     <Box m="20px">
-      <Header title="TEAM" subtitle="Managing the Team Members" />
+      <Header title="Manage Reservations" subtitle="List of Reservations" />
       <Box
         m="40px 0 0 0"
         height="75vh"
@@ -131,7 +118,12 @@ const ManageReservations = () => {
           },
         }}
       >
-        <DataGrid checkboxSelection rows={mockDataTeam} columns={columns} />
+        <DataGrid
+          rows={reservationDetails}
+          columns={columns}
+          getRowId={(row) => row.reservationId}
+          // checkboxSelection
+        />
       </Box>
     </Box>
   );

@@ -1,6 +1,5 @@
-
-import { useState } from "react";
-import { ProSidebar, Menu, MenuItem, SubMenu } from "react-pro-sidebar";
+import { useEffect, useState } from "react";
+import { ProSidebar, Menu, MenuItem } from "react-pro-sidebar";
 import { Box, IconButton, Typography, useTheme } from "@mui/material";
 import { Link } from "react-router-dom";
 import "react-pro-sidebar/dist/css/styles.css";
@@ -17,11 +16,14 @@ import PieChartOutlineOutlinedIcon from "@mui/icons-material/PieChartOutlineOutl
 import TimelineOutlinedIcon from "@mui/icons-material/TimelineOutlined";
 import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
 import MapOutlinedIcon from "@mui/icons-material/MapOutlined";
-import rigo from "../../../../assets/Rigo_Louie.jpg"
+import rigo from "../../../../assets/Rigo_Louie.jpg";
+import { useSelector } from "react-redux";
+import axios from "axios";
 
 const Item = ({ title, to, icon, selected, setSelected }) => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
+
   return (
     <MenuItem
       active={selected === title}
@@ -42,6 +44,24 @@ const Sidebar = () => {
   const colors = tokens(theme.palette.mode);
   const [isCollapsed, setIsCollapsed] = useState(false);
   const [selected, setSelected] = useState("Dashboard");
+  const customerId = useSelector((state) => state.customers);
+  const [customer, setCustomer] = useState(null);
+
+  const fetchContacts = async () => {
+    try {
+      console.log(`Fetching data for customerId: ${customerId}`);
+      const response = await axios.get(`http://localhost:8095/customer/${customerId}`);
+      console.log('API response:', response.data);
+      setCustomer(response.data);
+    } catch (error) {
+      console.error('There has been a problem with your fetch operation:', error);
+    }
+  };
+
+  // Fetch contacts data when the component mounts
+  useEffect(() => {
+    fetchContacts();
+  }, [customerId]);
 
   return (
     <Box
@@ -103,17 +123,21 @@ const Sidebar = () => {
                 />
               </Box>
               <Box textAlign="center">
-                <Typography
-                  variant="h2"
-                  color={colors.grey[100]}
-                  fontWeight="bold"
-                  sx={{ m: "10px 0 0 0" }}
-                >
-                  Nirasha Morais
-                </Typography>
-                <Typography variant="h5" color={colors.greenAccent[500]}>
-                  Premium User
-                </Typography>
+                {customer && (
+                  <Box textAlign="center">
+                    <Typography
+                      variant="h2"
+                      color={colors.grey[100]}
+                      fontWeight="bold"
+                      sx={{ m: "10px 0 0 0" }}
+                    >
+                      {customer.customerName}
+                    </Typography>
+                    <Typography variant="h5" color={colors.greenAccent[500]}>
+                      Premium User
+                    </Typography>
+                  </Box>
+                )}
               </Box>
             </Box>
           )}
