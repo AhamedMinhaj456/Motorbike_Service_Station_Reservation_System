@@ -6,9 +6,9 @@ import SpecialOffersCard from './SpecialOffersCard';
 
 function SpecialOffers() {
   return (
-    <div className='recent-holidays my-4 my-sm-5'>
+    <div className='special-offers my-4 my-sm-5'>
         <Container>
-            <h2 className='text-uppercase fw-semibold mb-4 mb-sm-5'>Recent holidays</h2>
+            <h2 className='text-uppercase fw-semibold mb-4 mb-sm-5'>Special Offers</h2>
             <div className='row g-4'>
                 {
                     SpecialOfferItems.map((item) => <SpecialOffersCard key={item.id} itemImage={item.itemImage} itemTitle={item.itemTitle} itemDescription={item.itemDescription} itemNights={item.itemNights} itemPrice={item.itemPrice} />)

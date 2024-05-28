@@ -8,6 +8,7 @@ import HolidayPlanSection from './ContactUsSection/ContactUsSection';
 import FavouritesSection from './FavouriteSection/FavouriteSection';
 import SpecialOffers from './SpecialOffers/SpecialOffers';
 import NeedInspirationSection from './NeedSupport/NeedSupport';
+import ShopMap from './ShopMap/ShopMap';
 
 function ShopHome() {
     return (
@@ -22,6 +23,7 @@ function ShopHome() {
             <FavouritesSection />
             <SpecialOffers />
             <NeedInspirationSection />
+            <ShopMap/>
         </div>
     )
 }
