@@ -76,6 +76,7 @@ import { ColorModeContext, useMode } from "./components/theme";
 import Chatbot from "./components/Chatbot";*/
 import DashboardLayout from "./components/DashboardLayout";
 import ShopHome from "./components/ShopDetailed/ShopHome";
+import FileUpload from "./components/FileUpload"
 import './App.css';
 
 
@@ -161,6 +162,7 @@ function App() {
         <Route path="/fault" element={<Fault />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/shop-home" element={<ShopHome/>}/>
+        <Route path="/file-upload" element={<FileUpload/>}/>
         
         {/* Dashboard Routes */}
         <Route path="/*" element={<DashboardLayout />} />
