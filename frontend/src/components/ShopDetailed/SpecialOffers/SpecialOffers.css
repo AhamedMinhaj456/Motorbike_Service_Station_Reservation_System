@@ -1,0 +1,33 @@
+.special-offers .row .col-lg-6:first-of-type .img-div {
+    background-image: url(../../../assets/shop2.jpg);
+}
+
+.special-offers .row .col-lg-6:nth-last-of-type(2) .img-div {
+    background-image: url(../../../assets/shop3.jpg);
+}
+
+.special-offers .row .col-lg-6:nth-last-of-type(3) .img-div {
+    background-image: url(../../../assets/shop4.jpg);
+}
+
+.special-offers .row .col-lg-6:last-of-type .img-div {
+    background-image: url(../../../assets/shop5.jpg);
+}
+
+.special-offers .img-div {
+    background-size: cover;
+    background-position: center;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+
+.special-offers .h5,
+.special-offers .price {
+    font-size: 1.5rem;
+}
+
+@media screen and (max-width: 576px) {
+    .special-offers .img-div {
+        height: 200px;
+    }
+}
