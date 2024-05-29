@@ -1,7 +1,5 @@
 package motorbike_reservation_system.admin_CRUD.Fault.Parts.Frame;
 
-import motorbike_reservation_system.admin_CRUD.Fault.Parts.BreakingSystem.BrakingSystem;
-import motorbike_reservation_system.admin_CRUD.Fault.Parts.BreakingSystem.BrakingSystemRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -25,7 +23,7 @@ public class FrameService {
         return frameRepo.findByFrame(frame);
     }
 
-    public String deleteFrame(String frameId){
+    public String deleteFrame(String frameId) {
         frameRepo.deleteById(frameId);
         return "product removed !! " + frameId;
     }

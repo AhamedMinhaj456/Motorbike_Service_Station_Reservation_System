@@ -1,12 +1,15 @@
 package motorbike_reservation_system.admin_CRUD.Fault.Parts.Frame;
 
 
-import jakarta.persistence.*;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.PrePersist;
+import jakarta.persistence.Table;
 
 import java.util.Random;
 
 @Entity
-@Table(name="frame")
+@Table(name = "frame")
 public class Frame {
 
     @Id

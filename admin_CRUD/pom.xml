@@ -37,6 +37,22 @@
 			<scope>test</scope>
 		</dependency>
 
+<!--		&lt;!&ndash; Hibernate JPA Implementation &ndash;&gt;-->
+<!--		<dependency>-->
+<!--			<groupId>org.hibernate</groupId>-->
+<!--			<artifactId>hibernate-core</artifactId>-->
+<!--			<version>5.6.9.Final</version>-->
+<!--		</dependency>-->
+
+<!--		&lt;!&ndash; JPA API &ndash;&gt;-->
+<!--		<dependency>-->
+<!--			<groupId>javax.persistence</groupId>-->
+<!--			<artifactId>javax.persistence-api</artifactId>-->
+<!--			<version>2.2</version>-->
+<!--		</dependency>-->
+
+
+
 		<!--		Swagger-->
 		<dependency>
 			<groupId>org.springdoc</groupId>
@@ -52,6 +68,12 @@
             <artifactId>spring-security-crypto</artifactId>
             <version>6.2.2</version>
         </dependency>
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+		</dependency>
+
+
 
         <!-- swagger ends -->
 	</dependencies>
@@ -66,3 +88,8 @@
 	</build>
 
 </project>
+
+
+<!--		Using generated security password: 347512a1-79a4-4ad7-b118-f67c0104edbb-->
+
+<!--		This generated password is for development use only. Your security configuration must be updated before running your application in production.-->
