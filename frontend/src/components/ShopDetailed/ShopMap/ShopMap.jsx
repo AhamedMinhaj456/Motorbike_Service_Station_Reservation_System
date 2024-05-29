@@ -7,7 +7,7 @@ function ShopMap({ name, address, contact }) {
     <div className="shop-location-container">
       <div className="shop-info">
         <div className="shop-heading">
-          <h2><FaMapMarkerAlt /> Shop Location</h2>
+          <h2><FaMapMarkerAlt /> SHOP LOCATION</h2>
         </div>
         <div className="shop-details">
           <p><strong>{name}</strong></p>
