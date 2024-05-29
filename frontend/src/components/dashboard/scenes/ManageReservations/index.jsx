@@ -16,11 +16,13 @@ const ManageReservations = () => {
   const fetchContacts = async () => {
     try {
       const response = await fetch('http://localhost:8095/reservation/ReservationDetails');
+      
       if (!response.ok) {
         throw new Error('Network response was not ok ' + response.statusText);
       }
       const data = await response.json();
       setReservationDetails(data);
+      console.log(data);
     } catch (error) {
       console.error('There has been a problem with your fetch operation:', error);
     }
@@ -67,15 +69,15 @@ const ManageReservations = () => {
       flex: 1,
     },
     {
-      field: "actions",
-      headerName: "Actions",
+      
+      headerName: "Status",
       renderCell: (params) => (
         <Button
           variant="contained"
           color="primary"
           onClick={() => handleOpenChildWindow(params.row)}
         >
-          View
+        {params.row.approvedStatus === 'approved' ? params.row.processStatus : params.row.processStatus}
         </Button>
       ),
       flex: 1,

@@ -78,14 +78,14 @@ const ReservationHistory = () => {
     },
     {
       field: "actions",
-      headerName: "Actions",
+      headerName: "Status",
       renderCell: (params) => (
         <Button
           variant="contained"
           color="primary"
           onClick={() => handleOpenChildWindow(params.row)}
         >
-          View
+          {params.row.processStatus} 
         </Button>
       ),
       flex: 2,

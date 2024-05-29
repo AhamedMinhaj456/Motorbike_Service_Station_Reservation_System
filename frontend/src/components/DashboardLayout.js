@@ -16,6 +16,7 @@ import FAQ from './dashboard/scenes/faq';
 import Geography from './dashboard/scenes/geography';
 import Calendar from '../components/dashboard/scenes/calender/calender';
 import Chatbot from './Chatbot';
+import ReservationDetails from './dashboard/scenes/ReservationDetails';
 
 const DashboardLayout = () => {
   const [theme, colorMode] = useMode();
@@ -42,6 +43,7 @@ const DashboardLayout = () => {
               <Route path="/calendar" element={<Calendar />} />
               <Route path="/geography" element={<Geography />} />
               <Route path="/chatbot" element={<Chatbot />} />
+              <Route path="/ReservationDetails" element={<ReservationDetails />} />
             </Routes>
           </main>
         </div>

@@ -1,4 +1,4 @@
-import { Box, Typography, useTheme } from "@mui/material";
+import { Box, Typography, useTheme, Button } from "@mui/material";
 import { DataGrid } from "@mui/x-data-grid";
 import { tokens } from "../../../theme";
 import { mockDataInvoices } from "../../data/mockData";
@@ -6,7 +6,9 @@ import Header from "../../components/Header";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 
+
 const PaymentReservations = () => {
+  const navigate = useNavigate();
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
 
@@ -68,18 +70,26 @@ const PaymentReservations = () => {
       headerName: "Total Amount",
       flex: 1,
     },
-    // {
-    //   field: "",
-    //   headerName: " Payment",
-    //   flex: 1,
-    //   renderCell: (params) => (
-    //     <Typography color={colors.greenAccent[500]}>
-    //       ${params.row.cost}
-    //     </Typography>
-    //   ),
-    // },
+    {
+      field: "actions",
+      headerName: "Status",
+      renderCell: (params) => (
+        <Button
+          variant="contained"
+          color="primary"
+          onClick={() => handleOpenChildWindow(params.row)}
+        >
+        {params.row.paymentStatus === 'approved' ? params.row.processStatus : params.row.processStatus}
+        </Button>
+      ),
+      flex: 1,
+    },
    
   ];
+
+  const handleOpenChildWindow = (rowData) => {
+    navigate(`/child-window/${rowData.reservationId}`);
+  };
 
   return (
     <Box m="20px">
