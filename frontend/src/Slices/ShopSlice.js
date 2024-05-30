@@ -1,36 +1,41 @@
+// ShopSlice.js
+
 import { createSlice } from "@reduxjs/toolkit";
 
-// Load initial state from local storage
-const loadState = () => {
+const loadState = (key) => {
     try {
-        const serializedState = localStorage.getItem('shops');
+        const serializedState = localStorage.getItem(key);
         if (serializedState === null) {
-            return ""; // Assuming empty string as initial state if nothing found in local storage
+            return null; 
         }
         return JSON.parse(serializedState);
     } catch (err) {
-        return ""; // Assuming empty string as initial state if there's an error
+        console.error("Error loading state from local storage:", err);
+        return null; 
     }
 };
 
-// Shop slice
-const initialState = loadState() || "";
+const initialShopState = loadState('shops') || "";
 
 const shopSlice = createSlice({
     name: 'shopId',
-    initialState,
+    initialState: initialShopState,
     reducers: {
         addShopId(state, action) {
-            return action.payload; // Set the state to the provided shopId
+            if (action.payload) { // Check if payload is not empty
+                return action.payload;
+            }
+            return state; // If payload is empty, return current state
         },
-        deleteShopId(state, action) {
-            return ""; // Clear the state (assuming you want to delete the selected shopId)
+        deleteShopId(state) {
+            return {};
         },
         clearStorage(state) {
-            return ""; // Clear the state (assuming you want to clear the stored shopId)
+            return {};
         }
     }
 });
 
 export const { addShopId, deleteShopId, clearStorage } = shopSlice.actions;
+
 export default shopSlice.reducer;

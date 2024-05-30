@@ -8,7 +8,7 @@ const saveState = (state) => {
         const serializedCustomersState = JSON.stringify(state.customers);
         localStorage.setItem('customerId', serializedCustomersState);
 
-        const serializedShopsState = JSON.stringify(state.shops);
+        const serializedShopsState = JSON.stringify(state.shops.shopId);
         localStorage.setItem('shops', serializedShopsState);
     } catch {
         // Ignore write errors
@@ -24,8 +24,17 @@ const localStorageMiddleware = store => next => action => {
 };
 
 // Middleware to clear local storage
+// const clearLocalStorageMiddleware = store => next => action => {
+//     if (action.type === 'customerId/clearStorage' || action.type === 'shopId/clearStorage') {
+//         localStorage.removeItem('customerId'); // Clear the correct key
+//         localStorage.removeItem('shops'); // Clear the shops as well
+//     }
+//     return next(action);
+// };
+
+// Middleware to clear local storage
 const clearLocalStorageMiddleware = store => next => action => {
-    if (action.type === 'customerId/clearStorage' || action.type === 'shopId/clearStorage') {
+    if (action.type === 'logout') {
         localStorage.removeItem('customerId'); // Clear the correct key
         localStorage.removeItem('shops'); // Clear the shops as well
     }

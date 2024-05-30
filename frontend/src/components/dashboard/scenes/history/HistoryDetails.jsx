@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { Box, Typography, Paper, Grid } from '@mui/material';
 import Header from '../../components/Header';
-import './ReservationDetails.css';
+import './HistoryDetails.css';
 import axios from 'axios';
 
-const ReservationDetails = ({ reservationId }) => {
+const HistoryDetails = ({ reservationId }) => {
     console.log('API response:', reservationId);
   const [reservation, setReservation] = useState({
     customerName: "John Doe",
@@ -17,11 +17,11 @@ const ReservationDetails = ({ reservationId }) => {
 
   useEffect(() => {
     if (reservationId) {
-        fetchReservationDetails();
+        fetchHistoryDetails();
     }
 }, [reservationId]);
 
-    const fetchReservationDetails = async () => {
+    const fetchHistoryDetails = async () => {
       const response = await axios.get(`http://localhost:8095/reservation/reservationDetails/${reservationId}`);
       setReservation(response.data);
       console.log('API response:', response.data);
@@ -94,16 +94,7 @@ const ReservationDetails = ({ reservationId }) => {
               </Grid>
             </Grid>
           </Box>
-          <Box sx={{ gridColumn: "span 2", display: "flex", alignItems: "center" }}>
-            <Grid container>
-              <Grid item xs={6}>
-                <Typography variant="h6" className="detail-title">Approved Status:</Typography>
-              </Grid>
-              <Grid item xs={6}>
-                <Typography variant="body1" className="detail-value">{reservation.approvedStatus}</Typography>
-              </Grid>
-            </Grid>
-          </Box>
+          
           {reservation.approvedStatus === 'approved' && (
             <Box sx={{ gridColumn: "span 2", display: "flex", alignItems: "center" }}>
               <Grid container>
@@ -139,4 +130,4 @@ const ReservationDetails = ({ reservationId }) => {
   );
 };
 
-export default ReservationDetails;
+export default HistoryDetails;

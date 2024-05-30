@@ -4,6 +4,7 @@ import { tokens } from "../../../theme";
 import Header from "../../components/Header";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
+import HistoryDetails from "./HistoryDetails";
 
 const ReservationHistory = () => {
   const navigate = useNavigate();
@@ -11,6 +12,7 @@ const ReservationHistory = () => {
   const colors = tokens(theme.palette.mode);
 
   const [reservationDetails, setReservationDetails] = useState([]);
+  const [selectedReservationId, setSelectedReservationId] = useState(null);
 
   // Function to fetch reservation data from the API
   const fetchReservations = async () => {
@@ -77,13 +79,13 @@ const ReservationHistory = () => {
       flex: 2,
     },
     {
-      field: "actions",
+      field: "status",
       headerName: "Status",
       renderCell: (params) => (
         <Button
           variant="contained"
           color="primary"
-          onClick={() => handleOpenChildWindow(params.row)}
+          onClick={() => handleSelectedReservationClick(params.row.reservationId)}
         >
           {params.row.processStatus} 
         </Button>
@@ -92,14 +94,18 @@ const ReservationHistory = () => {
     },
   ];
 
-  const handleOpenChildWindow = (rowData) => {
-    // Logic to navigate to a new page with rowData
-    navigate(`/child-window/${rowData.reservationId}`);
+  const handleSelectedReservationClick = (reservationId) => {
+    setSelectedReservationId(reservationId);
   };
 
   return (
     <Box m="20px">
       <Header title="Reservation History" subtitle="Managing Completed Reservations" />
+      {selectedReservationId ? (
+        <Box m="20px">
+          <HistoryDetails reservationId={selectedReservationId} />
+        </Box>
+      ) : (
       <Box
         m="40px 0 0 0"
         height="75vh"
@@ -135,6 +141,7 @@ const ReservationHistory = () => {
           getRowId={(row) => row.reservationId} 
         />
       </Box>
+      )}
     </Box>
   );
 };

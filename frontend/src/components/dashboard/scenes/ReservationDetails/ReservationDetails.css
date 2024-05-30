@@ -13,6 +13,29 @@
   margin-bottom: 4px;
 }
 
+.center-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+ 
+}
+
+.back-button-1 {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin-top: 20px; /* If needed, can be adjusted or removed */
+}
+
+.back-button-1:hover {
+  background-color: #0056b3; /* Darker shade for hover effect */
+}
+
+
 .detail-value {
   color: #555; 
   font-weight: 400;

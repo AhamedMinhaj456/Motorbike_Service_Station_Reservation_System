@@ -17,6 +17,9 @@ import Geography from './dashboard/scenes/geography';
 import Calendar from '../components/dashboard/scenes/calender/calender';
 import Chatbot from './Chatbot';
 import ReservationDetails from './dashboard/scenes/ReservationDetails';
+import HistoryDetails from './dashboard/scenes/history/HistoryDetails';
+import FeedbackForm from './dashboard/scenes/Feedback/FeedbackForm';
+import ProfileImageUpload from './dashboard/scenes/ProfileImageUpload/ProfileImageUpload';
 
 const DashboardLayout = () => {
   const [theme, colorMode] = useMode();
@@ -44,6 +47,9 @@ const DashboardLayout = () => {
               <Route path="/geography" element={<Geography />} />
               <Route path="/chatbot" element={<Chatbot />} />
               <Route path="/ReservationDetails" element={<ReservationDetails />} />
+              <Route path="/HistoryDetails" element={<HistoryDetails />} />
+              <Route path="/FeedbackForm" element={<FeedbackForm />} />
+              <Route path="/ProfileImageUpload" element={<ProfileImageUpload />} />
             </Routes>
           </main>
         </div>
