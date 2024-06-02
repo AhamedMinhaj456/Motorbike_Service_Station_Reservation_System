@@ -78,6 +78,7 @@ import DashboardLayout from "./components/DashboardLayout";
 import ShopHome from "./components/ShopDetailed/ShopHome";
 import FileUpload from "./components/FileUpload"
 import './App.css';
+import ProfileSettings from "./components/ProfileSettings";
 
 
 
@@ -163,6 +164,8 @@ function App() {
         <Route path="/cart" element={<Cart />} />
         <Route path="/shop-home" element={<ShopHome/>}/>
         <Route path="/file-upload" element={<FileUpload/>}/>
+        <Route path="/profile-settings" element={<ProfileSettings/>}/>
+
         
         {/* Dashboard Routes */}
         <Route path="/*" element={<DashboardLayout />} />
