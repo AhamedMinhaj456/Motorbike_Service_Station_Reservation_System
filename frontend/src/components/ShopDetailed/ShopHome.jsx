@@ -20,10 +20,11 @@ function ShopHome() {
             <div className="my-4 my-sm-5">
                 <ShopMission itemRecommendedTitle='Recommended for you' />
             </div>
-            <HolidayPlanSection itemHolidayPlanTitle='Plan your summer holiday' />
+            <HolidayPlanSection itemHolidayPlanTitle='Make Your Bike More comfortable with Us' />
             <FavouritesSection />
-            <SpecialOffers />
             <NeedInspirationSection />
+            <SpecialOffers />
+            
             
         </div>
     )

@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import { FaClock, FaMapMarkerAlt, FaPhone } from "react-icons/fa";
 import "./ShopDetails.css";
 import axios from "axios";
+import img1 from '../../../assets/bike8.jpg';
+
 
 const ShopDetails = () => {
   const [shops, setShops] = useState([
@@ -10,7 +12,7 @@ const ShopDetails = () => {
       shopName: "Velo Care",
       shopAddress: "123 Main St, City, Country",
       contactNumber: "+1234567890",
-      profileImage: "",
+      profileImage: img1,
       openingTime: "08:00",
       closingTime: "14:20",
       shopDescription: "Discover the wonderland of our shop, where every biking enthusiast finds their dreams fulfilled. From top-of-the-line gear to expert repairs and friendly service, we're your one-stop destination for all things biking. Step into our world and experience the joy of cycling like never before!"
@@ -125,9 +127,10 @@ const ShopDetails = () => {
               <div className="profile-image-container">
                 <img
                   src={`data:image/jpeg;base64,${shop.profileImage}`}
-                  alt="Profile"
+                  alt={`image_${shop.shopId}`}
                   className="profile-image"
                 />
+                 
               </div>
               <p>
                 <strong>{shop.shopName}</strong>

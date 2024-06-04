@@ -6,19 +6,19 @@ let LastHolidaysItems = [
     {
         id: 1,
         itemImage: LondonImg,
-        itemTitle: 'London',
+        itemTitle: 'Full Services',
         itemDescription: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Atque officia qui voluptatibus doloribus corporis ipsa rem adipisci nesciunt dolorum deleniti?'
     },
     {
         id: 2,
         itemImage: DubaiImg,
-        itemTitle: 'Dubai',
+        itemTitle: 'Custom Services',
         itemDescription: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Atque officia qui voluptatibus doloribus corporis ipsa rem adipisci nesciunt dolorum deleniti?'
     },
     {
         id: 3,
         itemImage: ParisImg,
-        itemTitle: 'Paris',
+        itemTitle: 'Repair',
         itemDescription: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Atque officia qui voluptatibus doloribus corporis ipsa rem adipisci nesciunt dolorum deleniti?'
     }
 ];
