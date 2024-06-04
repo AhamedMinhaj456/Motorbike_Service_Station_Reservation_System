@@ -1,0 +1,41 @@
+.shop-main-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.shop-main {
+    display: flex;
+    flex: 1; /* Take up remaining space between navbar and footer */
+    flex-direction: row;
+    background: url('../../assets/shop.jpeg') center/cover;
+    
+}
+
+.shop-main h1 {
+ margin-top: 20px;
+ color: rgb(238, 236, 242);
+ font-weight: bold;
+}
+
+
+@media (max-width: 768px) {
+    .shop-main {
+        flex-direction: column;
+    }
+
+    .shop-main h1 {
+        margin: 20px auto; /* Center the heading horizontally */
+    }
+
+    .left-sidebar,
+    .right-sidebar {
+        width: 100%; /* Full width for sidebars */
+    }
+}
+
+.shop-main h1 {
+    margin-top: 20px;
+    margin-left: 350px;
+}
+
