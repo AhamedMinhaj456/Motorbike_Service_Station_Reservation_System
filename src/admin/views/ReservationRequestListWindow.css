@@ -10,7 +10,7 @@
   flex-direction: column;
   align-items: center;
   padding: 20px;
-  margin-left: 100px;
+ 
 }
 
 .reservation-management-content h2 {
@@ -71,29 +71,67 @@
 }
 
 
+@media screen and (max-width: 1200px) {
+  .reservation-management-content {
+    margin-left: 150px;
+    padding: 15px;
+  }
+}
 
-/* Adjustments for smaller screens */
+@media screen and (max-width: 992px) {
+  .reservation-management-content {
+    margin-left: 100px;
+    padding: 10px;
+  }
+}
+
 @media screen and (max-width: 768px) {
   .left-sidebar {
     width: 250px;
   }
+  .right-sidebar {
+    width: 70px;
+  }
 
   .reservation-management-content {
     margin-left: 250px;
-    margin-right: 20px; /* Adjust margin-right for better spacing on small screens */
+    margin-right: 20px;
+    padding: 10px;
   }
 
   .reservation-list {
-    width: 100%; /* Take full width on smaller screens */
+    width: 100%;
   }
 
-  .component-div {
+  .reservation-component-div {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100%; /* Adjust the height as needed */
+    height: 100%;
     margin-right: 100px;
   }
-  
+}
 
+@media screen and (max-width: 576px) {
+  .reservation-management-content {
+    margin-left: 0;
+    padding: 10px;
+    margin-right: 10px;
+  }
+
+  .reservation-item {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .reservation-item button.accept-btn,
+  .reservation-item button.delete-btn {
+    width: 100%;
+    margin-top: 5px;
+    margin-right: 0;
+  }
+
+  .reservation-component-div {
+    margin-right: 0;
+  }
 }

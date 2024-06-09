@@ -1,6 +1,8 @@
 .progress-update-main {
     display: flex;
     height: 100vh;
+   
+    
     
 }
 
@@ -9,7 +11,11 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        margin-left: 100px;
+        padding: 20px;
+        justify-content: center;
+        
+     
+       
       }
 
   .progress-update-management-content {
@@ -19,6 +25,7 @@
     background-color: #f1f4f6;
     margin-top: 15px;
     overflow-y: auto;
+   
   }
 
 
@@ -137,8 +144,8 @@
 
 
   .progress-bar {
-    width: 400px; /* Set the width of the progress bar */
-    margin-bottom: 20px; /* Adjust margin as needed */
+    width: 400px; 
+    margin-bottom: 20px; 
 }
 
 .progress-segment-container {
@@ -148,26 +155,158 @@
 
 .progress-segment {
     flex: 1;
-    height: 40px; /* Set the height of each segment */
+    height: 40px; 
     margin-left: 20px;
     margin-right: 10px;
-    border-radius: 5px; /* Adjust border-radius as needed */
+    border-radius: 5px; 
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 16px; /* Adjust font size as needed */
+    font-size: 16px; 
     font-weight: bold;
-    margin-right: 5px; /* Adjust margin between segments */
+    margin-right: 5px; 
 }
 
 .inspection {
-    background-color: #f251ed; /* Set color for inspection segment */
+    background-color: #f251ed; 
 }
 
 .repairs {
-    background-color: #ff6f6f; /* Set color for repairs segment */
+    background-color: #ff6f6f; 
 }
 
 .quality-check {
-    background-color: #4a90e2; /* Set color for quality check segment */
+    background-color: #4a90e2; 
 }
+
+
+
+.progress-update-main {
+  display: flex;
+  height: 100vh;
+}
+
+.progress-update-management {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  justify-content: center;
+}
+
+
+@media (max-width: 1200px) {
+  .progress-update-management {
+      padding: 15px;
+  }
+
+  .progress-update-management-content {
+      width: 90%;
+  }
+
+  .dropID, .next-button, .progress-button, .save-button {
+      width: 100%;
+  }
+
+  .next-button, .progress-button, .save-button {
+      margin-left: 0;
+      margin-right: 0;
+      margin-top: 10px;
+  }
+}
+
+@media (max-width: 768px) {
+
+  .progress-update-management-content {
+      width: 100%;
+      padding: 10px;
+  }
+
+  .dropID, .next-button, .progress-button, .save-button {
+      width: 100%;
+  }
+
+  .next-button, .progress-button, .save-button {
+      padding: 8px 10px;
+  }
+
+  .tt-1, .tt-2, .tt-9 {
+      font-size: 16px;
+      margin-left: 10px;
+  }
+
+  .tt-3, .tt-5, .tt-7, .tt-4, .tt-6, .tt-8 {
+      font-size: 16px;
+      margin-left: 10px;
+      margin-right: 10px;
+  }
+
+  .set-1 {
+      flex-direction: column;
+      align-items: flex-start;
+      height: auto;
+      padding: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+    .progress-update-management-content {
+      width: 100%;
+      padding: 5px;
+  }
+
+  .dropID, .next-button, .progress-button, .save-button {
+      width: 100%;
+  }
+
+  .next-button, .progress-button, .save-button {
+      padding: 6px 8px;
+  }
+
+  .tt-1, .tt-2, .tt-9 {
+      font-size: 14px;
+      margin-left: 5px;
+  }
+
+  .tt-3, .tt-5, .tt-7, .tt-4, .tt-6, .tt-8 {
+      font-size: 14px;
+      margin-left: 5px;
+      margin-right: 5px;
+  }
+
+  .set-1 {
+      flex-direction: column;
+      align-items: flex-start;
+      height: auto;
+      padding: 5px;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

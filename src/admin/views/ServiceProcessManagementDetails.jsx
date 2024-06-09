@@ -55,14 +55,17 @@ const ServiceProcessManagementDetails = ({ reservationId }) => {
     };
 
     return (
-        <div className="Reservation-details-management">
+        <div className="service-process-details-management1">
+      <Navbar/>
+  
+        <div className="service-process-details-management">
             <LeftSidebar />
 
-            <div className="Reservation-details-management-content">
+            <div className="service-process-details-management-content">
                 <h3>{reservationDetails.reservationId} Reservation Process Details</h3>
 
-                <div className="Reservation-details-list">
-                    <div className="Reservation-details-item">
+                <div className="service-process-details-list">
+                    <div className="service-process-details-item">
                         <p>
                             <strong>Reservation ID:</strong>
                             <span>{reservationDetails.reservationId}</span>
@@ -125,6 +128,8 @@ const ServiceProcessManagementDetails = ({ reservationId }) => {
 
             <RightSidebar />
         </div>
+    <Footer/>
+    </div>
     );
 };
 

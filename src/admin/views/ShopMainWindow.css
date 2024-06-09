@@ -13,8 +13,7 @@
 
 .shop-main-middle {
     flex-grow: 1; /* Take up remaining space between the sidebars */
-    display: flex;
-   
+    display: flex;   
     align-items: center;   
    
 }

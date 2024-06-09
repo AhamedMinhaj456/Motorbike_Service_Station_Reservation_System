@@ -157,7 +157,7 @@ const ReservationRequestListWindow = () => {
           )}
 
 
-        <div className="component-div">
+        <div className="reservation-component-div">
           {/* Render ReservationDetailsWindow if a reservation is selected */}
           {selectedReservationId && (
             <ReservationDetailsWindow reservationId={selectedReservationId} />

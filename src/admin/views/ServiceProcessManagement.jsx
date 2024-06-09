@@ -78,18 +78,18 @@ const ServiceProcessManagement = () => {
   };
 
   return (
-    <div className="reservation-management1">
+    <div className="service-process-management1">
       <Navbar/>
     
-    <div className="reservation-management">
+    <div className="service-process-management">
       <LeftSidebar />
 
-      <div className="reservation-management-content">
+      <div className="service-process-management-content">
         <h2>
           <b>Service Process List</b>
         </h2>
 
-        <div className="filter-container">
+        <div className="service-process-filter-container">
           <label htmlFor="statusFilter">Filter by approved status:</label>
           <select id="statusFilter" onChange={(e) => setFilterByApprovedStatus(e.target.value)} value={filterByApprovedStatus}>
             <option value="view_all">View All</option>
@@ -98,7 +98,7 @@ const ServiceProcessManagement = () => {
           </select>
         </div>
 
-        <div className="filter-container">
+        <div className="service-process-filter-container">
           <label htmlFor="processStatusFilter">Filter by process status:</label>
           <select id="processStatusFilter" onChange={(e) => setFilterByProcessStatus(e.target.value)} value={filterByProcessStatus}>
             <option value="view_all">View All</option>
@@ -114,12 +114,12 @@ const ServiceProcessManagement = () => {
         {reservationRequests.length === 0 ? (
           <p>No pending reservations found.</p>
         ) : (
-          <div className="reservation-list">
+          <div className="service-process-reservation-list">
             {reservationRequests
               .filter((reservation) => (filterByApprovedStatus === "view_all" || reservation.approvedStatus === filterByApprovedStatus) && 
                                         (filterByProcessStatus === "view_all" || reservation.processStatus === filterByProcessStatus))
               .map((reservation) => (
-                <div key={reservation.reservationId} className="reservation-item">
+                <div key={reservation.reservationId} className="service-process-reservation-item">
                   <p>
                     <br />
                     <b>Customer Name:</b> {reservation.customerName}
@@ -143,7 +143,7 @@ const ServiceProcessManagement = () => {
           </div>
         )}
 
-        <div className="component-div">
+        <div className="service-process-component-div">
           {/* Render ServiceProcessManagementDetails if a reservation is selected */}
           {selectedReservationId && (
             <ServiceProcessManagementDetails reservationId={selectedReservationId} />
