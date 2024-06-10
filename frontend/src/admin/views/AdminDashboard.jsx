@@ -3,13 +3,15 @@ import './AdminDashboard.css';
 import LeftSidebar from '../common/LeftSidebar';
 import RightSidebar from '../common/RightSidebar';
 import { FaBars } from 'react-icons/fa';
-import Calendar from 'react-calendar';
-import 'react-calendar/dist/Calendar.css';
 import { Tooltip, ResponsiveContainer, LineChart, Line, XAxis, YAxis, CartesianGrid, Legend } from 'recharts';
+import { Calendar, momentLocalizer } from 'react-big-calendar';
+import 'react-big-calendar/lib/css/react-big-calendar.css';
+import moment from 'moment';
+
+const localizer = momentLocalizer(moment);
 
 const AdminDashboard = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
-  const [date, setDate] = useState(new Date());
   const [currentTime, setCurrentTime] = useState(new Date());
   const [totalUsers, setTotalUsers] = useState(150);
   const [totalShops, setTotalShops] = useState(200);
@@ -29,10 +31,11 @@ const AdminDashboard = () => {
     { month: 'Dec', income: 0 }
   ]);
 
+  const [date, setDate] = useState(new Date());
   const [schedules, setSchedules] = useState([
-    { date: new Date(), text: 'Meeting with team', completed: false },
-    { date: new Date(new Date().setDate(new Date().getDate() + 1)), text: 'Client call', completed: false },
-    { date: new Date(new Date().setDate(new Date().getDate() + 2)), text: 'Project deadline', completed: false },
+    { start: new Date(), end: new Date(), title: 'Meeting with team', completed: false },
+    { start: new Date(new Date().setDate(new Date().getDate() + 1)), end: new Date(new Date().setDate(new Date().getDate() + 1)), title: 'Client call', completed: false },
+    { start: new Date(new Date().setDate(new Date().getDate() + 2)), end: new Date(new Date().setDate(new Date().getDate() + 2)), title: 'Project deadline', completed: false },
   ]);
   const [newSchedule, setNewSchedule] = useState('');
 
@@ -41,18 +44,15 @@ const AdminDashboard = () => {
       setCurrentTime(new Date());
     }, 1000);
 
-    // Simulate fetching financial data from backend
     fetchFinancialData();
 
     return () => clearInterval(timer);
   }, []);
 
   const fetchFinancialData = () => {
-    // Simulate fetching financial data from backend
-    // Replace this with actual API calls to retrieve financial data
-    const totalUsers = 150; // Example total users
-    const totalShops = 200; // Example total shops
-    const pendingShops = 30; // Example pending shops
+    const totalUsers = 150;
+    const totalShops = 200;
+    const pendingShops = 30;
     const incomeData = [
       { month: 'Jan', income: 10000 },
       { month: 'Feb', income: 15000 },
@@ -66,16 +66,32 @@ const AdminDashboard = () => {
   };
 
   const calculateTotalIncome = () => {
-    // Calculate total income from the income data
     return incomeData.reduce((total, data) => total + data.income, 0);
   };
 
   const calculateNetProfit = () => {
-    // Calculate net profit based on total income and expenses
-    // For now, let's assume expenses are 25% of the total income
     const totalIncome = calculateTotalIncome();
-    const expenses = totalIncome * 0.25; // 25% expenses
+    const expenses = totalIncome * 0.25;
     return totalIncome - expenses;
+  };
+
+  const handleAddSchedule = () => {
+    if (newSchedule.trim()) {
+      setSchedules([...schedules, { start: date, end: date, title: newSchedule, completed: false }]);
+      setNewSchedule('');
+    }
+  };
+
+  const handleToggleSchedule = (event) => {
+    const updatedSchedules = schedules.map(schedule =>
+      schedule === event ? { ...schedule, completed: !schedule.completed } : schedule
+    );
+    setSchedules(updatedSchedules);
+  };
+
+  const handleDeleteSchedule = (event) => {
+    const updatedSchedules = schedules.filter(schedule => schedule !== event);
+    setSchedules(updatedSchedules);
   };
 
   const renderIncomeChart = () => {
@@ -99,67 +115,6 @@ const AdminDashboard = () => {
 
   const toggleSidebar = () => {
     setSidebarOpen(!sidebarOpen);
-  };
-
-  const handleAddSchedule = () => {
-    if (newSchedule.trim()) {
-      setSchedules([...schedules, { date: date, text: newSchedule, completed: false }]);
-      setNewSchedule('');
-    }
-  };
-
-  const handleToggleSchedule = (index) => {
-    const updatedSchedules = schedules.map((schedule, i) =>
-      i === index ? { ...schedule, completed: !schedule.completed } : schedule
-    );
-    setSchedules(updatedSchedules);
-  };
-
-  const handleDeleteSchedule = (index) => {
-    const updatedSchedules = schedules.filter((_, i) => i !== index);
-    setSchedules(updatedSchedules);
-  };
-
-  const renderSchedulesForDate = (date) => {
-    const schedulesForDate = schedules.filter(schedule =>
-      schedule.date.toDateString() === date.toDateString()
-    );
-
-    return (
-      <ul className="schedules">
-        {schedulesForDate.map((schedule, index) => (
-          <li key={index} className={schedule.completed ? 'completed' : ''}>
-            <span onClick={() => handleToggleSchedule(index)}>{schedule.text}</span>
-            <button onClick={() => handleDeleteSchedule(index)}>Delete</button>
-          </li>
-        ))}
-      </ul>
-    );
-  };
-
-  const renderTodaySchedules = () => {
-    const today = new Date();
-    const todaySchedules = schedules.filter(schedule =>
-      schedule.date.toDateString() === today.toDateString()
-    );
-
-    return (
-      <div className="overview">
-        <h2>Today's Schedule</h2>
-        {todaySchedules.length > 0 ? (
-          <ul className="schedules">
-            {todaySchedules.map((schedule, index) => (
-              <li key={index} className={schedule.completed ? 'completed' : ''}>
-                <span onClick={() => handleToggleSchedule(index)}>{schedule.text}</span>
-                <button onClick={() => handleDeleteSchedule(index)}>Delete</button>
-              </li>
-            ))}
-          </ul>
-        ) : (
-          <p>No schedules for today.</p>
-        )}
-      </div>
-    );
   };
 
   return (
@@ -211,14 +166,23 @@ const AdminDashboard = () => {
           <div className="calendar">
             <h2>Calendar Schedule</h2>
             <Calendar
-              onChange={setDate}
-              value={date}
-              minDate={new Date(1970, 0, 1)}
-              maxDate={new Date()}
-              locale="en-US"
+              localizer={localizer}
+              events={schedules}
+              startAccessor="start"
+              endAccessor="end"
+              defaultDate={new Date()}
+              selectable
+              onSelectSlot={(slotInfo) => {
+                setDate(slotInfo.start);
+                setNewSchedule('');
+              }}
+              onSelectEvent={(event) => handleToggleSchedule(event)}
+              eventPropGetter={(event, start, end, isSelected) => ({
+                className: isSelected ? 'selected-event' : ''
+              })}
             />
             <div className="schedule">
-              <h2>Schedule for {date.toDateString()}</h2>
+              <h2>Schedule for {moment(date).format('LL')}</h2>
               <div className="schedule-input">
                 <input
                   type="text"
@@ -228,11 +192,18 @@ const AdminDashboard = () => {
                 />
                 <button onClick={handleAddSchedule}>Add</button>
               </div>
-              {renderSchedulesForDate(date)}
+              <ul className="schedules">
+                {schedules.map((schedule, index) => (
+                  <li key={index} className={schedule.completed ? 'completed' : ''}>
+                    <span onClick={() => handleToggleSchedule(schedule)}>{schedule.title}</span>
+                    <button onClick={() => handleDeleteSchedule(schedule)}>Delete</button>
+                  </li>
+                ))}
+              </ul>
             </div>
           </div>
-          {renderTodaySchedules()}
         </div>
+
       </div>
 
       <RightSidebar />
