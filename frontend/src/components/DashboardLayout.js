@@ -20,6 +20,7 @@ import ReservationDetails from './dashboard/scenes/ReservationDetails';
 import HistoryDetails from './dashboard/scenes/history/HistoryDetails';
 import FeedbackForm from './dashboard/scenes/Feedback/FeedbackForm';
 import ProfileImageUpload from './dashboard/scenes/ProfileImageUpload/ProfileImageUpload';
+import ProfileSettings from './dashboard/scenes/ProfileSetting/ProfileSettings';
 
 const DashboardLayout = () => {
   const [theme, colorMode] = useMode();
@@ -50,6 +51,7 @@ const DashboardLayout = () => {
               <Route path="/HistoryDetails" element={<HistoryDetails />} />
               <Route path="/FeedbackForm" element={<FeedbackForm />} />
               <Route path="/ProfileImageUpload" element={<ProfileImageUpload />} />
+              <Route path="/ProfileSettings" element={<ProfileSettings />} />
             </Routes>
           </main>
         </div>

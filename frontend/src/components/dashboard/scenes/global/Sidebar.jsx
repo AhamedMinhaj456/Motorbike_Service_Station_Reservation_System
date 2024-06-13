@@ -49,7 +49,7 @@ const Sidebar = () => {
 
   const fetchContacts = async () => {
     try {
-      console.log(`Fetching data for customerId: ${customerId}`);
+      console.log(`Fetching data for Sidebar customerId: ${customerId}`);
       const response = await axios.get(`http://localhost:8095/customer/${customerId}`);
       console.log('API response:', response.data);
       setCustomer(response.data);

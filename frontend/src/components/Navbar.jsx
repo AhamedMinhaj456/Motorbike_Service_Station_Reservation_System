@@ -22,7 +22,7 @@ function Navbar() {
         <div className="navbar-container">
             <div className="navbar-logo">
                 <img src={logoImage} alt="Logo" />
-                <div className="brand-text brand-text-gradient">BikePulse</div>
+                <div className="brand-text">BikePulse</div>
             </div>
             <div className="navbar-links">
                 <Link to="/" className="nav-link">Home</Link>
