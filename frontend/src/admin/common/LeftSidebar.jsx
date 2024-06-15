@@ -17,9 +17,9 @@ const LeftSidebar = () => {
         <img src={bikePulseLogo} alt="BikePulse Logo" className="logo-website" />
       </div>
 
-      <div className="search-bar">
+      {/* <div className="search-bar">
         <input type="text" placeholder="Search..." />
-      </div>
+      </div> */}
 
       <div className="divider"></div>
       <div className="white-box">
