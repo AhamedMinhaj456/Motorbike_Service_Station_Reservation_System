@@ -6,7 +6,7 @@ import LastHolidaysSection from './LastHolidaysSection/LastHolidays';
 import ShopMission from './ShopMission/ShopMission';
 import HolidayPlanSection from './ContactUsSection/ContactUsSection';
 import FavouritesSection from './FavouriteSection/FavouriteSection';
-import SpecialOffers from './SpecialOffers/SpecialOffers';
+import SpecialOffers from './ShopFeedbacks/ShopFeedbacks';
 import NeedInspirationSection from './NeedSupport/NeedSupport';
 import ShopDetails from './ShopDetails/ShopDetails';
 

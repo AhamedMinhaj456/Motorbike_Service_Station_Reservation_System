@@ -15,27 +15,21 @@ const loadState = (key) => {
     }
 };
 
-const initialShopState = loadState('shops') || "";
+const initialShopState = loadState('shopId') || "";
 
 const shopSlice = createSlice({
     name: 'shopId',
     initialState: initialShopState,
     reducers: {
         addShopId(state, action) {
-            if (action.payload) { // Check if payload is not empty
-                return action.payload;
-            }
-            return state; // If payload is empty, return current state
+            return action.payload; 
         },
         deleteShopId(state) {
-            return {};
-        },
-        clearStorage(state) {
-            return {};
+            return ""; 
         }
     }
 });
 
-export const { addShopId, deleteShopId, clearStorage } = shopSlice.actions;
+export const { addShopId, deleteShopId } = shopSlice.actions;
 
 export default shopSlice.reducer;

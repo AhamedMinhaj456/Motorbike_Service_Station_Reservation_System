@@ -74,3 +74,22 @@
     background-color: #0056b3;
     margin-top: 10px;
   }
+
+
+  .password-input {
+    position: relative;
+  }
+  
+  .password-input input[type="password"] {
+    padding-right: 30px; /* Space for the visibility icon */
+  }
+  
+  .password-input svg {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: black; /* Change icon color to black */
+  }
+  

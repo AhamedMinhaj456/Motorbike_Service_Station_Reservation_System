@@ -22,16 +22,24 @@ function ShopMission(props) {
 
   const shopId = 1;
 
-  //   useEffect(() => {
-  //     if (shopId) {
-  //         fetchShopDetails();
-  //     }
-  // }, [shopId]);
+    useEffect(() => {
+      if (shopId) {
+          fetchShopDetails();
+      }
+  }, [shopId]);
 
   const fetchShopDetails = async () => {
-    const response = await axios.get(`http://localhost:8095/shop/${shopId}`);
-    setShops(response.data);
-    console.log("API response:", response.data);
+    try {
+      const response = await axios.get(`http://localhost:8095/shop/${shopId}`);
+      if (Array.isArray(response.data)) {
+        setShops(response.data);
+      } else {
+        setShops([response.data]);
+      }
+      console.log("API response:", response.data);
+    } catch (error) {
+      console.error("Error fetching shop details:", error);
+    }
   };
 
 

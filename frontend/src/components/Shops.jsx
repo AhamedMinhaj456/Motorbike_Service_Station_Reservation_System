@@ -1,6 +1,7 @@
 import React,{useState,useEffect} from "react";
 import './RightBar';
 import './shops.css';
+import { FaClock, FaMapMarkerAlt, FaPhone } from "react-icons/fa";
 import shopImg from "../assets/shops_img.png"
 import velocare from "../assets/velocare.png"
 import location from "../assets/location.png";
@@ -45,7 +46,7 @@ function Shops() {
       const handleReserveClick = (shopId) => {
         dispatch(addShopId(shopId));
         //navigate(`/shop/${shopId}`);
-        navigate('/reservation');
+        navigate('/shop-home');
         //alert(shopId)
       };
     
@@ -78,15 +79,118 @@ function Shops() {
             setShops(response.data);
         };
 
+
+    // for shop open close status
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      // Update shop status every minute
+      setShops((prevShops) =>
+        prevShops.map((shop) => {
+          return {
+            ...shop,
+            status: getShopStatus(shop.openingTime, shop.closingTime),
+            nextOpenTime: getNextOpenTime(shop.openingTime)
+          };
+        })
+      );
+    }, 60); // Update every minute
+    return () => clearInterval(interval);
+  }, []);
+
+  const getCurrentTime = () => {
+    const currentTime = new Date();
+    return (
+      currentTime.getHours() +
+      ":" +
+      (currentTime.getMinutes() < 10 ? "0" : "") +
+      currentTime.getMinutes()
+    );
+  };
+
+  const getShopStatus = (openingTime, closingTime) => {
+    const currentTime = getCurrentTime();
+    if (currentTime >= openingTime && currentTime <= closingTime) {
+      return "Opened";
+    } else if (isOpeningSoon(closingTime)) {
+      return "Closing Soon";
+    } else if (currentTime < openingTime) {
+      return "Closed";
+    } else {
+      return "Closed"; // Shop is closed, next opening time is already handled
+    }
+  };
+
+  const isOpeningSoon = (closingTime) => {
+    const currentTime = new Date();
+    const closingHour = parseInt(closingTime.split(":")[0], 10);
+    const closingMinute = parseInt(closingTime.split(":")[1], 10);
+    const closingTimeObj = new Date();
+    closingTimeObj.setHours(closingHour, closingMinute, 0, 0);
+    const timeDifference = closingTimeObj - currentTime;
+    return timeDifference > 0 && timeDifference <= 60 * 60 * 1000; // Check if closing time is within 60 minutes
+  };
+
+  const getNextOpenTime = (openingTime) => {
+    const nextOpenTime = new Date();
+    const currentHour = nextOpenTime.getHours();
+    const openingHour = parseInt(openingTime.split(":")[0], 10);
+    if (currentHour < openingHour) {
+      nextOpenTime.setHours(openingHour);
+      nextOpenTime.setMinutes(0);
+      nextOpenTime.setSeconds(0);
+      return nextOpenTime.toLocaleTimeString([], {
+        hour: "2-digit",
+        minute: "2-digit"
+      });
+    } else {
+      nextOpenTime.setDate(nextOpenTime.getDate() + 1);
+      nextOpenTime.setHours(openingHour);
+      nextOpenTime.setMinutes(0);
+      nextOpenTime.setSeconds(0);
+      return nextOpenTime.toLocaleTimeString([], {
+        hour: "2-digit",
+        minute: "2-digit"
+      });
+    }
+  };
+
     return (
         <div className="shops-container">
        
        
        {isLoggedIn && <Rightbar />}
-            <div className="image-section">
+            {/* <div className="image-section">
                 <img src={shopImg} className="full-width-image" />
 
-            </div>
+            </div> */}
+
+            <div className="search-container-new">
+  <div className="search-content-new">
+    <h1>
+      "Discover a diverse array of registered bike shops, each offering unique expertise and services. Choose the one that suits your preferences and needs, putting you in control of your bike service experience."
+    </h1>
+    <div className="search-bar-new">
+      <form onSubmit={handleSearch} className="search-form-new">
+        <input
+          className="search-input-new"
+          type="text"
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+          placeholder="Search by Shop Name, Address, or Email"
+        />
+        <button className="search-button-new" type="submit">
+          <i className="fas fa-search"></i>
+        </button>
+      </form>
+    </div>
+  </div>
+  <footer className="footer-new">
+    <span>Dive into the Content License details to learn more</span>
+    <span>Explore freely with images courtesy of Mylene2401</span>
+  </footer>
+</div>
+
             
             <div className="main-cards-container">
                 <div className="main-cards">
@@ -104,7 +208,7 @@ function Shops() {
                 </div>
             </div>
             <div className="line"></div>
-            <div className="search-box">
+            {/* <div className="search-box">
             <form onSubmit={handleSearch}>
                 <input 
                     type="text" 
@@ -114,7 +218,7 @@ function Shops() {
                 />
                 <button type="submit">Search</button>
             </form>
-            </div>
+            </div> */}
             
             <div className="see-all-container">
                 
@@ -139,12 +243,14 @@ function Shops() {
                         </a>
                     </p>
                     <div className="details-content">
-                        {/* <p>{shop.openingHours}</p>
-                        {shop.services.map((service, index) => (
-                        <p key={index}>
-                            <img src={require('../assets/tickmark.png')} alt="Tick Mark" /> {service}
-                        </p>
-                        ))} */}
+                    <p>
+                <FaClock /> {shop.openingTime} - {shop.closingTime}
+              </p>
+              {shop.status === "Opened" && <p>Open</p>}
+              {shop.status === "Closing Soon" && <p>Closing Soon</p>}
+              {shop.status === "Closed" && (
+                <p>Shop Closed Now Next Open: {shop.nextOpenTime}</p>
+              )}
                         <div className="details-button">
                         
                             <button className="button-view" onClick={() => handleReserveClick(shop.shopId)}

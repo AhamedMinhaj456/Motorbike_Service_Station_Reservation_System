@@ -4,8 +4,12 @@ import "./ShopDetails.css";
 import axios from "axios";
 import img1 from '../../../assets/bike8.jpg';
 
+import { useSelector } from 'react-redux';
+
 
 const ShopDetails = () => {
+  const shopId = useSelector((state) => state.shops);
+
   const [shops, setShops] = useState([
     {
       shopId: 1,
@@ -23,18 +27,25 @@ const ShopDetails = () => {
     }
   ]);
 
-  const shopId = 1;
+  
+    useEffect(() => {
+      if (shopId) {
+          fetchShopDetails();
+      }
+  }, [shopId]);
 
-  //   useEffect(() => {
-  //     if (shopId) {
-  //         fetchShopDetails();
-  //     }
-  // }, [shopId]);
-
-  const fetchShopDetails = async () => {
-    const response = await axios.get(`http://localhost:8095/shop/${shopId}`);
-    setShops(response.data);
-    console.log("API response:", response.data);
+ const fetchShopDetails = async () => {
+    try {
+      const response = await axios.get(`http://localhost:8095/shop/${shopId}`);
+      if (Array.isArray(response.data)) {
+        setShops(response.data);
+      } else {
+        setShops([response.data]);
+      }
+      console.log("API response:", response.data);
+    } catch (error) {
+      console.error("Error fetching shop details:", error);
+    }
   };
 
   // for shop open close status
@@ -117,6 +128,7 @@ const ShopDetails = () => {
 
   return (
     <div>
+      
       {shops.map((shop, index) => (
         <div key={index} className="shop-location-container">
           <div className="shop-info">
