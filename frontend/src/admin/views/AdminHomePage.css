@@ -89,7 +89,7 @@
 }
 
 
-.login-section {
+.login-section-home {
     flex: 1;
     background-color: #34495e;
     color: white;
@@ -100,22 +100,22 @@
     padding: 20px;
 }
 
-.login-section h2 {
+.login-section-home h2 {
     margin-bottom: 10px;
     font-size: 20px;
 }
 
-.login-section p {
+.login-section-home p {
     margin: 5px 0;
 }
 
-.login-section .emoji {
+.login-section-home .emoji {
     font-size: 40px;
     cursor: pointer;
     margin-top: 20px;
 }
 
-.signup-section {
+.signup-section-home {
     flex: 1;
     background-color: #ecf0f1;
     padding: 20px;
@@ -124,17 +124,17 @@
     justify-content: center;
 }
 
-.signup-section h2 {
+.signup-section-home h2 {
     margin-bottom: 20px;
     font-size: 20px;
 }
 
-.signup-section form {
+.signup-section-home form {
     display: flex;
     flex-direction: column;
 }
 
-.signup-section form input {
+.signup-section-home form input {
     margin-bottom: 15px;
     padding: 10px;
     font-size: 16px;
@@ -142,7 +142,7 @@
     border-radius: 5px;
 }
 
-.signup-section form button {
+.signup-section-home form button {
     padding: 10px;
     background-color: #3498db;
     color: white;
@@ -152,7 +152,7 @@
     cursor: pointer;
 }
 
-.signup-section form button:hover {
+.signup-section-home form button:hover {
     background-color: #4caf50;
 }
 
@@ -191,22 +191,22 @@
         box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
     }
 
-    .login-section,
-    .signup-section {
+    .login-section-home,
+    .signup-section-home {
         padding: 15px;
         text-align: center;
     }
 
-    .login-section {
+    .login-section-home {
         background-color: #34495e;
         color: white;
     }
 
-    .signup-section {
+    .signup-section-home {
         background-color: #ecf0f1;
     }
 
-    .page-title {
-        font-size: 24px;
+    .page-title-home {
+        font-size: 20px;
     }
 }

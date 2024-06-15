@@ -70,7 +70,7 @@ const AdminHomePage = () => {
         ))}
       </h2>
       <div className="container-home">
-        <div className="login-section">
+        <div className="login-section-home">
           <h2>{isSignUp ? 'Hi There! Already have an account?' : "Hi There!, Don't have an account?"}</h2>
           <p>{isSignUp ? 'Click the Emoji to Sign In' : "Click the Emoji to Sign Up"}</p>
           <div className="emoji" onClick={() => setIsSignUp(!isSignUp)}>
@@ -78,7 +78,7 @@ const AdminHomePage = () => {
           </div>
         </div>
         {isSignUp ? (
-          <div className="signup-section">
+          <div className="signup-section-home">
             <h2>Sign Up</h2>
             <form onSubmit={saveAdmin}>
               <input
@@ -113,7 +113,7 @@ const AdminHomePage = () => {
             </form>
           </div>
         ) : (
-          <div className="signup-section">
+          <div className="signup-section-home">
             <h2>Login</h2>
             <form onSubmit={loginAdmin}>
               <input
