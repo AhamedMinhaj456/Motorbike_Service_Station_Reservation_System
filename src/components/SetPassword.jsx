@@ -6,6 +6,9 @@ import Validation from '../assets/Validation.png';
 import { useNavigate } from 'react-router-dom';
 import CryptoJS from 'crypto-js';
 import axios from "axios";
+import { useDispatch } from 'react-redux';
+import { addShopStatus } from '../Slices/ShopSlice.js';
+import { addShopId } from '../Slices/ShopSlice.js';
 
 const SetPassword = () => {
     // const [formData, setFormData] = useState({
@@ -39,7 +42,7 @@ const SetPassword = () => {
       async function saveShop(event) {
         event.preventDefault();
         try {
-            await axios.post("http://localhost:8095/shop/save", {
+            const response =await axios.post("http://localhost:8095/shop/save", {
                 shopName: formData.shopName,
                 email: formData.email,
                 shopAddress: formData.shopAddress,
@@ -48,8 +51,11 @@ const SetPassword = () => {
                 contactNumber: formData.contactNumber,
                 subscriptionPlan: formData.subscriptionPlan,
             });
-          alert("shop Registration Successful");
-          //navigate("/shoplogin");
+                dispatch(addShopStatus(response.data.status));
+                dispatch(addShopId(response.data.shopId));
+                alert(response.data.shopId,response.data.status, response.data.message);
+                //alert("shop Registration Successful");
+                //navigate("/shoplogin");
 
         } catch (err) {
           alert(err);
@@ -103,6 +109,7 @@ const SetPassword = () => {
     };
 
     const navigate = useNavigate(); 
+    const dispatch = useDispatch();
 
     return (
         <div>

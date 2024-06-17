@@ -61,7 +61,8 @@ const ReservationDetailsWindow = ({ reservationId }) => {
   }, [approvedStatus]);
 
   const fetchUserStatus = async () => {
-      const response = await axios.get(`http://localhost:8095/reservation/${reservationId}`);
+      const response = await axios.get(`http://localhost:8095/reservation/reservationDetails/${reservationId}`);
+      console.log(response.data);
       setCurrentStatus({
           approvedStatus: response.data.approvedStatus,
       });

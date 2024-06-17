@@ -5,10 +5,14 @@ import LoginImage from '../assets/Login.png';
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import CryptoJS from 'crypto-js';
+import { useDispatch } from 'react-redux';
+import { addShopStatus } from '../Slices/ShopSlice.js';
+import { addShopId } from '../Slices/ShopSlice.js';
 
 
 const Login = () => {
     const navigate = useNavigate();
+    const dispatch = useDispatch();
 
     const [formData, setFormData] = useState({
         shopName: "",
@@ -48,12 +52,18 @@ const Login = () => {
             const response = await axios.post("http://localhost:8095/shop/login", {
                 email,
                 shopPassword,
+                
             });
             
+            
             if (response.data.status === true) {
+                dispatch(addShopStatus(response.data.status));
+                dispatch(addShopId(response.data.shopId));
                 alert(response.data.message);
                 navigate('/home');
+                
             } else if(response.data.status === false){
+                dispatch(addShopStatus(response.data.status));
                 alert(response.data.message);
             }
            

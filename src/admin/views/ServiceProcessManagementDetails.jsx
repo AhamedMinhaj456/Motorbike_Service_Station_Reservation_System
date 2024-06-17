@@ -41,8 +41,9 @@ const ServiceProcessManagementDetails = ({ reservationId }) => {
     }, [processStatus]);
 
     const fetchReservationDetails = async () => {
-        const response = await axios.get(`http://localhost:8095/reservation/${reservationId}`);
+        const response = await axios.get(`http://localhost:8095/reservation/reservationDetails/${reservationId}`);
         setReservationDetails(response.data);
+        console.log(response.data);
         setProcessStatus(response.data.processStatus);
     };
 

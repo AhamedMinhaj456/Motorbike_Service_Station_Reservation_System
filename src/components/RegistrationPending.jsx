@@ -5,10 +5,13 @@ import './RegistrationPending.css';
 import File from '../assets/File.png';
 import axios from 'axios'; 
 import { useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+
 
 const RegistrationPending = () => {
    
     const navigate = useNavigate();
+    const shopId = useSelector((state) => state.shops);
     
     const [formData, setFormData] = useState({
         shopName: "",
@@ -44,7 +47,7 @@ const RegistrationPending = () => {
 
       // active status
 
-    const [shopId, setShopId] = useState('4');
+    
     const [approvedStatus, setApprovedStatus] = useState('');
     const [currentStatus, setCurrentStatus] = useState({approvedStatus: '' });
     
@@ -88,7 +91,7 @@ const RegistrationPending = () => {
                 navigate('/home');
                 break;
             case "approved":
-                navigate("/Congratulations");
+                navigate("/shopMainWindow");
                 break;
             case "rejected":
                 navigate('/home');

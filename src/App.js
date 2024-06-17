@@ -1,4 +1,5 @@
 import React from "react";
+import { Provider } from 'react-redux';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import AdminDashboard from './admin/views/AdminDashboard';
 import LeftSidebar from "./admin/common/LeftSidebar";
@@ -44,13 +45,25 @@ import AdminTable from "./components/AdminTable";
 
 import ServiceProcessManagement from "./admin/views/ServiceProcessManagement";
 import ServiceProcessManagementDetails from "./admin/views/ServiceProcessManagementDetails";
+import UploadImage from "./admin/views/uploadImage";
+import LocationManager from "./components/LocationManager";
+
+import  AuthProvider  from "./utils/AuthProvider";
+import ProtectedRoute from "./utils/ProtectedRoute"; 
+import store from "./Store/Store";
+
 
 const App = () =>{
   return(
+    <Provider store={store}>
    <Router>
       <Navbar/>
       <Routes>
-        {/* <Route path="/" element={<AdminHomePage />} /> */}
+
+      <Route path="/ShopLogin" element={<ShopLogin />} />
+      <Route path="/shopOwnerFlow" element={<ShopOwnerFlow />} />
+        {/* <Route element={<ProtectedRoute/>}> */}
+            {/* <Route path="/" element={<AdminHomePage />} /> */}
         
         {/* <Route path="/" element={<LeftSidebar />} /> */}
         <Route path="/ShopMainWindow" element={<ShopMainWindow  />} />
@@ -71,11 +84,12 @@ const App = () =>{
         <Route path="/UpdateUserStatus" element={<UpdateUserStatus/>}/>
         <Route path="/ServiceProcessManagement" element={<ServiceProcessManagement/>}/>
         <Route path="/ServiceProcessManagementDetails" element={<ServiceProcessManagementDetails/>}/>
+        <Route path="/UploadImage" element={<UploadImage/>}/>
+        <Route path="/LocationManager" element={<LocationManager/>}/>
 
-
-        <Route path="/" element={<ShopHome />} />
+           <Route path="/" element={<ShopHome />} />
           <Route path="/home" element={<Home />} />
-          <Route path="/ShopLogin" element={<ShopLogin />} />
+         
           <Route path="/DateTimePicker" element={<DateTimePicker />} />
           <Route path="/AdminTable" element={<AdminTable />} />
           <Route path="/SetPassword" element={<SetPassword />} />
@@ -87,12 +101,62 @@ const App = () =>{
           <Route path="/SecurePayment" element={<SecurePayment />} />
           <Route path="/verification" element={<Verification />} />
           <Route path="/Subscription" element={<Subscription />} />
-          <Route path="/shopOwnerFlow" element={<ShopOwnerFlow />} />
+          
+        {/* </Route> */}
       </Routes>
       <Footer/>
     </Router>
+    </Provider>
 
   );
 }
 
-export default App;
+// const App = () => {
+//   return (
+//     <AuthProvider isSignedIn={false}>
+//       <Router>
+//         <Navbar />
+//         <Routes>
+//         <Route path="/ShopMainWindow" element={<ShopMainWindow  />} />
+//         <Route path="/customer-management" element={<CustomerManagementWindow />} />
+//         <Route path="/reservation-management" element={<ReservationRequestListWindow />} />
+//         <Route path="/profile" element={<AdminProfileWindow />} />
+//         <Route path="/account-setting" element={<AccountSettingWindow />} />
+//         <Route path="/chat-setting" element={<ChatSettingWindow />} />
+//         <Route path="/shop-main" element={<ShopMainWindow />} />
+//         <Route path="/Reservation-details-management" element={<ReservationDetailsWindow/>} />
+//         <Route path="/parts-Category-main" element={<PartsCategoryManagementWindow/>} />
+//         <Route path="/payment-subscription-main" element={<PaymentSubscriptionPlanWindow/>} />
+//         <Route path="/payment-charge-main" element={<PaymentCustomerCharges/>} />
+//         <Route path="/progress-update-main" element={<ProgressUpdateWindow/>} />
+        
+//         <Route path="/ShopSearch" element={<ShopSearch/>}/>
+//         <Route path="/ShopSearchs" element={<ShopSearchs/>}/>
+//         <Route path="/UpdateUserStatus" element={<UpdateUserStatus/>}/>
+//         <Route path="/ServiceProcessManagement" element={<ServiceProcessManagement/>}/>
+//         <Route path="/ServiceProcessManagementDetails" element={<ServiceProcessManagementDetails/>}/>
+
+
+//            <Route path="/" element={<ShopHome />} />
+//           <Route path="/home" element={<Home />} />
+//           <Route path="/ShopLogin" element={<ShopLogin />} />
+//           <Route path="/DateTimePicker" element={<DateTimePicker />} />
+//           <Route path="/AdminTable" element={<AdminTable />} />
+//           <Route path="/SetPassword" element={<SetPassword />} />
+//           <Route path="/RegistrationComplete" element={<RegistrationComplete />} />
+//           <Route path="/Congratulations" element={<Congratulations />} />
+//           <Route path="/RegistrationPending" element={<RegistrationPending />} />
+//           <Route path="/Congratz2" element={<Congratz2 />} />
+//           <Route path="/ForgetPassword" element={<ForgetPassword />} />
+//           <Route path="/SecurePayment" element={<SecurePayment />} />
+//           <Route path="/verification" element={<Verification />} />
+//           <Route path="/Subscription" element={<Subscription />} />
+//           <Route path="/shopOwnerFlow" element={<ShopOwnerFlow />} />
+//         </Routes>
+//         <Footer />
+//       </Router>
+//     </AuthProvider>
+//   );
+// };
+
+ export default App;

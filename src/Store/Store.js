@@ -1,32 +1,33 @@
 import { configureStore } from "@reduxjs/toolkit";
-import customerReducer from '../Slices/CustomerSlice.js';
-import shopReducer from '../Slices/ShopSlice.js'; // Import shopReducer from the appropriate file
+import customerReducer from '../Slices/CustomerSlice';
+import shopReducer, { shopStatusReducer } from '../Slices/ShopSlice'; 
 
-// Save state to local storage
 const saveState = (state) => {
     try {
-        const serializedCustomersState = JSON.stringify(state.customers);
+        const serializedCustomersState = JSON.stringify(state.customers.customerId);
         localStorage.setItem('customers', serializedCustomersState);
 
-        const serializedShopsState = JSON.stringify(state.shops);
+        const serializedShopsState = JSON.stringify(state.shops.shopId);
         localStorage.setItem('shops', serializedShopsState);
+
+        const serializedShopsStatusState = JSON.stringify(state.shopStatus);
+        localStorage.setItem('shopStatus', serializedShopsStatusState);
     } catch {
         // Ignore write errors
     }
 };
 
-
-// Middleware to persist state to local storage
 const localStorageMiddleware = store => next => action => {
     const result = next(action);
     saveState(store.getState());
     return result;
 };
 
-// Middleware to clear local storage
 const clearLocalStorageMiddleware = store => next => action => {
-    if (action.type === 'customerId/clearStorage' || action.type === 'shopId/clearStorage') { // Update the action type to clear both customers and shops
-        localStorage.removeItem('state'); // Change the storage key to 'state' to remove both customers and shops
+    if (action.type === 'customerId/clearStorage' || action.type === 'shopId/clearStorage' || action.type === 'shopStatus/clearStorage') {
+        localStorage.removeItem('customers');
+        localStorage.removeItem('shops');
+        localStorage.removeItem('shopStatus');
     }
     return next(action);
 };
@@ -35,7 +36,8 @@ const store = configureStore({
     devTools: true,
     reducer: {
         customers: customerReducer,
-        shops: shopReducer // Add shopReducer to the reducers object
+        shops: shopReducer, 
+        shopStatus: shopStatusReducer, 
     },
     middleware: (getDefaultMiddleware) =>
         getDefaultMiddleware().concat(localStorageMiddleware, clearLocalStorageMiddleware)

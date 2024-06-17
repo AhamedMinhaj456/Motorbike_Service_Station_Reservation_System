@@ -32,5 +32,22 @@ const customerSlice = createSlice({
     }
 });
 
+const customerStatusSlice = createSlice({
+    name: 'customerStatus',
+    initialState,
+    reducers: {
+        addCustomerStatus(state, action) {
+            return action.payload;
+        },
+        deleteCustomerStatus(state, action) {
+            return "";
+        },
+        clearStorageStatus(state) {
+            return "";
+        }
+    }
+});
+
 export const { addCustomerId, deleteCustomerId, clearStorage } = customerSlice.actions;
+export const { addCustomerStatus, deleteCustomerStatus, clearStorageStatus } = customerStatusSlice.actions;
 export default customerSlice.reducer;
