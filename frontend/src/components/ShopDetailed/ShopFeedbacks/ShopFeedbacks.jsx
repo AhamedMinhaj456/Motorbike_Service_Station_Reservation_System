@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
 import "./ShopFeedbacks.css";
 import Container from "react-bootstrap/Container";
-import SpecialOffersCard from "./ShopFeedbacksCard";
+import ShopFeedbacksCard from "./ShopFeedbacksCard";
 import axios from "axios";
 
 import { useSelector } from 'react-redux';
 
-function SpecialOffers() {
+function ShopFeedbacks() {
   const shopId = useSelector((state) => state.shops);
   const [specialOfferItems, setSpecialOfferItems] = useState([
     {
@@ -48,7 +48,7 @@ function SpecialOffers() {
         {specialOfferItems.length > 0 ? (
           <div className="row g-4">
             {specialOfferItems.map((feedback) => (
-              <SpecialOffersCard
+              <ShopFeedbacksCard
                 key={feedback.feedbackId}
                 rating={feedback.rating}
                 feedbackImage={feedback.feedbackImage}
@@ -65,4 +65,4 @@ function SpecialOffers() {
   );
 }
 
-export default SpecialOffers;
+export default ShopFeedbacks;

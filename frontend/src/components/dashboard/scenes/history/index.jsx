@@ -5,19 +5,21 @@ import Header from "../../components/Header";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import HistoryDetails from "./HistoryDetails";
+import { useSelector } from 'react-redux';
 
 const ReservationHistory = () => {
   const navigate = useNavigate();
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
 
+  const customerId = useSelector((state) => state.customers);
   const [reservationDetails, setReservationDetails] = useState([]);
   const [selectedReservationId, setSelectedReservationId] = useState(null);
 
   // Function to fetch reservation data from the API
   const fetchReservations = async () => {
     try {
-      const response = await fetch('http://localhost:8095/reservation/ReservationDetails');
+      const response = await fetch(`http://localhost:8095/reservation/customer/${customerId}`);
       if (!response.ok) {
         throw new Error('Network response was not ok ' + response.statusText);
       }

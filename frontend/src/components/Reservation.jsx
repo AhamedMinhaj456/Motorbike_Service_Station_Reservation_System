@@ -60,7 +60,7 @@ function Reservation() {
       });
       const data = await response.json();
       alert('Data saved successfully:', data);
-      navigate('/Shops');
+      navigate('/ManageReservations');
     } catch (error) {
       console.error('Error saving data:', error);
     }

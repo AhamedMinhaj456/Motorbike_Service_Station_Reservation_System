@@ -2,7 +2,7 @@ import React from "react";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 
-function SpecialOffersCard(props) {
+function ShopFeedbacksCard(props) {
   // Function to generate star icons based on the rating
   const renderStars = (rating) => {
     const stars = [];
@@ -48,4 +48,4 @@ function SpecialOffersCard(props) {
   );
 }
 
-export default SpecialOffersCard;
+export default ShopFeedbacksCard;

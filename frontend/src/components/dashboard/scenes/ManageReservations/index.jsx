@@ -4,23 +4,29 @@ import { tokens } from "../../../theme";
 import Header from "../../components/Header";
 import { useEffect, useState } from "react";
 import ReservationDetails from "../ReservationDetails";
+import { useSelector } from 'react-redux';
 
 const ManageReservations = () => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
+  const customerId = useSelector((state) => state.customers);
   const [reservationDetails, setReservationDetails] = useState([]);
   const [selectedReservationId, setSelectedReservationId] = useState(null);
 
   // Function to fetch reservation data from the API
   const fetchReservations = async () => {
     try {
-      const response = await fetch('http://localhost:8095/reservation/ReservationDetails');
+      const response = await fetch(`http://localhost:8095/reservation/customer/${customerId}`);
       
       if (!response.ok) {
         throw new Error('Network response was not ok ' + response.statusText);
       }
       const data = await response.json();
-      setReservationDetails(data);
+      
+      // Filter out reservations with processStatus === 'completed'
+      const filteredData = data.filter(reservation => reservation.processStatus !== 'completed');
+      
+      setReservationDetails(filteredData);
     } catch (error) {
       console.error('There has been a problem with your fetch operation:', error);
     }
