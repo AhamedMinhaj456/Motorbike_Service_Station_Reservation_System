@@ -22,7 +22,7 @@ const ServicePlansManagement = () => {
   const fetchData = async () => {
     try {
       // Example using axios:
-      const response = await axios.get('http://localhost:8096/servicePlan/servicePlan');
+      const response = await axios.get('http://localhost:8095/serviceType/serviceType');
       setPlans(response.data);
     } catch (error) {
       console.error('Error fetching users:', error);
@@ -98,7 +98,7 @@ const ServicePlansManagement = () => {
     formData.append('servicePlanImage', newPlan.servicePlanImage);
 
     try {
-      await axios.post('http://localhost:8096/servicePlan/addServicePlan', formData, {
+      await axios.post('http://localhost:8095/serviceType/addServiceType', formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },
