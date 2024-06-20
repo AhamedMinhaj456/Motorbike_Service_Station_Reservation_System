@@ -12,6 +12,9 @@
    
    
   }
+  .filter-items{
+    align-items: center;
+  }
   
   .service-process-management-content h2 {
     margin-top: 10px;

@@ -84,8 +84,6 @@ const ReservationDetailsWindow = ({ reservationId }) => {
 
   return (
     <div className="Reservation-details-management">
-      <LeftSidebar />
-
       <div className="Reservation-details-management-content">
         <h3>{reservationDetails.reservationId} Reservation Details</h3>
 
@@ -161,7 +159,7 @@ const ReservationDetailsWindow = ({ reservationId }) => {
         </div>
       </div>
 
-      <RightSidebar />
+     
     </div>
   );
 };

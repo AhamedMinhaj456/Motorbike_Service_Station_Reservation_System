@@ -88,6 +88,7 @@ const ServiceProcessManagement = () => {
         <h2>
           <b>Service Process List</b>
         </h2>
+        <div className="filter-items">
 
         <div className="service-process-filter-container">
           <label htmlFor="statusFilter">Filter by approved status:</label>
@@ -109,6 +110,7 @@ const ServiceProcessManagement = () => {
             <option value="cancelled">Cancelled</option>
             <option value="delayed">Delayed</option>
           </select>
+        </div>
         </div>
 
         {reservationRequests.length === 0 ? (

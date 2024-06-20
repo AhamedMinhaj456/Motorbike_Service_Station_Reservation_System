@@ -56,11 +56,9 @@ const ServiceProcessManagementDetails = ({ reservationId }) => {
 
     return (
         <div className="service-process-details-management1">
-      <Navbar/>
-  
+      
         <div className="service-process-details-management">
-            <LeftSidebar />
-
+           
             <div className="service-process-details-management-content">
                 <h3>{reservationDetails.reservationId} Reservation Process Details</h3>
 
@@ -111,24 +109,26 @@ const ServiceProcessManagementDetails = ({ reservationId }) => {
                                 ))}
                             </div>
                         )}
-                    </div>
-                </div>
-
-                <div>
-                <Link to={"/ServiceProcessManagement"}>
-            <button
-              className="back-button"
+                         <button
+              className="service-process-details-management-back-button"
               onClick={() => window.location.reload()}
             >
               Back
             </button>
+                    </div>
+                  
+                </div>
+
+                <div>
+                <Link to={"/ServiceProcessManagement"}>
+            
           </Link>
                 </div>
             </div>
 
-            <RightSidebar />
+           
         </div>
-    <Footer/>
+  
     </div>
     );
 };
