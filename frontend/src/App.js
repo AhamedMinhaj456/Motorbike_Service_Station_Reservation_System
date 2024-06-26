@@ -19,6 +19,7 @@ import Signup from "./components/Signup";
 import Payment from "./components/Payment";
 import Fault from "./components/Fault";
 import Cart from "./components/Cart";
+import PrivacyPolicy from "./components/PrivacyPolicy"
 
 
 
@@ -160,6 +161,7 @@ function App() {
         <Route path="/cart" element={<Cart />} />
         <Route path="/shop-home" element={<ShopHome/>}/>
         <Route path="/file-upload" element={<FileUpload/>}/>
+        <Route path="/privacypolicy" element={<PrivacyPolicy/>}/>
         
         {/* Dashboard Routes */}
         <Route path="/*" element={<DashboardLayout />} />

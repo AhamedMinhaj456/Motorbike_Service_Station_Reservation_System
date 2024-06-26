@@ -1,7 +1,7 @@
 import React from "react";
 import 'bootstrap/dist/css/bootstrap.css';
 import { Link } from "react-router-dom";
-import './Navbar.css';
+import './navbar.css';
 import logoImage from '../../src/assets/bike2.png';
 import { ReactComponent as ProfileIcon } from '../assets/profile.svg';
 import { useNavigate } from "react-router-dom";

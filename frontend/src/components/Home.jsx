@@ -37,7 +37,7 @@ import axios from 'axios';
 import Swiper from 'swiper/bundle';
 import 'swiper/css/bundle';
 
-import backgroundclip from '../assets/vid.mp4';
+import backgroundclip from '../assets/backgroundclip.mp4';
 
 
 
