@@ -1,8 +1,19 @@
-# This is a platform for motorbike service station website
-
 # Motorbike Service Station Reservation System
 
 Motorbike Service Station Reservation System is a project that provides a platform for managing service station reservations for motorbikes. The system consists of separate modules for shop owners, customers, and administrators.
+
+## Project Websites
+
+- **Admin Module:**
+  - GitHub Repository: [BikePulse Admin](https://github.com/AhamedMinhaj456/BikePulse-admin)
+  - Hosted Application: [BikePulse Admin Hosted](https://bikepulse-admin.vercel.app/)
+  
+- **Customer Module:**
+  - GitHub Repository: [BikePulse Customer](https://github.com/AhamedMinhaj456/BikePulse-Customer)
+  - Hosted Application: [BikePulse Customer Hosted](https://bikepulse-customer.vercel.app/)
+  
+- **Shop Module:**
+  - GitHub Repository: [BikePulse Shop](https://github.com/AhamedMinhaj456/BikePulse-Shop)
 
 ## Project Overview
 
@@ -42,11 +53,9 @@ The project is organized into the following main components:
 
 - `backend/`: Contains the Spring Boot backend application.
 
-
 - `frontend/`: Contains the React frontend application.
   - `src/`: Main application source code.
-    - `admin/` : Admin Flow Comonents
-.
+    - `admin/`: Admin Flow Components
 
 ## Getting Started
 
@@ -54,5 +63,3 @@ The project is organized into the following main components:
 
    ```bash
    git clone https://github.com/AhamedMinhaj456/Motorbike_Service_Station_Reservation_System.git
-
-
