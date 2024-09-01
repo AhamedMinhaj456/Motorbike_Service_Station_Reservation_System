@@ -5,6 +5,7 @@ import instagram from "../assets/instagram.png";
 import youtube from "../assets/youtube.png";
 import { faFacebookF, faTwitter, faLinkedin, faGithub } from '@fortawesome/free-brands-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { Link } from "react-router-dom";
 
 
 import './Footer.css';
@@ -16,32 +17,32 @@ function Footer() {
         <div className="footer-col">
           <h4>Company</h4>
           <ul class="links">
-            <li><a href="#">Home</a></li>
-            <li><a href="#">Shops</a></li>
-            <li><a href="#">Promotions</a></li>
-            <li><a href="#">Contact Us</a></li>
-            <li><a href="#">About Us</a></li>
+          <li><Link to="/">Home</Link></li>
+            <li><Link to="/shops">Shops</Link></li>
+            <li><Link to="/promotions">Promotions</Link></li>
+            <li><Link to="/contact">Contact Us</Link></li>
+            <li><Link to="/aboutus">About Us</Link></li>
           </ul>
         </div>
         <div className="footer-col">
           <h4>Resources</h4>
           <ul className="links">
-            <li><a href="#">Auto Repairs near me</a></li>
-            <li><a href="#">Top Cities</a></li>
-            <li><a href="#">All Cities</a></li>
-            <li><a href="#">Shop instructions</a></li>
+            <li><Link to="/aboutus">Auto Repairs near me</Link></li>
+            <li><Link to="/aboutus">Top Cities</Link></li>
+            <li><Link to="/aboutus">All Cities</Link></li>
+            <li><Link to="/aboutus">Shop instructions</Link></li>
             
           </ul>
         </div>
         <div className="footer-col">
           <h4>Legal</h4>
           <ul className="links">
-            <li><a href="#">Customer Agreement</a></li>
-            <li><a href="#">Privacy Policy</a></li>
-            <li><a href="#">GDPR</a></li>
-            <li><a href="#">Security</a></li>
-            <li><a href="#">Testimonials</a></li>
-            <li><a href="#">Media Kit</a></li>
+            <li><Link to="/aboutus">Customer Agreement</Link></li>
+            <li><Link to="/privacypolicy">Privacy Policy</Link></li>
+            
+            <li><Link to="/aboutus">Security</Link></li>
+            <li><Link to="/aboutus">Testimonials</Link></li>
+          
           </ul>
         </div>
         <div className="footer-col">

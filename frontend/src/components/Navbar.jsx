@@ -1,7 +1,7 @@
 import React from "react";
 import 'bootstrap/dist/css/bootstrap.css';
 import { Link } from "react-router-dom";
-import './Navbar.css';
+import './navbar.css';
 import logoImage from '../../src/assets/bike2.png';
 import { ReactComponent as ProfileIcon } from '../assets/profile.svg';
 import { useNavigate } from "react-router-dom";
@@ -22,7 +22,7 @@ function Navbar() {
         <div className="navbar-container">
             <div className="navbar-logo">
                 <img src={logoImage} alt="Logo" />
-                <div className="brand-text brand-text-gradient">BikePulse</div>
+                <div className="brand-text">BikePulse</div>
             </div>
             <div className="navbar-links">
                 <Link to="/" className="nav-link">Home</Link>
