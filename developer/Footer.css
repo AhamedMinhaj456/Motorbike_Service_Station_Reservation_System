@@ -1,0 +1,240 @@
+.footer-container {
+  background-color: #000000;
+  height: 450px;
+  width: 100%;
+  width: 1440px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.footer-overlap {
+  height: auto;
+  left: 27px;
+  position: relative;
+  width: 1389px;
+}
+
+
+.footer-text-wrapper-6,
+.footer-text-wrapper-5,
+.footer-div-wrapper,
+.footer-element-2,
+.footer-element,
+.footer-bikepulse,
+.footer-element-bike-lane,
+.footer-business,
+.footer-p,
+.footer-common {
+  color: #ffffff;
+  font-family: "Times New Roman-Regular", Helvetica;
+  font-size: 24px;
+  font-weight: 400;
+  letter-spacing: 0;
+  line-height: normal;
+  position: absolute;
+  text-align: center;
+}
+
+
+.footer-text {
+  left: 462px;
+  top: 23px;
+
+}
+
+
+.footer-div {
+  left: 422px;
+  top: 199px;
+  width: 235px;
+}
+
+
+.footer-text,
+.footer-div {
+  @extend .footer-text-common;
+}
+
+.footer-overlap-group {
+  height: 377px;
+  left: 813px;
+  position: absolute;
+  top: 23px;
+  width: 562px;
+}
+
+.footer-contact {
+  left: 220px;
+  top: 2px;
+
+}
+
+
+.footer-p {
+
+  left: 256px;
+  top: 355px;
+  width: 306px;
+  font-size: 14px;
+}
+
+
+.footer-business {
+  top: 23px;
+}
+
+.footer-cooperate {
+  top: 193px;
+}
+
+
+.footer-element-address {
+
+  font-size: 18px;
+  font-weight: 400;
+  top: 83px;
+  width: 218px;
+  text-align: justify;
+
+}
+
+
+.footer-group-3 {
+  height: 85px;
+  left: 258px;
+
+  top: 50px;
+  width: 276px;
+}
+
+
+.footer-element-2,
+.footer-element ,.footer-element-common{
+
+
+  font-size: 15px;
+  font-weight: 400;
+  left: 300px;
+  text-align: justify;
+
+}
+.footer-element{
+  top: 95px;
+  width: 234px;
+  
+  
+}
+
+.footer-overlap-group-2 {
+  height: 187px;
+  left: 0;
+  top: 93px;
+  width: 543px;
+}
+
+
+.footer-bikepulse {
+  font-size: 18px;
+  top: 250px;
+  text-align: justify;
+
+}
+
+.footer-element-2 {
+
+
+  top: 252px;
+  width: 234px;
+ 
+}
+
+
+
+.footer-navlink-2,
+.footer-navlink {
+  color: #ffffff;
+  font-family: "Times New Roman-Regular", Helvetica;
+  font-size: 18px;
+  font-weight: 400;
+  left: 490px;
+  letter-spacing: 0;
+  line-height: normal;
+  position: absolute;
+  top: 84px;
+  width: 181px;
+}
+
+.footer-navlink-2 {
+
+  top: 267px;
+  width: 239px;
+}
+
+
+
+.footer-logo {
+  height: 152px;
+  left: 78px;
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  width: 186px;
+}
+
+.footer-text-wrapper-5 {
+
+  font-size: 16px;
+  font-weight: 400;
+  text-align: justify;
+  top: 147px;
+  width: 343px;
+}
+
+.footer-div-wrapper {
+  top: 358px;
+
+}
+
+.footer-text-wrapper-6 {
+
+  font-size: 30px;
+  font-weight: 400;
+  text-align: center;
+  top: 356px;
+  width: 131px;
+}
+
+.footer-social-media {
+  height: 29px;
+  left: 152px;
+  position: absolute;
+  top: 364px;
+  width: 129px;
+}
+
+
+
+
+
+
+
+
+
+@media (max-width: 768px) {
+
+  .footer-text,
+  .footer-div,
+  .footer-text-contact,
+  .footer-p,
+  .footer-group-2,
+  .footer-text-business,
+  .footer-element-bike-lane,
+  .footer-group-3,
+  .footer-element,
+  .footer-group-4,
+  .footer-overlap-group-2,
+  .footer-group-5 {
+    width: 100%;
+    left: 0;
+  }
+}

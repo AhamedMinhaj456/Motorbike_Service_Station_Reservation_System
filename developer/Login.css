@@ -1,0 +1,235 @@
+.div {
+  background-color: #fff;
+  padding: 43px 77px;
+}
+
+.font-family{
+  font-family: 'Times New Roman', Times, serif;
+}
+
+@media (max-width: 991px) {
+  .div {
+    padding: 0 20px;
+  }
+}
+
+.flex-container {
+  gap: 20px;
+  display: flex;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  line-height: normal;
+  width: 38%;
+  margin-left: 0;
+}
+
+@media (max-width: 991px) {
+  .column {
+    width: 100%;
+  }
+}
+
+.div-3,
+.div-6,
+.div-8,
+.div-12 {
+  border-radius: 20px;
+  width: 100%;
+  margin: auto 0;
+}
+
+.div-3 {
+  border: 3px solid rgba(216, 216, 216, 0);
+  background: radial-gradient(
+    231% 135.8% at 0.9% 2.98%,
+    rgba(161, 154, 154, 0.4) 0%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  padding: 48px 59px;
+  border-radius: 20px;
+}
+.div-5 label.form.label {
+  font: 250 12px/20px ;
+  font-family: 'Times New Roman', Times, serif;
+}
+
+
+
+
+
+.div-12 {
+  text-align: center;
+  white-space: nowrap;
+  background-color: #c1e1f8;
+  margin-top: 43px;
+  width: 300px;
+  max-width: 100%;
+  justify-content: center;
+  align-items: center;
+  padding: 7px 60px;
+  font: 500 24px/67% ;
+  
+  border-radius: 10px;
+}
+
+@media (max-width: 991px) {
+  .div-3,
+  .div-6,
+  .div-8,
+  .div-12 {
+    max-width: 100%;
+    margin-top: 40px;
+    padding: 0 20px;
+  }
+}
+
+.div-4,
+.div-5,
+.div-7,
+.div-10,
+.div-11,
+.div-15,
+.div-18,
+.div-19 {
+  color: #000;
+}
+
+.div-4 {
+  justify-content: center;
+  text-align: center;
+  font: 600 32px/62.5% ;
+}
+
+.div-5,
+.div-7,
+.div-10,
+.div-11,
+.div-15,
+.div-18,
+.div-19 {
+  align-self: start;
+}
+
+.div-5 {
+  margin: 55px 0 0 32px;
+
+}
+
+@media (max-width: 991px) {
+  .div-5 {
+    margin: 40px 0 0 10px;
+  }
+}
+
+.div-6,
+.div-8 {
+  margin-top: 9px;
+}
+
+.div-7 {
+  margin: 43px 0 0 32px;
+  font: 400 16px/125% ;
+}
+
+@media (max-width: 991px) {
+  .div-7 {
+    margin: 40px 0 0 10px;
+  }
+}
+
+.div-8 {
+  margin-top: 8px;
+}
+
+.div-9,
+.div-13,
+.div-17 {
+  align-self: center;
+  display: flex;
+}
+
+.div-9 {
+  margin-top: 25px;
+  width: 266px;
+  max-width: 100%;
+  align-items: start;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.div-10 input.form-check-input {
+  margin-right: 10px; 
+}
+
+
+
+.div-13,
+.div-17 {
+  margin-top: 39px;
+  justify-content: space-between;
+  gap: 7px;
+}
+
+.div-14,
+.div-16 {
+  background-color: #000;
+  align-self: center;
+  width: 150px;
+  height: 1px;
+  margin: auto 0;
+}
+
+.div-15,
+.div-18 {
+  justify-content: flex-end;
+  font: 400 20px/80% Poppins, ;
+}
+
+.div-19 {
+  text-decoration-line: underline;
+  align-self: stretch;
+  white-space: nowrap;
+}
+
+@media (max-width: 991px) {
+  .div-19 {
+    white-space: initial;
+  }
+}
+
+.column-2 {
+  display: flex;
+  flex-direction: column;
+  line-height: normal;
+  width: 62%;
+  margin-left: 20px;
+}
+
+@media (max-width: 991px) {
+  .column-2 {
+    width: 100%;
+  }
+}
+
+.img {
+  aspect-ratio: 1.08;
+  object-fit: contain;
+  object-position: center;
+  width: 100%;
+  overflow: hidden;
+}
+
+@media (max-width: 991px) {
+  .img {
+    max-width: 100%;
+    margin-top: 40px;
+  }
+}
+
+.form-control::placeholder {
+  font-size: 10px; 
+  
+}
